@@ -1,0 +1,80 @@
+# API de Análisis Financiero
+
+API REST desarrollada con **FastAPI** para el hackathon de NoCountry. Permite registrar transacciones de un usuario (ingresos y gastos) y consultarlas
+
+## Estado del proyecto
+
+🚧 **Avance 1 (prueba inicial)** — Backend base funcionando localmente. Aún no incluye frontend, base de datos en la nube (OCI) ni lógica avanzada de recomendaciones.
+
+## Tecnologías usadas
+
+- **Python 3**
+- **FastAPI** — framework para construir la API
+- **SQLAlchemy** — conexión y manejo de la base de datos
+- **SQLite** — base de datos local para esta primera versión (se migrará a Postgres/OCI más adelante)
+- **Uvicorn** — servidor que ejecuta la API
+
+## Cómo correrlo localmente
+
+1. Clonar el repositorio y entrar a la carpeta del proyecto.
+
+2. Crear y activar un entorno virtual:
+   ```bash
+   python -m venv venv
+   # Windows
+   .\venv\Scripts\Activate.ps1
+   ```
+
+3. Instalar dependencias:
+   ```bash
+   pip install fastapi uvicorn sqlalchemy
+   ```
+
+4. Levantar el servidor:
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+5. Abrir la documentación interactiva en el navegador:
+   ```
+   http://127.0.0.1:8000/docs
+   ```
+
+## Endpoints disponibles
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/` | Verifica que la API esté corriendo |
+| `POST` | `/transacciones` | Registra una nueva transacción (ingreso o gasto) |
+| `GET` | `/transacciones/{usuario_id}` | Lista todas las transacciones de un usuario |
+
+
+### Ejemplo: crear una transacción
+
+```json
+POST /transacciones
+{
+  "usuario_id": 1,
+  "categoria": "alimentacion",
+  "tipo": "gasto",
+  "monto": 600
+}
+```
+
+
+## Estructura del proyecto
+
+```
+├── main.py        # Rutas de la API
+├── models.py       # Modelos de la base de datos (tablas)
+├── schemas.py      # Estructuras de entrada/salida de la API
+├── database.py     # Configuración de la conexión a la base de datos
+└── finanzas.db      # Base de datos SQLite (se genera automáticamente)
+```
+
+## Próximos pasos
+
+- Agregar operaciones de actualizar y eliminar transacciones
+- Conectar con el frontend (por definir)
+- Migrar la base de datos a un servicio de OCI
+- Agregar la lógica de clasificación y recomendaciones
