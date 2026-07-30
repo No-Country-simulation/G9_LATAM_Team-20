@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Econo mIA - Salud Financiera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ================= PANTALLA DE BIENVENIDA (ONBOARDING) ================= -->
+    <div id="welcomeScreen" class="welcome-container">
+        <div class="welcome-card">
+            <div class="logo">Econo<span> mIA</span></div>
+            
+            <!-- Vista 0: Menú de Entrada -->
+            <div id="slide-menu" class="onboarding-slide active">
+                <h2>¡Hola! Te damos la bienvenida</h2>
+                <p class="slide-text">Elige cómo deseas ingresar hoy para comenzar a cuidar tus finanzas:</p>
+                <div class="menu-buttons">
+                    <button id="btnIrARegistrado" class="btn-primary">Ya tengo una cuenta (Ingresar con ID)</button>
+                    <button id="btnIrANuevo" class="btn-secondary">Soy un usuario nuevo</button>
+                    <!-- NUEVO BOTÓN PARA MOSTRAR LISTADO -->
+                    <button id="btnVerUsuarios" class="btn-secondary" style="border-color: rgba(255, 255, 255, 0.1);">¿Olvidaste tu ID? Ver Usuarios</button>
+                </div>
+            </div>
+
+            <!-- Vista Registro: Ingresar ID -->
+            <div id="slide-login" class="onboarding-slide">
+                <h2>Ingresa a tu cuenta</h2>
+                <p class="slide-text">Digita tu número de ID de usuario asignado:</p>
+                <div class="form-group">
+                    <input type="number" id="welcomeUserIdInput" placeholder="ID de Usuario (Ej. 1)" min="1">
+                </div>
+                <div class="form-buttons">
+                    <button id="btnAccederRegistrado" class="btn-primary btn-block">Ingresar</button>
+                    <button id="btnVolverMenu1" class="btn-secondary">Volver</button>
+                </div>
+            </div>
+
+            <!-- Slide 1: Saludo Coach -->
+             <div id="slide-1" class="onboarding-slide">
+                <div class="coach-avatar">🤖</div>
+                <h2>¡Hola! Soy tu Econo <span>mAI</span></h2>
+                <p class="slide-text">Tu coach financiero inteligente. ¿Cuál es tu nombre?</p>
+                <div class="form-group" style="max-width: 300px; margin: 0 auto 1.5rem auto;">
+                    <input type="text" id="obNombre" placeholder="Tu nombre" required>
+                </div>
+                <button id="btnSiguienteSlide1" class="btn-primary">Comenzar</button>
+            </div>
+
+            <!-- Slide 2: Misión -->
+            <div id="slide-2" class="onboarding-slide">
+                <h2>Mi Misión</h2>
+                <p class="slide-text">Es ayudarte a administrar tus finanzas de manera consciente y guiarte a tomar mejores decisiones sobre tu dinero día a día.</p>
+                <div class="form-buttons">
+                    <button onclick="cambiarSlide('slide-2', 'slide-3')" class="btn-primary">Siguiente</button>
+                    <button onclick="cambiarSlide('slide-2', 'slide-1')" class="btn-secondary">Atrás</button>
+                </div>
+            </div>
+
+            <!-- Slide 3: Objetivo Financiero -->
+            <div id="slide-3" class="onboarding-slide">
+                <h2>Define tu objetivo</h2>
+                <p class="slide-text">¿Qué te gustaría lograr principalmente con nuestra ayuda?</p>
+                
+                <div class="objective-options">
+                    <label class="option-card">
+                        <input type="radio" name="objetivo" value="Reforzar ahorro" checked>
+                        <span>📈 Reforzar ahorro</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="objetivo" value="Reducir gastos">
+                        <span>📉 Reducir gastos</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="objetivo" value="Pagar deudas">
+                        <span>💳 Pagar deudas</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="objetivo" value="Propósito personal">
+                        <span>🎯 Guardar para un propósito personal</span>
+                    </label>
+                </div>
+
+                <div class="form-buttons" style="margin-top: 1.5rem;">
+                    <button onclick="cambiarSlide('slide-3', 'slide-4')" class="btn-primary">Siguiente</button>
+                    <button onclick="cambiarSlide('slide-3', 'slide-2')" class="btn-secondary">Atrás</button>
+                </div>
+            </div>
+
+            <!-- Slide 4: Meta de Ahorro -->
+            <div id="slide-4" class="onboarding-slide">
+                <h2>Meta de Ahorro</h2>
+                <p class="slide-text">¿Qué porcentaje (%) de tus ingresos te propones ahorrar mensualmente?</p>
+                <div class="form-group">
+                    <input type="number" id="obMetaAhorro" value="20" min="0" max="100">
+                </div>
+                <div class="form-buttons">
+                    <button onclick="cambiarSlide('slide-4', 'slide-5')" class="btn-primary">Siguiente</button>
+                    <button onclick="cambiarSlide('slide-4', 'slide-3')" class="btn-secondary">Atrás</button>
+                </div>
+            </div>
+
+            <!-- Slide 5: Datos de Configuración del Perfil (Requerido para la Base de Datos) -->
+            <div id="slide-5" class="onboarding-slide">
+                <h2>Completa tu Perfil</h2>
+                <p class="slide-text">Dinos estos datos breves para calcular tus recomendaciones iniciales:</p>
+                <div class="grid-form">
+                    <div class="form-group">
+                        <label for="obEdad">Edad:</label>
+                        <input type="number" id="obEdad" value="25" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="obSexo">Sexo:</label>
+                        <select id="obSexo">
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="obOcupacion">Ocupación:</label>
+                        <input type="text" id="obOcupacion" placeholder="Ej. Ingeniero">
+                    </div>
+                    <div class="form-group">
+                        <label for="obCiudad">Ciudad:</label>
+                        <input type="text" id="obCiudad" placeholder="Ej. Ciudad de México">
+                    </div>
+                    <div class="form-group">
+                        <label for="obIngreso">Ingreso Mensual ($):</label>
+                        <input type="number" id="obIngreso" value="2000">
+                    </div>
+                    <div class="form-group">
+                        <label for="obDeuda">Deuda Inicial (%):</label>
+                        <input type="number" id="obDeuda" value="10" min="0" max="100">
+                    </div>
+                </div>
+                <div class="form-buttons" style="margin-top: 1rem;">
+                    <button id="btnRegistrarNuevoUsuario" class="btn-primary">Registrarme</button>
+                    <button onclick="cambiarSlide('slide-5', 'slide-4')" class="btn-secondary">Atrás</button>
+                </div>
+            </div>
+
+            <!-- Slide Final: Éxito -->
+            <div id="slide-success" class="onboarding-slide">
+                <h2>¡Excelente! 🎉</h2>
+                <p class="slide-text">Tu cuenta ha sido creada exitosamente.</p>
+                <div class="id-display-box">
+                    <p>Tu ID de acceso es:</p>
+                    <h1 id="lblNuevoUserId">99</h1>
+                    <p class="warning-text">⚠️ Anota este número para iniciar sesión la próxima vez.</p>
+                </div>
+                <p class="slide-text success-quote">"Vamos, hagamos que tus finanzas avancen."</p>
+                <button id="btnEntrarApp" class="btn-primary btn-block">Entrar al Menú Principal</button>
+            </div>
+
+            
+            
+            <!-- NUEVA PANTALLA: Listado de Usuarios para recuperación -->
+            <div id="slide-users-list" class="onboarding-slide">
+                <h2>Usuarios Registrados</h2>
+                <p class="slide-text">Haz clic sobre tu nombre para ingresar directamente:</p>
+                
+                <!-- Contenedor scrollable con los perfiles creados -->
+                <div class="users-list-scroll" id="usersListContainer">
+                    <p class="text-center">Cargando usuarios...</p>
+                </div>
+
+                <div class="form-buttons">
+                    <button id="btnVolverMenu2" class="btn-secondary btn-block">Volver al Inicio</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- ================= APLICACIÓN PRINCIPAL (OCULTA AL INICIO) ================= -->
+    <div id="appDashboard" style="display: none;">
+        
+          <header class="app-header dashboard-header">
+            <div class="header-left">
+                <div class="logo">Econo <span>mAI</span></div>
+                <p class="tagline">Asistente Inteligente de Salud Financiera</p>
+            </div>
+            
+            <div class="user-badge-card">
+                <div class="avatar-circle" id="userAvatar">U</div>
+                <div class="user-badge-info">
+                    <span class="user-welcome">Hola, <strong id="lblNombreUsuario">Usuario</strong> 👋</span>
+                    <span class="user-id-capsule" id="lblIdUsuario">ID: #1</span>
+                </div>
+                <button id="btnCerrarSesion" class="btn-danger-outline btn-logout">Salir</button>
+            </div>
+        </header>
+
+        <main class="dashboard-container">
+            
+            <!-- SECCIÓN 1: Datos de Usuario -->
+            <section class="card user-section">
+                <h2>👤 Datos de Usuario</h2>
+                <div class="user-select-group">
+                    <label for="userIdInput">ID de Usuario activo:</label>
+                    <input type="number" id="userIdInput" value="1" min="1" readonly>
+                </div>
+                
+                <hr class="divider">
+                
+                <h3>Ver o Editar Perfil Completo</h3>
+                <form id="userForm" class="grid-form">
+                    
+                     <div class="form-group full-width">
+                        <label for="userNombre">Nombre Completo:</label>
+                        <input type="text" id="userNombre" required>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="userEdad">Edad:</label>
+                        <input type="number" id="userEdad" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userSexo">Sexo:</label>
+                        <select id="userSexo" required>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userOcupacion">Ocupación:</label>
+                        <input type="text" id="userOcupacion" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userCiudad">Ciudad:</label>
+                        <input type="text" id="userCiudad" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userIngresoBase">Ingreso Base ($):</label>
+                        <input type="number" id="userIngresoBase" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userIngresoVar">Ingreso Variable ($):</label>
+                        <input type="number" id="userIngresoVar" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userMetaAhorro">Meta Ahorro (%):</label>
+                        <input type="number" id="userMetaAhorro" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userDeuda">Deuda Inicial (%):</label>
+                        <input type="number" id="userDeuda" required>
+                    </div>
+
+                    <div class="form-group full-width form-buttons">
+                        <button type="submit" id="btnGuardarUsuario" class="btn-secondary">Guardar Perfil</button>
+                        <button type="button" id="btnEliminarUsuario" class="btn-danger-outline">Borrar Perfil</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- SECCIÓN 2: Semáforo de Salud Financiera -->
+            <section class="card health-section">
+                <h2>📊 Tu Salud Financiera</h2>
+                <div id="healthBadge" class="badge badge-loading">Cargando...</div>
+                
+                <div class="health-metrics">
+                    <div class="metric">
+                        <span class="label">Ingresos Totales:</span>
+                        <span class="value" id="valIngresos">$0.00</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Ahorro Real:</span>
+                        <span class="value" id="valAhorro">$0.00</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">% Ahorrado:</span>
+                        <span class="value" id="valPorcAhorro">0%</span>
+                    </div>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4>Recomendación:</h4>
+                    <p id="txtRecomendacion">Carga un usuario para ver tus recomendaciones personalizadas.</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: Agregar Transacción -->
+            <section class="card transaction-form-section">
+                <h2>💸 Registrar Movimiento</h2>
+                <form id="transactionForm" class="vertical-form">
+                    <input type="hidden" id="txEditId" value="">
+
+                    <div class="form-group">
+                        <label for="txDesc">Descripción:</label>
+                        <input type="text" id="txDesc" placeholder="Ej. Supermercado Walmart, Uber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txMonto">Monto ($):</label>
+                        <input type="number" id="txMonto" step="0.01" placeholder="0.00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="txFecha">Fecha y Hora (Opcional):</label>
+                        <input type="datetime-local" id="txFecha">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="txTipo">Tipo:</label>
+                            <select id="txTipo" required>
+                                <option value="gasto">Gasto</option>
+                                <option value="ingreso">Ingreso</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txCategoria">Categoría:</label>
+                            <select id="txCategoria" required>
+                                <option value="alimentacion">Alimentación</option>
+                                <option value="transporte">Transporte</option>
+                                <option value="salud">Salud</option>
+                                <option value="vivienda">Vivienda</option>
+                                <option value="educacion">Educación</option>
+                                <option value="servicios">Servicios</option>
+                                <option value="deudas">Deudas</option>
+                                <option value="ocio">Ocio / Entretenimiento</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" id="btnSubmitTx" class="btn-primary btn-block">Agregar Movimiento</button>
+                        <button type="button" id="btnCancelTxEdit" class="btn-secondary btn-block" style="display: none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- SECCIÓN 4: Listado de Transacciones -->
+            <section class="card history-section">
+                <h2>📜 Historial del Mes</h2>
+                <div class="filter-bar">
+                    <input type="number" id="filtroAnio" value="2026" min="2020">
+                    <input type="number" id="filtroMes" value="7" min="1" max="12">
+                    <button id="btnFiltrar" class="btn-secondary">Filtrar</button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="tx-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="txTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">No hay datos cargados.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

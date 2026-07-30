@@ -1,5 +1,6 @@
-from sqlalchemy import column, Column, Integer, String, Float
-from backend.database import Base
+from sqlalchemy import  Column, Integer, String, Float, DateTime
+from datetime import datetime, timezone
+from database import Base
 
 class Transaccion(Base):
     __tablename__ = "transacciones"
@@ -9,11 +10,14 @@ class Transaccion(Base):
     categoria = Column(String)
     tipo = Column(String) # "ingreso" o "gastos"
     monto = Column(Float)
+    descripcion = Column(String, nullable=True)
+    fecha = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class Usuario(Base):
     __tablename__ = "usuarios"
 
     id = Column(Integer, primary_key=True, index=True)
+    nombre = Column(String) # se agrega esta linea para mejorar la interaccion con el frontend
     edad = Column(Integer)
     sexo = Column(String)
     ocupacion = Column(String)
