@@ -44,7 +44,7 @@ body {
     letter-spacing: 1px;
 }
 
-.app-header .logo span {
+.logo span {
     background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
     -webkit-background-clip: text;
     background-clip: text;
