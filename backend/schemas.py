@@ -32,3 +32,13 @@ class UsuarioRespuesta(UsuarioCrear):
 
     class Config:
         from_attributes = True
+
+
+class ClasificacionRequest(BaseModel):
+    descripcion: str
+    monto: float | None = None
+
+class ClasificacionResponse(BaseModel):
+    categoria: str
+    subcategoria: str | None = None
+    confianza: float

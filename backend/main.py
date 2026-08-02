@@ -223,6 +223,10 @@ def borrar_usuario(usuario_id: int, db: Session = Depends(get_db)):
 
 @app.get("/resumen-mensual/{usuario_id}")
 def resumen_mensual(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
+    usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
     transacciones = db.query(models.Transaccion).filter(
         models.Transaccion.usuario_id == usuario_id,
         models.Transaccion.fecha >= datetime(anio, mes, 1),
@@ -232,7 +236,9 @@ def resumen_mensual(usuario_id: int, anio: int, mes: int, db: Session = Depends(
     if not transacciones:
         raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
 
-    ingresos = sum(t.monto for t in transacciones if t.tipo == "ingreso")
+    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso")
+    ingresos_totales = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
+
     gastos_por_categoria = {}
     for t in transacciones:
         if t.tipo == "gasto":
@@ -245,12 +251,11 @@ def resumen_mensual(usuario_id: int, anio: int, mes: int, db: Session = Depends(
         "usuario_id": usuario_id,
         "anio": anio,
         "mes": mes,
-        "ingresos_totales": ingresos,
+        "ingresos_totales": ingresos_totales,
         "gastos_totales": gastos_totales,
         "gastos_por_categoria": gastos_por_categoria,
         "categoria_mayor_gasto": categoria_mayor_gasto
     }
-
 
 
 # endpoin para editar perfil en el frontend 
@@ -267,3 +272,29 @@ def obtener_usuario(usuario_id: int, db: Session = Depends(get_db)):
 @app.get("/usuarios", response_model=list[schemas.UsuarioRespuesta])
 def obtener_usuarios(db: Session = Depends(get_db)):
     return db.query(models.Usuario).all()
+
+
+
+@app.post("/clasificar-gasto", response_model=schemas.ClasificacionResponse)
+def clasificar_gasto(datos: schemas.ClasificacionRequest):
+    descripcion = datos.descripcion.lower()
+
+    # --- SIMULACIÓN TEMPORAL mientras llega el modelo real (miércoles) ---
+    palabras_clave = {
+        "alimentacion": ["taco", "comida", "restaurante", "supermercado", "cafe"],
+        "transporte": ["uber", "gasolina", "taxi", "camion", "metro"],
+        "entretenimiento": ["cine", "netflix", "concierto", "bar", "streaming"],
+        "salud": ["farmacia", "doctor", "medicina", "hospital"],
+    }
+
+    categoria_encontrada = "otros"
+    for categoria, palabras in palabras_clave.items():
+        if any(palabra in descripcion for palabra in palabras):
+            categoria_encontrada = categoria
+            break
+
+    return {
+        "categoria": categoria_encontrada,
+        "subcategoria": None,
+        "confianza": 0.5
+    }

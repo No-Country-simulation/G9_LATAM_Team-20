@@ -616,3 +616,248 @@ button {
 .users-list-scroll::-webkit-scrollbar-thumb:hover {
     background: var(--accent-blue);
 }
+
+
+/* --- LÓGICA DE CONTROL DE PESTAÑAS (SPA) --- */
+.tab-content {
+    display: none; /* Oculta todas las pestañas por defecto */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active-tab {
+    display: block; /* Muestra solo la pestaña activa */
+}
+
+/* --- FILTRO GLOBAL --- */
+.global-filter-container {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.filter-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .filter-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .filter-input-group {
+        width: 100%;
+    }
+    .filter-card button {
+        width: 100%;
+    }
+}
+
+.filter-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-input-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.filter-input-group input {
+    width: 90px;
+    padding: 0.4rem 0.6rem;
+}
+
+/* --- BARRA DE NAVEGACIÓN FLOTANTE (ESTILO BANCA MÓVIL) --- */
+.floating-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(11, 15, 25, 0.85);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px 16px;
+    border-radius: 99px;
+    display: flex;
+    gap: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    width: fit-content;
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    gap: 0.1rem;
+}
+
+.nav-item .nav-icon {
+    font-size: 1.25rem;
+}
+
+.nav-item .nav-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estado activo del botón de la barra */
+.nav-item.active {
+    color: var(--accent-blue);
+    background: rgba(56, 189, 248, 0.12);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+/* --- PESTAÑA RESUMEN MENSUAL --- */
+.summary-balance-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.balance-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.balance-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.balance-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.income-item .balance-value {
+    color: var(--status-healthy);
+}
+
+.expense-item .balance-value {
+    color: var(--status-danger);
+}
+
+/* Barras de progreso de categorías */
+.categories-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.progress-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.progress-cat-name {
+    font-weight: 600;
+}
+
+.progress-cat-amount {
+    color: var(--text-secondary);
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+    border-radius: 99px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* --- CENTRADO Y ALINEACIÓN DE MENÚS Y ENTRADAS --- */
+
+/* Centra el texto escrito y la opción elegida en los menús desplegables */
+input, select {
+    text-align: center;
+    text-align-last: center; /* Centra el texto de selección en Chrome y Safari */
+}
+
+/* Alinea la fila del formulario para que los dos menús se organicen lado a lado */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* Si un menú o input está solo en el formulario y quieres que no ocupe todo el ancho, 
+   lo limitamos al centro con un ancho máximo cómodo */
+.form-group select, 
+.form-group input[type="datetime-local"] {
+    max-width: 350px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+.chart-container {
+    max-width: 240px;
+    margin: 0 auto 1.5rem auto;
+}
+
+
+.empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state-text {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+
+
+

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Econo mIA - Salud Financiera</title>
+    <title>EconomIA - Salud Financiera</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 </head>
 <body>
 
     <!-- ================= PANTALLA DE BIENVENIDA (ONBOARDING) ================= -->
     <div id="welcomeScreen" class="welcome-container">
         <div class="welcome-card">
-            <div class="logo">Econo<span> mIA</span></div>
+            <div class="logo">Econo<span>mIA</span></div>
             
             <!-- Vista 0: Menú de Entrada -->
             <div id="slide-menu" class="onboarding-slide active">
@@ -21,7 +22,6 @@
                 <div class="menu-buttons">
                     <button id="btnIrARegistrado" class="btn-primary">Ya tengo una cuenta (Ingresar con ID)</button>
                     <button id="btnIrANuevo" class="btn-secondary">Soy un usuario nuevo</button>
-                    <!-- NUEVO BOTÓN PARA MOSTRAR LISTADO -->
                     <button id="btnVerUsuarios" class="btn-secondary" style="border-color: rgba(255, 255, 255, 0.1);">¿Olvidaste tu ID? Ver Usuarios</button>
                 </div>
             </div>
@@ -40,9 +40,9 @@
             </div>
 
             <!-- Slide 1: Saludo Coach -->
-             <div id="slide-1" class="onboarding-slide">
+            <div id="slide-1" class="onboarding-slide">
                 <div class="coach-avatar">🤖</div>
-                <h2>¡Hola! Soy tu Econo <span>mIA</span></h2>
+                <h2>¡Hola! Soy tu Econo<span>mIA</span></h2>
                 <p class="slide-text">Tu coach financiero inteligente. ¿Cuál es tu nombre?</p>
                 <div class="form-group" style="max-width: 300px; margin: 0 auto 1.5rem auto;">
                     <input type="text" id="obNombre" placeholder="Tu nombre" required>
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <!-- Slide 5: Datos de Configuración del Perfil (Requerido para la Base de Datos) -->
+            <!-- Slide 5: Datos del Perfil -->
             <div id="slide-5" class="onboarding-slide">
                 <h2>Completa tu Perfil</h2>
                 <p class="slide-text">Dinos estos datos breves para calcular tus recomendaciones iniciales:</p>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="form-group">
                         <label for="obCiudad">Ciudad:</label>
-                        <input type="text" id="obCiudad" placeholder="Ej. Ciudad de México">
+                        <input type="text" id="obCiudad" placeholder="Ej. CDMX">
                     </div>
                     <div class="form-group">
                         <label for="obIngreso">Ingreso Mensual ($):</label>
@@ -155,37 +155,28 @@
                 <button id="btnEntrarApp" class="btn-primary btn-block">Entrar al Menú Principal</button>
             </div>
 
-            
-            
-            <!-- NUEVA PANTALLA: Listado de Usuarios para recuperación -->
+            <!-- Recuperación de Usuarios -->
             <div id="slide-users-list" class="onboarding-slide">
                 <h2>Usuarios Registrados</h2>
                 <p class="slide-text">Haz clic sobre tu nombre para ingresar directamente:</p>
-                
-                <!-- Contenedor scrollable con los perfiles creados -->
                 <div class="users-list-scroll" id="usersListContainer">
                     <p class="text-center">Cargando usuarios...</p>
                 </div>
-
                 <div class="form-buttons">
                     <button id="btnVolverMenu2" class="btn-secondary btn-block">Volver al Inicio</button>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-
-    <!-- ================= APLICACIÓN PRINCIPAL (OCULTA AL INICIO) ================= -->
-    <div id="appDashboard" style="display: none;">
+    <!-- ================= APLICACIÓN PRINCIPAL ================= -->
+    <div id="appDashboard" style="display: none; padding-bottom: 90px;">
         
-          <header class="app-header dashboard-header">
+        <header class="app-header dashboard-header">
             <div class="header-left">
-                <div class="logo">Econo <span>mAI</span></div>
+                <div class="logo">Econo<span>mIA</span></div>
                 <p class="tagline">Asistente Inteligente de Salud Financiera</p>
             </div>
-            
             <div class="user-badge-card">
                 <div class="avatar-circle" id="userAvatar">U</div>
                 <div class="user-badge-info">
@@ -196,184 +187,250 @@
             </div>
         </header>
 
-        <main class="dashboard-container">
-            
-            <!-- SECCIÓN 1: Datos de Usuario -->
-            <section class="card user-section">
-                <h2>👤 Datos de Usuario</h2>
-                <div class="user-select-group">
-                    <label for="userIdInput">ID de Usuario activo:</label>
-                    <input type="number" id="userIdInput" value="1" min="1" readonly>
-                </div>
-                
-                <hr class="divider">
-                
-                <h3>Ver o Editar Perfil Completo</h3>
-                <form id="userForm" class="grid-form">
-                    
-                     <div class="form-group full-width">
-                        <label for="userNombre">Nombre Completo:</label>
-                        <input type="text" id="userNombre" required>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="userEdad">Edad:</label>
-                        <input type="number" id="userEdad" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="userSexo">Sexo:</label>
-                        <select id="userSexo" required>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userOcupacion">Ocupación:</label>
-                        <input type="text" id="userOcupacion" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userCiudad">Ciudad:</label>
-                        <input type="text" id="userCiudad" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userIngresoBase">Ingreso Base ($):</label>
-                        <input type="number" id="userIngresoBase" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userIngresoVar">Ingreso Variable ($):</label>
-                        <input type="number" id="userIngresoVar" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userMetaAhorro">Meta Ahorro (%):</label>
-                        <input type="number" id="userMetaAhorro" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="userDeuda">Deuda Inicial (%):</label>
-                        <input type="number" id="userDeuda" required>
-                    </div>
-
-                    <div class="form-group full-width form-buttons">
-                        <button type="submit" id="btnGuardarUsuario" class="btn-secondary">Guardar Perfil</button>
-                        <button type="button" id="btnEliminarUsuario" class="btn-danger-outline">Borrar Perfil</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- SECCIÓN 2: Semáforo de Salud Financiera -->
-            <section class="card health-section">
-                <h2>📊 Tu Salud Financiera</h2>
-                <div id="healthBadge" class="badge badge-loading">Cargando...</div>
-                
-                <div class="health-metrics">
-                    <div class="metric">
-                        <span class="label">Ingresos Totales:</span>
-                        <span class="value" id="valIngresos">$0.00</span>
-                    </div>
-                    <div class="metric">
-                        <span class="label">Ahorro Real:</span>
-                        <span class="value" id="valAhorro">$0.00</span>
-                    </div>
-                    <div class="metric">
-                        <span class="label">% Ahorrado:</span>
-                        <span class="value" id="valPorcAhorro">0%</span>
-                    </div>
-                </div>
-
-                <div class="recommendation-box">
-                    <h4>Recomendación:</h4>
-                    <p id="txtRecomendacion">Carga un usuario para ver tus recomendaciones personalizadas.</p>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 3: Agregar Transacción -->
-            <section class="card transaction-form-section">
-                <h2>💸 Registrar Movimiento</h2>
-                <form id="transactionForm" class="vertical-form">
-                    <input type="hidden" id="txEditId" value="">
-
-                    <div class="form-group">
-                        <label for="txDesc">Descripción:</label>
-                        <input type="text" id="txDesc" placeholder="Ej. Supermercado Walmart, Uber" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="txMonto">Monto ($):</label>
-                        <input type="number" id="txMonto" step="0.01" placeholder="0.00" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="txFecha">Fecha y Hora (Opcional):</label>
-                        <input type="datetime-local" id="txFecha">
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="txTipo">Tipo:</label>
-                            <select id="txTipo" required>
-                                <option value="gasto">Gasto</option>
-                                <option value="ingreso">Ingreso</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="txCategoria">Categoría:</label>
-                            <select id="txCategoria" required>
-                                <option value="alimentacion">Alimentación</option>
-                                <option value="transporte">Transporte</option>
-                                <option value="salud">Salud</option>
-                                <option value="vivienda">Vivienda</option>
-                                <option value="educacion">Educación</option>
-                                <option value="servicios">Servicios</option>
-                                <option value="deudas">Deudas</option>
-                                <option value="ocio">Ocio / Entretenimiento</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-buttons">
-                        <button type="submit" id="btnSubmitTx" class="btn-primary btn-block">Agregar Movimiento</button>
-                        <button type="button" id="btnCancelTxEdit" class="btn-secondary btn-block" style="display: none;">Cancelar</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- SECCIÓN 4: Listado de Transacciones -->
-            <section class="card history-section">
-                <h2>📜 Historial del Mes</h2>
-                <div class="filter-bar">
+        <!-- Filtro Global (Afecta a todas las pestañas simultáneamente) -->
+        <div class="global-filter-container">
+            <div class="filter-card">
+                <div class="filter-input-group">
+                    <label for="filtroAnio">Año:</label>
                     <input type="number" id="filtroAnio" value="2026" min="2020">
+                </div>
+                <div class="filter-input-group">
+                    <label for="filtroMes">Mes:</label>
                     <input type="number" id="filtroMes" value="7" min="1" max="12">
-                    <button id="btnFiltrar" class="btn-secondary">Filtrar</button>
                 </div>
-                
-                <div class="table-container">
-                    <table class="tx-table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Descripción</th>
-                                <th>Categoría</th>
-                                <th>Monto</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="txTableBody">
-                            <tr>
-                                <td colspan="5" class="text-center">No hay datos cargados.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <button id="btnFiltrar" class="btn-primary">Actualizar Periodo</button>
+            </div>
+        </div>
+
+        <main class="dashboard-container tab-content-container">
+            
+            <!-- PESTAÑA 1: SALUD FINANCIERA (Activa por defecto) -->
+            <div id="tab-salud" class="tab-content active-tab">
+                <section class="card health-section" style="max-width: 600px; margin: 0 auto;">
+                    <h2>📊 Salud Financiera</h2>
+                    <!-- se agrega codigo usuario sin transacciones-->
+
+                    <!-- Estado vacío: se muestra solo si no hay transacciones este mes -->
+                    <div id="saludEmptyState" class="empty-state" style="display: none;">
+                        <div class="empty-state-icon">📭</div>
+                        <p class="empty-state-text">Aún no tienes movimientos registrados este mes.</p>
+                        <button class="btn-primary" onclick="cambiarTab('transacciones')">Agregar mi primer movimiento</button>
+                    </div>
+
+                    <!--fin codigo usuario sin transacciones-->
+
+                    <div id="saludContent">
+                        <div id="healthBadge" class="badge badge-loading">Cargando...</div>
+                        
+                        <div class="health-metrics">
+                            <div class="metric">
+                                <span class="label">Ingresos Totales:</span>
+                                <span class="value" id="valIngresos">$0.00</span>
+                            </div>
+                            <div class="metric">
+                                <span class="label">Ahorro Real:</span>
+                                <span class="value" id="valAhorro">$0.00</span>
+                            </div>
+                            <div class="metric">
+                                <span class="label">% Ahorrado:</span>
+                                <span class="value" id="valPorcAhorro">0%</span>
+                            </div>
+                        </div>
+                        <div class="recommendation-box">
+                            <h4>Recomendación de tu Coach:</h4>
+                            <p id="txtRecomendacion">Registra movimientos para que comience el análisis.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- PESTAÑA 2: MOVIMIENTOS Y TRANSACCIONES -->
+            <div id="tab-transacciones" class="tab-content">
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                    
+                    <!-- Registrar movimiento -->
+                    <section class="card transaction-form-section" style="max-width: 600px; margin: 0 auto; width: 100%;">
+                        <h2>💸 Registrar Movimiento</h2>
+                        <form id="transactionForm" class="vertical-form">
+                            <input type="hidden" id="txEditId" value="">
+
+                            <div class="form-group">
+                                <label for="txDesc">Descripción:</label>
+                                <input type="text" id="txDesc" placeholder="Ej. Supermercado Walmart, Uber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="txMonto">Monto ($):</label>
+                                <input type="number" id="txMonto" step="0.01" placeholder="0.00" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="txFecha">Fecha y Hora (Opcional):</label>
+                                <input type="datetime-local" id="txFecha">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="txTipo">Tipo:</label>
+                                    <select id="txTipo" required>
+                                        <option value="gasto">Gasto</option>
+                                        <option value="ingreso">Ingreso</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txCategoria">Categoría:</label>
+                                    <select id="txCategoria" required>
+                                        <option value="alimentacion">Alimentación</option>
+                                        <option value="transporte">Transporte</option>
+                                        <option value="salud">Salud</option>
+                                        <option value="vivienda">Vivienda</option>
+                                        <option value="educacion">Educación</option>
+                                        <option value="servicios">Servicios</option>
+                                        <option value="deudas">Deudas</option>
+                                        <option value="entretenimiento">Ocio / Entretenimiento</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button type="submit" id="btnSubmitTx" class="btn-primary btn-block">Agregar Movimiento</button>
+                                <button type="button" id="btnCancelTxEdit" class="btn-secondary btn-block" style="display: none;">Cancelar</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Tabla de Historial -->
+                    <section class="card history-section" style="max-width: 900px; margin: 0 auto; width: 100%;">
+                        <h2>📜 Historial del Periodo</h2>
+                        <div class="table-container">
+                            <table class="tx-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Descripción</th>
+                                        <th>Categoría</th>
+                                        <th>Monto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="txTableBody">
+                                    <tr>
+                                        <td colspan="5" class="text-center">No hay transacciones registradas.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
+
+            <!-- PESTAÑA 3: RESUMEN MENSUAL Y ESTADÍSTICAS -->
+            <div id="tab-resumen" class="tab-content">
+                <section class="card summary-section" style="max-width: 600px; margin: 0 auto;">
+                    <h2>📈 Resumen del Periodo</h2>
+                    
+                    <div class="summary-balance-container">
+                        <div class="balance-item income-item">
+                            <span class="balance-label">Ingresos Totales</span>
+                            <span class="balance-value" id="resIngresos">$0.00</span>
+                        </div>
+                        <div class="balance-item expense-item">
+                            <span class="balance-label">Gastos Totales</span>
+                            <span class="balance-value" id="resGastos">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- se agrega canvas antes de la grafica-->
+                     <div class="chart-container">
+                        <canvas id="graficaCategorias"></canvas>
+                    </div>
+
+                 
+
+                    <div class="categories-list-progress-section">
+                        <h3>Distribución de Gastos</h3>
+                        <div id="resumenCategoriasContainer" class="categories-progress-list">
+                            <!-- JS insertará las barras de progreso dinámicas -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- PESTAÑA 4: PERFIL DE USUARIO -->
+            <div id="tab-perfil" class="tab-content">
+                <section class="card user-section" style="max-width: 600px; margin: 0 auto;">
+                    <h2>👤 Datos y Configuración</h2>
+                    <form id="userForm" class="grid-form">
+                        <div class="form-group full-width">
+                            <label for="userNombre">Nombre Completo:</label>
+                            <input type="text" id="userNombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEdad">Edad:</label>
+                            <input type="number" id="userEdad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userSexo">Sexo:</label>
+                            <select id="userSexo" required>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userOcupacion">Ocupación:</label>
+                            <input type="text" id="userOcupacion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userCiudad">Ciudad:</label>
+                            <input type="text" id="userCiudad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userIngresoBase">Ingreso Base ($):</label>
+                            <input type="number" id="userIngresoBase" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userIngresoVar">Ingreso Variable ($):</label>
+                            <input type="number" id="userIngresoVar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userMetaAhorro">Meta Ahorro (%):</label>
+                            <input type="number" id="userMetaAhorro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userDeuda">Deuda Inicial (%):</label>
+                            <input type="number" id="userDeuda" required>
+                        </div>
+                        <div class="form-group full-width form-buttons">
+                            <button type="submit" id="btnGuardarUsuario" class="btn-secondary">Guardar Perfil</button>
+                            <button type="button" id="btnEliminarUsuario" class="btn-danger-outline">Borrar Perfil</button>
+                        </div>
+                    </form>
+                    <input type="hidden" id="userIdInput" value="1">
+                </section>
+            </div>
 
         </main>
+
+        <!-- BARRA DE NAVEGACIÓN FLOTANTE (ESTILO PREMIUM BANCA MÓVIL) -->
+        <nav class="floating-nav">
+            <button class="nav-item active" onclick="cambiarTab('salud')">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Salud</span>
+            </button>
+            <button class="nav-item" onclick="cambiarTab('transacciones')">
+                <span class="nav-icon">💸</span>
+                <span class="nav-label">Movimientos</span>
+            </button>
+            <button class="nav-item" onclick="cambiarTab('resumen')">
+                <span class="nav-icon">📈</span>
+                <span class="nav-label">Resumen</span>
+            </button>
+            <button class="nav-item" onclick="cambiarTab('perfil')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </button>
+        </nav>
     </div>
 
     <script src="app.js"></script>

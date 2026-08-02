@@ -1,12 +1,5 @@
 const API_BASE_URL = "http://127.0.0.1:8000";
-
-
-
-// -- Nuevos botones para usuario -- 
-const btnVerUsuarios = document.getElementById("btnVerUsuarios");
-const btnVolverMenu2 = document.getElementById("btnVolverMenu2");
-const usersListContainer = document.getElementById("usersListContainer");
-
+let graficaCategorias = null;
 
 // --- ELEMENTOS DE LAS PANTALLAS ---
 const welcomeScreen = document.getElementById("welcomeScreen");
@@ -20,6 +13,9 @@ const btnVolverMenu1 = document.getElementById("btnVolverMenu1");
 // Acceso Registrado
 const welcomeUserIdInput = document.getElementById("welcomeUserIdInput");
 const btnAccederRegistrado = document.getElementById("btnAccederRegistrado");
+const btnVerUsuarios = document.getElementById("btnVerUsuarios");
+const btnVolverMenu2 = document.getElementById("btnVolverMenu2");
+const usersListContainer = document.getElementById("usersListContainer");
 
 // Registro Onboarding
 const btnSiguienteSlide1 = document.getElementById("btnSiguienteSlide1");
@@ -46,7 +42,7 @@ const userAvatar = document.getElementById("userAvatar");
 // Formulario de Usuario en Dashboard
 const userIdInput = document.getElementById("userIdInput");
 const userForm = document.getElementById("userForm");
-const userNombre = document.getElementById("userNombre"); // NUEVO
+const userNombre = document.getElementById("userNombre");
 const userEdad = document.getElementById("userEdad");
 const userSexo = document.getElementById("userSexo");
 const userOcupacion = document.getElementById("userOcupacion");
@@ -63,6 +59,8 @@ const valIngresos = document.getElementById("valIngresos");
 const valAhorro = document.getElementById("valAhorro");
 const valPorcAhorro = document.getElementById("valPorcAhorro");
 const txtRecomendacion = document.getElementById("txtRecomendacion");
+const saludEmptyState = document.getElementById("saludEmptyState");
+const saludContent = document.getElementById("saludContent");
 
 // Transacciones
 const transactionForm = document.getElementById("transactionForm");
@@ -72,29 +70,77 @@ const txMonto = document.getElementById("txMonto");
 const txFecha = document.getElementById("txFecha");
 const txTipo = document.getElementById("txTipo");
 const txCategoria = document.getElementById("txCategoria");
+// escuchador de eventos inicio
+txDesc.addEventListener("blur", async () => {
+    const descripcion = txDesc.value.trim();
+    if (!descripcion) return;
+
+    try {
+        const respuesta = await fetch(`${API_BASE_URL}/clasificar-gasto`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ descripcion: descripcion })
+        });
+
+        if (respuesta.ok) {
+            const resultado = await respuesta.json();
+            txCategoria.value = resultado.categoria;
+        }
+    } catch (e) {
+        // Si falla, no pasa nada grave: el usuario sigue pudiendo elegir manualmente
+    }
+});
+
+// escuchador de eventos fin
+
 const btnSubmitTx = document.getElementById("btnSubmitTx");
 const btnCancelTxEdit = document.getElementById("btnCancelTxEdit");
 
-// Historial y Filtros
+// Pestaña Resumen Mensual (NUEVO)
+const resIngresos = document.getElementById("resIngresos");
+const resGastos = document.getElementById("resGastos");
+const resumenCategoriasContainer = document.getElementById("resumenCategoriasContainer");
+
+// Filtros Globales (NUEVO)
 const filtroAnio = document.getElementById("filtroAnio");
 const filtroMes = document.getElementById("filtroMes");
 const btnFiltrar = document.getElementById("btnFiltrar");
 const txTableBody = document.getElementById("txTableBody");
 
 
-// --- LÓGICA DE CONTROL DE DIAPOSITIVAS (ONBOARDING) ---
+// --- CONTROL DE PESTAÑAS (TABS) ---
+window.cambiarTab = function(tabName) {
+    // 1. Ocultar todas las pestañas
+    document.querySelectorAll(".tab-content").forEach(content => {
+        content.classList.remove("active-tab");
+    });
+    
+    // 2. Desactivar estilo activo de todos los botones de la barra flotante
+    document.querySelectorAll(".nav-item").forEach(item => {
+        item.classList.remove("active");
+    });
 
+    // 3. Mostrar la pestaña elegida y activar su botón
+    document.getElementById(`tab-${tabName}`).classList.add("active-tab");
+    
+    // Encontrar el botón pulsado por su atributo onClick
+    const btnActivo = Array.from(document.querySelectorAll(".nav-item")).find(btn => {
+        return btn.getAttribute("onclick").includes(tabName);
+    });
+    if (btnActivo) btnActivo.classList.add("active");
+};
+
+
+// --- LÓGICA DE CONTROL DE DIAPOSITIVAS (ONBOARDING) ---
 window.cambiarSlide = function(slideActualId, slideSiguienteId) {
     document.getElementById(slideActualId).classList.remove("active");
     document.getElementById(slideSiguienteId).classList.add("active");
 };
 
-// Navegación del Menú Inicial
 btnIrARegistrado.addEventListener("click", () => cambiarSlide("slide-menu", "slide-login"));
 btnVolverMenu1.addEventListener("click", () => cambiarSlide("slide-login", "slide-menu"));
 btnIrANuevo.addEventListener("click", () => cambiarSlide("slide-menu", "slide-1"));
 
-// Control especial para el slide 1 (validar que se ingrese un nombre)
 btnSiguienteSlide1.addEventListener("click", () => {
     if (!obNombre.value.trim()) {
         alert("Por favor, dinos tu nombre para poder continuar.");
@@ -103,14 +149,12 @@ btnSiguienteSlide1.addEventListener("click", () => {
     cambiarSlide("slide-1", "slide-2");
 });
 
-// Acción: Acceder con usuario registrado
 btnAccederRegistrado.addEventListener("click", async () => {
     const id = parseInt(welcomeUserIdInput.value);
     if (!id) {
         alert("Por favor ingresa un ID válido.");
         return;
     }
-    
     try {
         const response = await fetch(`${API_BASE_URL}/usuarios/${id}`);
         if (response.ok) {
@@ -118,6 +162,7 @@ btnAccederRegistrado.addEventListener("click", async () => {
             await cargarUsuario(id);
             welcomeScreen.style.display = "none";
             appDashboard.style.display = "block";
+            cambiarTab("salud"); // Abre por defecto en salud
         } else {
             alert("❌ ID de usuario no registrado.");
         }
@@ -126,16 +171,10 @@ btnAccederRegistrado.addEventListener("click", async () => {
     }
 });
 
-
-
-
-
-// Acción: Enviar registro de nuevo usuario desde el Onboarding
 btnRegistrarNuevoUsuario.addEventListener("click", async () => {
     const objetivoSeleccionado = document.querySelector('input[name="objetivo"]:checked').value;
-
     const datosUsuario = {
-        nombre: obNombre.value.trim(), // Enviamos el nombre
+        nombre: obNombre.value.trim(),
         edad: parseInt(obEdad.value) || 25,
         sexo: obSexo.value,
         ocupacion: `${obOcupacion.value || "Estudiante"} (${objetivoSeleccionado})`,
@@ -152,80 +191,64 @@ btnRegistrarNuevoUsuario.addEventListener("click", async () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datosUsuario)
         });
-
         if (response.ok) {
             const usuarioCreado = await response.json();
             lblNuevoUserId.innerText = usuarioCreado.id;
             userIdInput.value = usuarioCreado.id;
-            
             cambiarSlide("slide-5", "slide-success");
         } else {
-            alert("❌ Ocurrió un error en la base de datos.");
+            alert("❌ Error en la base de datos.");
         }
     } catch (e) {
-        alert("❌ Error de red al registrar el perfil.");
+        alert("❌ Error al conectar.");
     }
 });
 
-// Entrar a la App tras registro exitoso
 btnEntrarApp.addEventListener("click", async () => {
     const id = parseInt(userIdInput.value);
     await cargarUsuario(id);
     welcomeScreen.style.display = "none";
     appDashboard.style.display = "block";
+    cambiarTab("salud");
 });
 
-// Botón de Cerrar Sesión
 btnCerrarSesion.addEventListener("click", () => {
     welcomeUserIdInput.value = "";
     obNombre.value = "";
     userForm.reset();
     resetDashboard();
-    
     appDashboard.style.display = "none";
     welcomeScreen.style.display = "flex";
-    
     document.querySelectorAll(".onboarding-slide").forEach(s => s.classList.remove("active"));
     document.getElementById("slide-menu").classList.add("active");
 });
 
-
-
-// Abrir pantalla de usuarios y cargar el listado
 btnVerUsuarios.addEventListener("click", () => {
     cambiarSlide("slide-menu", "slide-users-list");
     cargarListadoUsuarios();
 });
 
-// Volver al menú inicial
 btnVolverMenu2.addEventListener("click", () => {
     cambiarSlide("slide-users-list", "slide-menu");
 });
 
-// Función para descargar y pintar a los usuarios en pantalla
 async function cargarListadoUsuarios() {
     usersListContainer.innerHTML = `<p class="text-center">Cargando usuarios registrados...</p>`;
-    
     try {
         const response = await fetch(`${API_BASE_URL}/usuarios`);
         if (!response.ok) throw new Error();
-        
         const usuarios = await response.json();
-        usersListContainer.innerHTML = ""; // Limpiar
+        usersListContainer.innerHTML = "";
         
         if (usuarios.length === 0) {
             usersListContainer.innerHTML = `<p class="text-center">No hay usuarios registrados aún.</p>`;
             return;
         }
 
-        // Crear tarjeta para cada usuario
         usuarios.forEach(u => {
             const card = document.createElement("div");
             card.className = "user-list-card";
-            
-            // Si haces clic, entras de una vez con este ID
             card.setAttribute("onclick", `loginDirecto(${u.id})`);
-            
             card.innerHTML = `
                 <div class="avatar-circle" style="width:36px; height:36px; font-size:1rem;">
                     ${u.nombre.charAt(0).toUpperCase()}
@@ -238,24 +261,21 @@ async function cargarListadoUsuarios() {
             `;
             usersListContainer.appendChild(card);
         });
-
     } catch (e) {
-        usersListContainer.innerHTML = `<p class="text-center" style="color:var(--status-danger);">Error al cargar los usuarios del servidor.</p>`;
+        usersListContainer.innerHTML = `<p class="text-center" style="color:var(--status-danger);">Error de conexión.</p>`;
     }
 }
 
-// Función global para ingreso directo (llamada por onclick)
 window.loginDirecto = async function(id) {
     userIdInput.value = id;
     await cargarUsuario(id);
-    
-    // Transición directa a la app
     welcomeScreen.style.display = "none";
     appDashboard.style.display = "block";
+    cambiarTab("salud");
 };
 
 
-// --- LÓGICA CORE DE LA APP ---
+// --- LÓGICA CORE DE LA APLICACIÓN ---
 
 async function cargarUsuario(id) {
     try {
@@ -263,12 +283,10 @@ async function cargarUsuario(id) {
         if (!response.ok) throw new Error();
         const usuario = await response.json();
         
-        // Rellenar elementos del Header Premium
         lblNombreUsuario.innerText = usuario.nombre;
         lblIdUsuario.innerText = `ID: #${usuario.id}`;
         userAvatar.innerText = usuario.nombre.charAt(0).toUpperCase();
 
-        // Rellenar formulario
         userNombre.value = usuario.nombre;
         userEdad.value = usuario.edad;
         userSexo.value = usuario.sexo;
@@ -281,7 +299,7 @@ async function cargarUsuario(id) {
 
         actualizarDashboard(id);
     } catch (error) {
-        alert("Error al cargar datos del usuario.");
+        alert("Error al cargar los datos del usuario.");
     }
 }
 
@@ -333,10 +351,15 @@ async function actualizarDashboard(id) {
     const anio = parseInt(filtroAnio.value);
     const mes = parseInt(filtroMes.value);
 
+    // 1. Obtener Perfil Salud
     try {
         const resPerfil = await fetch(`${API_BASE_URL}/perfil/${id}?anio=${anio}&mes=${mes}`);
         if (resPerfil.ok) {
             const perfil = await resPerfil.json();
+
+            saludEmptyState.style.display = "none";
+            saludContent.style.display = "block";
+
             healthBadge.innerText = perfil.perfil;
             healthBadge.className = "";
             if (perfil.perfil.toLowerCase() === "saludable") healthBadge.classList.add("badge-healthy");
@@ -348,12 +371,15 @@ async function actualizarDashboard(id) {
             valPorcAhorro.innerText = `${perfil.porcentaje_ahorro_real}%`;
             txtRecomendacion.innerText = perfil.recomendacion;
         } else {
-            resetDashboard("Sin análisis disponible para este mes.");
+            saludEmptyState.style.display = "block";
+            saludContent.style.display = "none";
         }
     } catch (e) {
-        resetDashboard("Error.");
+        saludEmptyState.style.display = "block";
+        saludContent.style.display = "none";
     }
 
+    // 2. Obtener Historial de Transacciones
     try {
         const resTx = await fetch(`${API_BASE_URL}/transacciones/${id}`);
         if (resTx.ok) {
@@ -365,6 +391,110 @@ async function actualizarDashboard(id) {
             dibujarTabla(filtradas);
         }
     } catch (e) {}
+
+    // 3. Obtener Resumen Mensual (Pestaña 3) (NUEVO)
+    try {
+        const resResumen = await fetch(`${API_BASE_URL}/resumen-mensual/${id}?anio=${anio}&mes=${mes}`);
+        if (resResumen.ok) {
+            const data = await resResumen.json();
+            resIngresos.innerText = `$${data.ingresos_totales.toFixed(2)}`;
+            resGastos.innerText = `$${data.gastos_totales.toFixed(2)}`;
+            dibujarResumenCategorias(data.gastos_por_categoria, data.gastos_totales);
+            dibujarGraficaCategorias(data.gastos_por_categoria);
+           
+        } else {
+            resIngresos.innerText = "$0.00";
+            resGastos.innerText = "$0.00";
+            resumenCategoriasContainer.innerHTML = `<p class="text-center">No hay registros para este periodo.</p>`;
+        }
+    } catch (e) {
+        resumenCategoriasContainer.innerHTML = `<p class="text-center">Error al cargar estadísticas.</p>`;
+    }
+}
+
+
+ // se agrega codigo para las graficas
+            function dibujarGraficaCategorias(gastosPorCategoria) {
+            const etiquetas = Object.keys(gastosPorCategoria);
+            const valores = Object.values(gastosPorCategoria);
+
+            if (graficaCategorias) {
+                graficaCategorias.destroy();
+             }
+
+            const contexto = document.getElementById("graficaCategorias").getContext("2d");
+
+            if (etiquetas.length === 0) {
+                return;
+            }
+
+            graficaCategorias = new Chart(contexto, {
+                type: "doughnut",
+                 data: {
+                    labels: etiquetas.map(cat => cat.charAt(0).toUpperCase() + cat.slice(1)),
+                    datasets: [{
+                        data: valores,
+                        backgroundColor: ["#38bdf8", "#818cf8", "#f43f5e", "#fbbf24", "#10b981", "#f472b6", "#22d3ee", "#fb923c"],
+                        borderColor: "#111827",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                            labels: { color: "#9ca3af", padding: 12, font: { family: "Outfit" } }
+                        }
+                    }
+                }
+            });
+            }
+
+
+            // fin codigo agregado
+
+// Pintar barras de progreso por categoría de gasto (NUEVO)
+function dibujarResumenCategorias(gastosPorCategoria, gastosTotales) {
+    resumenCategoriasContainer.innerHTML = "";
+    
+    const llaves = Object.keys(gastosPorCategoria);
+    if (llaves.length === 0) {
+        resumenCategoriasContainer.innerHTML = `<p class="text-center">No hay gastos en este periodo.</p>`;
+        return;
+    }
+
+    // Ordenar de mayor a menor gasto
+    llaves.sort((a, b) => gastosPorCategoria[b] - gastosPorCategoria[a]);
+
+    llaves.forEach(cat => {
+        const monto = gastosPorCategoria[cat];
+        const porcentaje = gastosTotales > 0 ? ((monto / gastosTotales) * 100) : 0;
+        
+        const row = document.createElement("div");
+        row.className = "progress-row";
+        
+        // Emojis lúdicos según la categoría
+        let emoji = "🏷️";
+        if (cat === "alimentacion") emoji = "🍔";
+        else if (cat === "transporte") emoji = "🚗";
+        else if (cat === "salud") emoji = "⚕️";
+        else if (cat === "vivienda") emoji = "🏠";
+        else if (cat === "educacion") emoji = "🎓";
+        else if (cat === "servicios") emoji = "💡";
+        else if (cat === "deudas") emoji = "💳";
+        else if (cat === "entretenimiento") emoji = "🎮";
+
+        row.innerHTML = `
+            <div class="progress-info">
+                <span class="progress-cat-name">${emoji} ${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+                <span class="progress-cat-amount">$${monto.toFixed(2)} (${porcentaje.toFixed(0)}%)</span>
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" style="width: ${porcentaje}%"></div>
+            </div>
+        `;
+        resumenCategoriasContainer.appendChild(row);
+    });
 }
 
 function dibujarTabla(lista) {
@@ -421,12 +551,15 @@ transactionForm.addEventListener("submit", async (e) => {
     } catch (e) {}
 });
 
-window.iniciarEdicionTransaccion = function(id, desc, monto, tipo, categoria, fechaStr) {
+window.iniciarEdicionTransaccion = function(id, desc, monto, tipo, category, fechaStr) {
+    // Al hacer clic en editar, cambiamos de pestaña a Movimientos automáticamente
+    cambiarTab('transacciones');
+
     txEditId.value = id;
     txDesc.value = desc;
     txMonto.value = monto;
     txTipo.value = tipo;
-    txCategoria.value = categoria;
+    txCategoria.value = category;
     if (fechaStr) {
         const d = new Date(fechaStr);
         txFecha.value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}T${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
@@ -460,7 +593,11 @@ function resetDashboard(mensaje = "Por favor, registra movimientos para analizar
     valPorcAhorro.innerText = "0%";
     txtRecomendacion.innerText = mensaje;
     txTableBody.innerHTML = `<tr><td colspan="5" class="text-center">Ingresa transacciones para ver el historial.</td></tr>`;
+    
+    // Resetear resumen
+    resIngresos.innerText = "$0.00";
+    resGastos.innerText = "$0.00";
+    resumenCategoriasContainer.innerHTML = "";
 }
-
 
 btnFiltrar.addEventListener("click", () => actualizarDashboard(parseInt(userIdInput.value)));
