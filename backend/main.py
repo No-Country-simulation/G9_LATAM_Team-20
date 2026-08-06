@@ -298,3 +298,24 @@ def clasificar_gasto(datos: schemas.ClasificacionRequest):
         "subcategoria": None,
         "confianza": 0.5
     }
+
+
+
+
+# se agrega funcion de normalizacion
+MAPA_CATEGORIAS_MODELO = {
+    "Alimentación": "alimentacion",
+    "Transporte": "transporte",
+    "Salud": "salud",
+    "Vivienda": "vivienda",
+    "Educación": "educacion",
+    "Entretenimiento": "entretenimiento",
+    "Servicios": "servicios",
+    "Compras": "compras",
+    "Otros": "otros",
+    "Deudas": "deudas",
+    "Finanzas": "finanzas",
+}
+
+def normalizar_categoria(categoria_modelo: str) -> str:
+    return MAPA_CATEGORIAS_MODELO.get(categoria_modelo, "otros")

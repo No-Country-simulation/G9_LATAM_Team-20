@@ -523,8 +523,7 @@ function dibujarTabla(lista) {
     });
 }
 
-transactionForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+btnSubmitTx.addEventListener("click", async () => {
     const id = parseInt(userIdInput.value);
     const editId = txEditId.value;
     const datosTransaccion = {
