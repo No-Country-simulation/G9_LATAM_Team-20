@@ -858,6 +858,21 @@ input, select {
     font-size: 0.95rem;
 }
 
+.ia-badge {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    display: inline-block;
+}
 
+.ia-badge.baja-confianza {
+    color: var(--status-warning);
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.25);
+}
 
 

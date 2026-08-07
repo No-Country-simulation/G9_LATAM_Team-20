@@ -1,10 +1,13 @@
 from datetime import datetime, timezone
+import joblib
 
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import engine, SessionLocal, Base
 import models as models
 import schemas as schemas
+
+modelo_clasificador = joblib.load("modelos/category_classifier_v1.joblib")
 
 Base.metadata.create_all(bind=engine)
 
@@ -29,6 +32,46 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+@app.post("/clasificar-gasto", response_model=schemas.ClasificacionResponse)
+def clasificar_gasto(datos: schemas.ClasificacionRequest):
+    descripcion = datos.descripcion.strip()
+    if not descripcion:
+        raise HTTPException(status_code=400, detail="La descripción no puede estar vacía")
+
+    categoria_predicha = modelo_clasificador.predict([descripcion])[0]
+    probabilidades = modelo_clasificador.predict_proba([descripcion])[0]
+    clases = modelo_clasificador.classes_
+
+    # Ordenar las 3 categorías con mayor probabilidad
+    pares = sorted(zip(clases, probabilidades), key=lambda x: x[1], reverse=True)
+    top_3 = pares[:3]
+
+    confianza = float(top_3[0][1])
+
+    return {
+        "categoria": normalizar_categoria(top_3[0][0]),
+        "confianza": round(confianza, 4),
+        "requiere_revision": confianza < UMBRAL_REVISION,
+        "alternativas": [
+            {"categoria": cat, "probabilidad": round(float(prob), 4)}
+            for cat, prob in top_3
+        ],
+        "modelo_version": "category-classifier-v1"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 # mensaje de preuba
 @app.get("/")
@@ -275,34 +318,11 @@ def obtener_usuarios(db: Session = Depends(get_db)):
 
 
 
-@app.post("/clasificar-gasto", response_model=schemas.ClasificacionResponse)
-def clasificar_gasto(datos: schemas.ClasificacionRequest):
-    descripcion = datos.descripcion.lower()
-
-    # --- SIMULACIÓN TEMPORAL mientras llega el modelo real (miércoles) ---
-    palabras_clave = {
-        "alimentacion": ["taco", "comida", "restaurante", "supermercado", "cafe"],
-        "transporte": ["uber", "gasolina", "taxi", "camion", "metro"],
-        "entretenimiento": ["cine", "netflix", "concierto", "bar", "streaming"],
-        "salud": ["farmacia", "doctor", "medicina", "hospital"],
-    }
-
-    categoria_encontrada = "otros"
-    for categoria, palabras in palabras_clave.items():
-        if any(palabra in descripcion for palabra in palabras):
-            categoria_encontrada = categoria
-            break
-
-    return {
-        "categoria": categoria_encontrada,
-        "subcategoria": None,
-        "confianza": 0.5
-    }
+# Cargar el modelo UNA SOLA VEZ al iniciar el servidor (no en cada petición, sería muy lento)
 
 
+UMBRAL_REVISION = 0.60
 
-
-# se agrega funcion de normalizacion
 MAPA_CATEGORIAS_MODELO = {
     "Alimentación": "alimentacion",
     "Transporte": "transporte",
@@ -319,3 +339,5 @@ MAPA_CATEGORIAS_MODELO = {
 
 def normalizar_categoria(categoria_modelo: str) -> str:
     return MAPA_CATEGORIAS_MODELO.get(categoria_modelo, "otros")
+
+

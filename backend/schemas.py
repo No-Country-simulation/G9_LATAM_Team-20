@@ -36,9 +36,14 @@ class UsuarioRespuesta(UsuarioCrear):
 
 class ClasificacionRequest(BaseModel):
     descripcion: str
-    monto: float | None = None
+
+class AlternativaCategoria(BaseModel):
+    categoria: str
+    probabilidad: float
 
 class ClasificacionResponse(BaseModel):
     categoria: str
-    subcategoria: str | None = None
     confianza: float
+    requiere_revision: bool
+    alternativas: list[AlternativaCategoria]
+    modelo_version: str

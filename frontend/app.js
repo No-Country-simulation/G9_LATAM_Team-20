@@ -71,9 +71,14 @@ const txFecha = document.getElementById("txFecha");
 const txTipo = document.getElementById("txTipo");
 const txCategoria = document.getElementById("txCategoria");
 // escuchador de eventos inicio
+const iaConfianzaBadge = document.getElementById("iaConfianzaBadge");
+
 txDesc.addEventListener("blur", async () => {
     const descripcion = txDesc.value.trim();
-    if (!descripcion) return;
+    if (!descripcion) {
+        iaConfianzaBadge.style.display = "none";
+        return;
+    }
 
     try {
         const respuesta = await fetch(`${API_BASE_URL}/clasificar-gasto`, {
@@ -85,9 +90,20 @@ txDesc.addEventListener("blur", async () => {
         if (respuesta.ok) {
             const resultado = await respuesta.json();
             txCategoria.value = resultado.categoria;
+
+            const porcentaje = (resultado.confianza * 100).toFixed(0);
+            iaConfianzaBadge.style.display = "inline-block";
+
+            if (resultado.requiere_revision) {
+                iaConfianzaBadge.classList.add("baja-confianza");
+                iaConfianzaBadge.innerText = `⚠️ Categoria Sugerida por IA (${porcentaje}%) — revisa la categoría`;
+            } else {
+                iaConfianzaBadge.classList.remove("baja-confianza");
+                iaConfianzaBadge.innerText = `✨ Categoria Sugerida por IA (${porcentaje}% de confianza)`;
+            }
         }
     } catch (e) {
-        // Si falla, no pasa nada grave: el usuario sigue pudiendo elegir manualmente
+        iaConfianzaBadge.style.display = "none";
     }
 });
 
@@ -483,6 +499,9 @@ function dibujarResumenCategorias(gastosPorCategoria, gastosTotales) {
         else if (cat === "servicios") emoji = "💡";
         else if (cat === "deudas") emoji = "💳";
         else if (cat === "entretenimiento") emoji = "🎮";
+        else if (cat === "compras") emoji = "🛍️";
+        else if (cat === "finanzas") emoji = "💰";
+        else if (cat === "otros") emoji = "🏷️";
 
         row.innerHTML = `
             <div class="progress-info">
@@ -573,6 +592,7 @@ function cancelarEdicion() {
     transactionForm.reset();
     btnSubmitTx.innerText = "Agregar Movimiento";
     btnCancelTxEdit.style.display = "none";
+    iaConfianzaBadge.style.display = "none";
 }
 btnCancelTxEdit.addEventListener("click", cancelarEdicion);
 
