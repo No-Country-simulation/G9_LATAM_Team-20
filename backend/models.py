@@ -18,6 +18,7 @@ class Usuario(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String) # se agrega esta linea para mejorar la interaccion con el frontend
+    password_hash = Column(String) # se agrega para crear login de usuarios
     edad = Column(Integer)
     sexo = Column(String)
     ocupacion = Column(String)
@@ -26,3 +27,5 @@ class Usuario(Base):
     ingreso_variable = Column(Float)
     meta_ahorro = Column(Float)
     nivel_deuda_inicial = Column(Float)
+
+

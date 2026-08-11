@@ -18,6 +18,7 @@ class TransaccionRespuesta(TransaccionCrear):
 
 class UsuarioCrear(BaseModel):
     nombre: str # se agrega linea para frontend
+    password: str # se agrega para login de usuarios
     edad: int
     sexo: str
     ocupacion: str
@@ -27,11 +28,24 @@ class UsuarioCrear(BaseModel):
     meta_ahorro: float
     nivel_deuda_inicial: float
 
-class UsuarioRespuesta(UsuarioCrear):
+class UsuarioRespuesta(BaseModel):
     id: int
+    nombre: str
+    edad: int
+    sexo: str
+    ocupacion: str
+    ciudad: str
+    ingreso_base: float
+    ingreso_variable: float
+    meta_ahorro: float
+    nivel_deuda_inicial: float
 
     class Config:
         from_attributes = True
+
+class LoginRequest(BaseModel):
+    id: int
+    password: str
 
 
 class ClasificacionRequest(BaseModel):

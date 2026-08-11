@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from database import engine, SessionLocal, Base
 import models as models
 import schemas as schemas
+from seguridad import encriptar_password, verificar_password
 
 modelo_clasificador = joblib.load("modelos/category_classifier_v1.joblib")
 
@@ -63,16 +64,6 @@ def clasificar_gasto(datos: schemas.ClasificacionRequest):
 
 
 
-
-
-
-
-
-
-
-
-
-
 # mensaje de preuba
 @app.get("/")
 def inicio():
@@ -100,7 +91,11 @@ def obtener_transacciones(usuario_id: int, db: Session = Depends(get_db)):
 # creacion de usuarios
 @app.post("/usuarios", response_model=schemas.UsuarioRespuesta)
 def crear_usuario(usuario: schemas.UsuarioCrear, db: Session = Depends(get_db)):
-    nuevo = models.Usuario(**usuario.model_dump())
+    datos = usuario.model_dump()
+    password_texto_plano = datos.pop("password")
+    datos["password_hash"] = encriptar_password(password_texto_plano)
+
+    nuevo = models.Usuario(**datos)
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)
@@ -341,3 +336,15 @@ def normalizar_categoria(categoria_modelo: str) -> str:
     return MAPA_CATEGORIAS_MODELO.get(categoria_modelo, "otros")
 
 
+# end point de login 
+@app.post("/login", response_model=schemas.UsuarioRespuesta)
+def login(datos: schemas.LoginRequest, db: Session = Depends(get_db)):
+    usuario = db.query(models.Usuario).filter(models.Usuario.id == datos.id).first()
+
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
+    if not verificar_password(datos.password, usuario.password_hash):
+        raise HTTPException(status_code=401, detail="Contraseña incorrecta")
+
+    return usuario

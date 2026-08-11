@@ -91,15 +91,15 @@ txDesc.addEventListener("blur", async () => {
             const resultado = await respuesta.json();
             txCategoria.value = resultado.categoria;
 
-            const porcentaje = (resultado.confianza * 100).toFixed(0);
+            
             iaConfianzaBadge.style.display = "inline-block";
 
             if (resultado.requiere_revision) {
                 iaConfianzaBadge.classList.add("baja-confianza");
-                iaConfianzaBadge.innerText = `⚠️ Categoria Sugerida por IA (${porcentaje}%) — revisa la categoría`;
+                iaConfianzaBadge.innerText = `⚠️ Categoria Sugerida por IA — revisa la categoría`;
             } else {
                 iaConfianzaBadge.classList.remove("baja-confianza");
-                iaConfianzaBadge.innerText = `✨ Categoria Sugerida por IA (${porcentaje}% de confianza)`;
+                iaConfianzaBadge.innerText = `✨ Categoria Sugerida por IA)`;
             }
         }
     } catch (e) {
