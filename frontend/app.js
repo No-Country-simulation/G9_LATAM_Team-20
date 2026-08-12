@@ -5,6 +5,9 @@ let graficaCategorias = null;
 const welcomeScreen = document.getElementById("welcomeScreen");
 const appDashboard = document.getElementById("appDashboard");
 
+const welcomePasswordInput = document.getElementById("welcomePasswordInput");
+const obPassword = document.getElementById("obPassword");
+
 // Botones de Navegación del Menú Inicial
 const btnIrARegistrado = document.getElementById("btnIrARegistrado");
 const btnIrANuevo = document.getElementById("btnIrANuevo");
@@ -162,23 +165,50 @@ btnSiguienteSlide1.addEventListener("click", () => {
         alert("Por favor, dinos tu nombre para poder continuar.");
         return;
     }
+    if (!obPassword.value.trim()) {
+        alert("Por favor, crea una contraseña para poder continuar.");
+        return;
+    }
     cambiarSlide("slide-1", "slide-2");
 });
 
+
+window.mostrarOcultarPassword = function(inputId, icono) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text";
+        icono.innerText = "🙈";
+    } else {
+        input.type = "password";
+        icono.innerText = "👁️";
+    }
+};
+
+
 btnAccederRegistrado.addEventListener("click", async () => {
     const id = parseInt(welcomeUserIdInput.value);
-    if (!id) {
-        alert("Por favor ingresa un ID válido.");
+    const password = welcomePasswordInput.value;
+
+    if (!id || !password) {
+        alert("Por favor ingresa tu ID y tu contraseña.");
         return;
     }
+
     try {
-        const response = await fetch(`${API_BASE_URL}/usuarios/${id}`);
+        const response = await fetch(`${API_BASE_URL}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: id, password: password })
+        });
+
         if (response.ok) {
             userIdInput.value = id;
             await cargarUsuario(id);
             welcomeScreen.style.display = "none";
             appDashboard.style.display = "block";
-            cambiarTab("salud"); // Abre por defecto en salud
+            cambiarTab("salud");
+        } else if (response.status === 401) {
+            alert("❌ Contraseña incorrecta.");
         } else {
             alert("❌ ID de usuario no registrado.");
         }
@@ -187,10 +217,12 @@ btnAccederRegistrado.addEventListener("click", async () => {
     }
 });
 
+
 btnRegistrarNuevoUsuario.addEventListener("click", async () => {
     const objetivoSeleccionado = document.querySelector('input[name="objetivo"]:checked').value;
     const datosUsuario = {
         nombre: obNombre.value.trim(),
+        password: obPassword.value,
         edad: parseInt(obEdad.value) || 25,
         sexo: obSexo.value,
         ocupacion: `${obOcupacion.value || "Estudiante"} (${objetivoSeleccionado})`,
@@ -219,6 +251,8 @@ btnRegistrarNuevoUsuario.addEventListener("click", async () => {
         alert("❌ Error al conectar.");
     }
 });
+
+
 
 btnEntrarApp.addEventListener("click", async () => {
     const id = parseInt(userIdInput.value);
@@ -282,14 +316,11 @@ async function cargarListadoUsuarios() {
     }
 }
 
-window.loginDirecto = async function(id) {
-    userIdInput.value = id;
-    await cargarUsuario(id);
-    welcomeScreen.style.display = "none";
-    appDashboard.style.display = "block";
-    cambiarTab("salud");
+window.loginDirecto = function(id) {
+    welcomeUserIdInput.value = id;
+    welcomePasswordInput.value = "";
+    cambiarSlide("slide-users-list", "slide-login");
 };
-
 
 // --- LÓGICA CORE DE LA APLICACIÓN ---
 

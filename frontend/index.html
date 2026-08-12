@@ -33,6 +33,12 @@
                 <div class="form-group">
                     <input type="number" id="welcomeUserIdInput" placeholder="ID de Usuario (Ej. 1)" min="1">
                 </div>
+                <div class="form-group">
+                    <div class="password-wrapper">
+                        <input type="password" id="welcomePasswordInput" placeholder="Contraseña">
+                        <span class="toggle-password" onclick="mostrarOcultarPassword('welcomePasswordInput', this)">👁️</span>
+                    </div>
+                </div>
                 <div class="form-buttons">
                     <button id="btnAccederRegistrado" class="btn-primary btn-block">Ingresar</button>
                     <button id="btnVolverMenu1" class="btn-secondary">Volver</button>
@@ -40,12 +46,18 @@
             </div>
 
             <!-- Slide 1: Saludo Coach -->
-            <div id="slide-1" class="onboarding-slide">
+           <div id="slide-1" class="onboarding-slide">
                 <div class="coach-avatar">🤖</div>
                 <h2>¡Hola! Soy tu Econo<span>mIA</span></h2>
                 <p class="slide-text">Tu coach financiero inteligente. ¿Cuál es tu nombre?</p>
                 <div class="form-group" style="max-width: 300px; margin: 0 auto 1.5rem auto;">
                     <input type="text" id="obNombre" placeholder="Tu nombre" required>
+                </div>
+               <div class="form-group" style="max-width: 300px; margin: 0 auto 1.5rem auto;">
+                    <div class="password-wrapper">
+                        <input type="password" id="obPassword" placeholder="Crea una contraseña" required>
+                        <span class="toggle-password" onclick="mostrarOcultarPassword('obPassword', this)">👁️</span>
+                    </div>
                 </div>
                 <button id="btnSiguienteSlide1" class="btn-primary">Comenzar</button>
             </div>
@@ -158,7 +170,7 @@
             <!-- Recuperación de Usuarios -->
             <div id="slide-users-list" class="onboarding-slide">
                 <h2>Usuarios Registrados</h2>
-                <p class="slide-text">Haz clic sobre tu nombre para ingresar directamente:</p>
+                <p class="slide-text">Haz clic sobre tu nombre para autocompletar tu ID:</p>
                 <div class="users-list-scroll" id="usersListContainer">
                     <p class="text-center">Cargando usuarios...</p>
                 </div>

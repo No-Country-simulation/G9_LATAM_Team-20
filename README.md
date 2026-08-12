@@ -9,7 +9,7 @@ Equipo: G9 LATAM Team 20
 
 ## 📖 Descripción
 
-EconomIA es una plataforma web que ayuda a las personas a entender su situación financiera de forma simple y accionable. A partir de sus ingresos, gastos, meta de ahorro y nivel de deuda, la plataforma clasifica automáticamente sus movimientos por categoría usando un modelo de Machine Learning, calcula su perfil de salud financiera, y genera recomendaciones personalizadas y graduales para mejorar sus hábitos.
+EconomIA es una plataforma web que ayuda a las personas a entender su situación financiera de forma simple. A partir de sus ingresos, gastos, meta de ahorro y nivel de deuda, la plataforma clasifica automáticamente sus movimientos por categoría usando un modelo de Machine Learning, calcula su perfil de salud financiera, y genera recomendaciones personalizadas y graduales para mejorar sus hábitos.
 
 ## 🎯 Problema
 
@@ -153,7 +153,7 @@ Está en desarrollo un segundo modelo de análisis financiero, que calculará un
 - ✅ Integración del modelo de clasificación de gastos en el backend
 - ✅ Desarrollo del frontend con dashboard interactivo
 - ⬜ Modelo de análisis financiero (en desarrollo por el equipo de Data Science)
-- ⬜ Autenticación de usuarios
+- ✅ Autenticación de usuarios
 - ⬜ Migración de base de datos a PostgreSQL en OCI
 - ⬜ Despliegue en Oracle Cloud Infrastructure (OCI)
 - ⬜ Presentación final del proyecto
@@ -169,3 +169,5 @@ Desarrollo de Backend, Frontend, Ciencia de Datos, Machine Learning e Integraci�
 ## 📄 Licencia
 
 Proyecto desarrollado con fines educativos para el Hackathon Oracle Next Education (ONE), organizado por Alura Latam, Oracle y No Country. Su propósito es demostrar la integración de tecnologías de desarrollo web, ciencia de datos y machine learning para resolver un problema real relacionado con la educación financiera. Los datos utilizados son sintéticos y no deben interpretarse como información financiera real.
+
+
