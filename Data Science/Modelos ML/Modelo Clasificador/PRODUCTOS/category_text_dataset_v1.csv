@@ -1,0 +1,642 @@
+﻿descripcion_modelo,descripcion_original,categoria,subcategoria,split,grupo_descripcion,texto_normalizado,es_aumentada
+Comida para perro,Comida para perro,Alimentación,Alimento para mascotas,test,18fed308d19c,comida para perro,False
+Comida para llevar,Comida para llevar,Alimentación,Comida rápida,train,3cd314b7d0e6,comida para llevar,False
+cargo comida para llevar,Comida para llevar,Alimentación,Comida rápida,train,3cd314b7d0e6,cargo comida para llevar,True
+comida para llevar mensual,Comida para llevar,Alimentación,Comida rápida,train,3cd314b7d0e6,comida para llevar mensual,True
+Tienda de abarrotes,Tienda de abarrotes,Alimentación,Tiendas,train,bdcd4c77690c,tienda de abarrotes,False
+cargo tienda de abarrotes,Tienda de abarrotes,Alimentación,Tiendas,train,bdcd4c77690c,cargo tienda de abarrotes,True
+tienda de abarrotes mensual,Tienda de abarrotes,Alimentación,Tiendas,train,bdcd4c77690c,tienda de abarrotes mensual,True
+Compra de pantalón,Compra de pantalón,Compras,Ropa,test,44309f9a0f40,compra de pantalon,False
+Accesorios,Accesorios,Compras,Accesorios,validation,79df5bbe4543,accesorios,False
+ropa en tienda,ropa en tienda,Compras,Ropa,validation,ef15f6501962,ropa en tienda,False
+Abono a préstamo,Abono a préstamo,Deudas,Pago de préstamo,train,84fba572b4db,abono a prestamo,False
+abono a prest,Abono a préstamo,Deudas,Pago de préstamo,train,84fba572b4db,abono a prest,True
+cargo abono a préstamo,Abono a préstamo,Deudas,Pago de préstamo,train,84fba572b4db,cargo abono a prestamo,True
+abono a préstamo mensual,Abono a préstamo,Deudas,Pago de préstamo,train,84fba572b4db,abono a prestamo mensual,True
+pago de préstamo personal,pago de préstamo personal,Deudas,Pago de préstamo,test,a7101f16851b,pago de prestamo personal,False
+nuevo crédito,nuevo crédito,Deudas,Nuevo crédito,train,ab555f6c9506,nuevo credito,False
+nuevo cred,nuevo crédito,Deudas,Nuevo crédito,train,ab555f6c9506,nuevo cred,True
+cargo nuevo crédito,nuevo crédito,Deudas,Nuevo crédito,train,ab555f6c9506,cargo nuevo credito,True
+nuevo crédito mensual,nuevo crédito,Deudas,Nuevo crédito,train,ab555f6c9506,nuevo credito mensual,True
+libros de estudio,libros de estudio,Educación,Material escolar,test,1c5cf03667b7,libros de estudio,False
+Papelería,Papelería,Educación,Papelería,train,25d6432362f6,papeleria,False
+cargo papelería,Papelería,Educación,Papelería,train,25d6432362f6,cargo papeleria,True
+papelería mensual,Papelería,Educación,Papelería,train,25d6432362f6,papeleria mensual,True
+Entrada a concierto,Entrada a concierto,Entretenimiento,Conciertos,train,180ef9163838,entrada a concierto,False
+cargo entrada a concierto,Entrada a concierto,Entretenimiento,Conciertos,train,180ef9163838,cargo entrada a concierto,True
+entrada a concierto mensual,Entrada a concierto,Entretenimiento,Conciertos,train,180ef9163838,entrada a concierto mensual,True
+Entrada a museo,Entrada a museo,Entretenimiento,Museos,train,840607457ca1,entrada a museo,False
+cargo entrada a museo,Entrada a museo,Entretenimiento,Museos,train,840607457ca1,cargo entrada a museo,True
+entrada a museo mensual,Entrada a museo,Entretenimiento,Museos,train,840607457ca1,entrada a museo mensual,True
+Evento deportivo,Evento deportivo,Entretenimiento,Deportes,train,848b964cabe6,evento deportivo,False
+cargo evento deportivo,Evento deportivo,Entretenimiento,Deportes,train,848b964cabe6,cargo evento deportivo,True
+evento deportivo mensual,Evento deportivo,Entretenimiento,Deportes,train,848b964cabe6,evento deportivo mensual,True
+Depósito a fondo de ahorro,Depósito a fondo de ahorro,Finanzas,Ahorro,train,af35ec67818d,deposito a fondo de ahorro,False
+cargo depósito a fondo de ahorro,Depósito a fondo de ahorro,Finanzas,Ahorro,train,af35ec67818d,cargo deposito a fondo de ahorro,True
+depósito a fondo de ahorro mensual,Depósito a fondo de ahorro,Finanzas,Ahorro,train,af35ec67818d,deposito a fondo de ahorro mensual,True
+transferencia a ahorro,transferencia a ahorro,Finanzas,Ahorro,train,ee1e79ebbae3,transferencia a ahorro,False
+transf a ahorro,transferencia a ahorro,Finanzas,Ahorro,train,ee1e79ebbae3,transf a ahorro,True
+cargo transferencia a ahorro,transferencia a ahorro,Finanzas,Ahorro,train,ee1e79ebbae3,cargo transferencia a ahorro,True
+transferencia a ahorro mensual,transferencia a ahorro,Finanzas,Ahorro,train,ee1e79ebbae3,transferencia a ahorro mensual,True
+donativo mensual,donativo mensual,Otros,Donaciones,validation,328cf1490bab,donativo mensual,False
+gasto sin clasificar,gasto sin clasificar,Otros,Otros,train,e22aa22c534b,gasto sin clasificar,False
+cargo gasto sin clasificar,gasto sin clasificar,Otros,Otros,train,e22aa22c534b,cargo gasto sin clasificar,True
+gasto sin clasificar mensual,gasto sin clasificar,Otros,Otros,train,e22aa22c534b,gasto sin clasificar mensual,True
+laboratorio clínico,laboratorio clínico,Salud,Laboratorios,train,09ff9890cd91,laboratorio clinico,False
+cargo laboratorio clínico,laboratorio clínico,Salud,Laboratorios,train,09ff9890cd91,cargo laboratorio clinico,True
+laboratorio clínico mensual,laboratorio clínico,Salud,Laboratorios,train,09ff9890cd91,laboratorio clinico mensual,True
+Óptica,Óptica,Salud,Óptica,train,3abc9f5a4a70,optica,False
+cargo óptica,Óptica,Salud,Óptica,train,3abc9f5a4a70,cargo optica,True
+óptica mensual,Óptica,Salud,Óptica,train,3abc9f5a4a70,optica mensual,True
+Medicinas,Medicinas,Salud,Medicinas,train,69c349704e03,medicinas,False
+cargo medicinas,Medicinas,Salud,Medicinas,train,69c349704e03,cargo medicinas,True
+medicinas mensual,Medicinas,Salud,Medicinas,train,69c349704e03,medicinas mensual,True
+Televisión de paga,Televisión de paga,Servicios,TV de paga,train,07d73862dcc6,television de paga,False
+cargo televisión de paga,Televisión de paga,Servicios,TV de paga,train,07d73862dcc6,cargo television de paga,True
+televisión de paga mensual,Televisión de paga,Servicios,TV de paga,train,07d73862dcc6,television de paga mensual,True
+servicio de televisión,servicio de televisión,Servicios,TV de paga,train,410d3807ecfd,servicio de television,False
+serv de televisión,servicio de televisión,Servicios,TV de paga,train,410d3807ecfd,serv de television,True
+cargo servicio de televisión,servicio de televisión,Servicios,TV de paga,train,410d3807ecfd,cargo servicio de television,True
+servicio de televisión mensual,servicio de televisión,Servicios,TV de paga,train,410d3807ecfd,servicio de television mensual,True
+Combustible,Combustible,Transporte,Combustible,train,12c106cc092d,combustible,False
+cargo combustible,Combustible,Transporte,Combustible,train,12c106cc092d,cargo combustible,True
+combustible mensual,Combustible,Transporte,Combustible,train,12c106cc092d,combustible mensual,True
+Tren,Tren,Transporte,Tren,train,4d72c12d6aa1,tren,False
+cargo tren,Tren,Transporte,Tren,train,4d72c12d6aa1,cargo tren,True
+tren mensual,Tren,Transporte,Tren,train,4d72c12d6aa1,tren mensual,True
+pasaje de camión,pasaje de camión,Transporte,Autobús,train,c3deaa4d112d,pasaje de camion,False
+cargo pasaje de camión,pasaje de camión,Transporte,Autobús,train,c3deaa4d112d,cargo pasaje de camion,True
+pasaje de camión mensual,pasaje de camión,Transporte,Autobús,train,c3deaa4d112d,pasaje de camion mensual,True
+pago hipotecario,pago hipotecario,Vivienda,Hipoteca,train,2da9a422e1a0,pago hipotecario,False
+pg hipotecario,pago hipotecario,Vivienda,Hipoteca,train,2da9a422e1a0,pg hipotecario,True
+cargo pago hipotecario,pago hipotecario,Vivienda,Hipoteca,train,2da9a422e1a0,cargo pago hipotecario,True
+pago hipotecario mensual,pago hipotecario,Vivienda,Hipoteca,train,2da9a422e1a0,pago hipotecario mensual,True
+muebles para el hogar,muebles para el hogar,Vivienda,Muebles,train,9acabced744a,muebles para el hogar,False
+cargo muebles para el hogar,muebles para el hogar,Vivienda,Muebles,train,9acabced744a,cargo muebles para el hogar,True
+muebles para el hogar mensual,muebles para el hogar,Vivienda,Muebles,train,9acabced744a,muebles para el hogar mensual,True
+Despensa,Despensa,Alimentación,Supermercado,test,1b32fa867fbb,despensa,False
+Compra de víveres,Compra de víveres,Alimentación,Supermercado,train,36ba5b0bb443,compra de viveres,False
+comp de víveres,Compra de víveres,Alimentación,Supermercado,train,36ba5b0bb443,comp de viveres,True
+cargo compra de víveres,Compra de víveres,Alimentación,Supermercado,train,36ba5b0bb443,cargo compra de viveres,True
+compra de víveres mensual,Compra de víveres,Alimentación,Supermercado,train,36ba5b0bb443,compra de viveres mensual,True
+croquetas mascota,croquetas mascota,Alimentación,Alimento para mascotas,train,3c36031eb3e9,croquetas mascota,False
+cargo croquetas mascota,croquetas mascota,Alimentación,Alimento para mascotas,train,3c36031eb3e9,cargo croquetas mascota,True
+croquetas mascota mensual,croquetas mascota,Alimentación,Alimento para mascotas,train,3c36031eb3e9,croquetas mascota mensual,True
+Compra de alimentos,Compra de alimentos,Alimentación,Supermercado,train,548820314234,compra de alimentos,False
+comp de alimentos,Compra de alimentos,Alimentación,Supermercado,train,548820314234,comp de alimentos,True
+cargo compra de alimentos,Compra de alimentos,Alimentación,Supermercado,train,548820314234,cargo compra de alimentos,True
+compra de alimentos mensual,Compra de alimentos,Alimentación,Supermercado,train,548820314234,compra de alimentos mensual,True
+Comida en restaurante,Comida en restaurante,Alimentación,Restaurante,train,6491a53df90d,comida en restaurante,False
+comida en rest,Comida en restaurante,Alimentación,Restaurante,train,6491a53df90d,comida en rest,True
+cargo comida en restaurante,Comida en restaurante,Alimentación,Restaurante,train,6491a53df90d,cargo comida en restaurante,True
+comida en restaurante mensual,Comida en restaurante,Alimentación,Restaurante,train,6491a53df90d,comida en restaurante mensual,True
+Alimento para mascotas,Alimento para mascotas,Alimentación,Alimento para mascotas,train,7ef08f3229a2,alimento para mascotas,False
+cargo alimento para mascotas,Alimento para mascotas,Alimentación,Alimento para mascotas,train,7ef08f3229a2,cargo alimento para mascotas,True
+alimento para mascotas mensual,Alimento para mascotas,Alimentación,Alimento para mascotas,train,7ef08f3229a2,alimento para mascotas mensual,True
+Supermercado,Supermercado,Alimentación,Supermercado,train,89da14787efb,supermercado,False
+super,Supermercado,Alimentación,Supermercado,train,89da14787efb,super,True
+cargo supermercado,Supermercado,Alimentación,Supermercado,train,89da14787efb,cargo supermercado,True
+supermercado mensual,Supermercado,Alimentación,Supermercado,train,89da14787efb,supermercado mensual,True
+Almuerzo fuera de casa,Almuerzo fuera de casa,Alimentación,Restaurante,test,8ea97f3926e1,almuerzo fuera de casa,False
+Restaurante,Restaurante,Alimentación,Restaurante,train,901ba6df6f62,restaurante,False
+rest,Restaurante,Alimentación,Restaurante,train,901ba6df6f62,rest,True
+cargo restaurante,Restaurante,Alimentación,Restaurante,train,901ba6df6f62,cargo restaurante,True
+restaurante mensual,Restaurante,Alimentación,Restaurante,train,901ba6df6f62,restaurante mensual,True
+super semanal,super semanal,Alimentación,Supermercado,train,9228ae3fb24d,super semanal,False
+cargo super semanal,super semanal,Alimentación,Supermercado,train,9228ae3fb24d,cargo super semanal,True
+super semanal mensual,super semanal,Alimentación,Supermercado,train,9228ae3fb24d,super semanal mensual,True
+Comida rápida,Comida rápida,Alimentación,Comida rápida,train,9f29ca7ff6a1,comida rapida,False
+cargo comida rápida,Comida rápida,Alimentación,Comida rápida,train,9f29ca7ff6a1,cargo comida rapida,True
+comida rápida mensual,Comida rápida,Alimentación,Comida rápida,train,9f29ca7ff6a1,comida rapida mensual,True
+comida corrida,comida corrida,Alimentación,Restaurante,train,b1f6bbfcc6ce,comida corrida,False
+cargo comida corrida,comida corrida,Alimentación,Restaurante,train,b1f6bbfcc6ce,cargo comida corrida,True
+comida corrida mensual,comida corrida,Alimentación,Restaurante,train,b1f6bbfcc6ce,comida corrida mensual,True
+Comida para gato,Comida para gato,Alimentación,Alimento para mascotas,train,cac83f657d9d,comida para gato,False
+cargo comida para gato,Comida para gato,Alimentación,Alimento para mascotas,train,cac83f657d9d,cargo comida para gato,True
+comida para gato mensual,Comida para gato,Alimentación,Alimento para mascotas,train,cac83f657d9d,comida para gato mensual,True
+despensa quincenal,despensa quincenal,Alimentación,Supermercado,test,cc529a2dbff3,despensa quincenal,False
+Compra en tienda,Compra en tienda,Alimentación,Tiendas,train,e3b123ef33f5,compra en tienda,False
+comp en tienda,Compra en tienda,Alimentación,Tiendas,train,e3b123ef33f5,comp en tienda,True
+cargo compra en tienda,Compra en tienda,Alimentación,Tiendas,train,e3b123ef33f5,cargo compra en tienda,True
+compra en tienda mensual,Compra en tienda,Alimentación,Tiendas,train,e3b123ef33f5,compra en tienda mensual,True
+Pizza,Pizza,Alimentación,Comida rápida,train,fb6d4de9e81e,pizza,False
+cargo pizza,Pizza,Alimentación,Comida rápida,train,fb6d4de9e81e,cargo pizza,True
+pizza mensual,Pizza,Alimentación,Comida rápida,train,fb6d4de9e81e,pizza mensual,True
+Compra de zapatos,Compra de zapatos,Compras,Calzado,train,16c04c349e3f,compra de zapatos,False
+comp de zapatos,Compra de zapatos,Compras,Calzado,train,16c04c349e3f,comp de zapatos,True
+cargo compra de zapatos,Compra de zapatos,Compras,Calzado,train,16c04c349e3f,cargo compra de zapatos,True
+compra de zapatos mensual,Compra de zapatos,Compras,Calzado,train,16c04c349e3f,compra de zapatos mensual,True
+Compra de Laptop,Compra de Laptop,Compras,Electrónica,train,22f170405e7f,compra de laptop,False
+comp de laptop,Compra de Laptop,Compras,Electrónica,train,22f170405e7f,comp de laptop,True
+cargo compra de laptop,Compra de Laptop,Compras,Electrónica,train,22f170405e7f,cargo compra de laptop,True
+compra de laptop mensual,Compra de Laptop,Compras,Electrónica,train,22f170405e7f,compra de laptop mensual,True
+Electrónica,Electrónica,Compras,Electrónica,train,315785b6f441,electronica,False
+cargo electrónica,Electrónica,Compras,Electrónica,train,315785b6f441,cargo electronica,True
+electrónica mensual,Electrónica,Compras,Electrónica,train,315785b6f441,electronica mensual,True
+regalo de cumpleaños,regalo de cumpleaños,Compras,Regalos,train,3f90d5167618,regalo de cumpleanos,False
+cargo regalo de cumpleaños,regalo de cumpleaños,Compras,Regalos,train,3f90d5167618,cargo regalo de cumpleanos,True
+regalo de cumpleaños mensual,regalo de cumpleaños,Compras,Regalos,train,3f90d5167618,regalo de cumpleanos mensual,True
+accesorios personales,accesorios personales,Compras,Accesorios,train,432f9136abdb,accesorios personales,False
+cargo accesorios personales,accesorios personales,Compras,Accesorios,train,432f9136abdb,cargo accesorios personales,True
+accesorios personales mensual,accesorios personales,Compras,Accesorios,train,432f9136abdb,accesorios personales mensual,True
+Accesorios para mascotas,Accesorios para mascotas,Compras,Mascotas,train,51c7731bd03f,accesorios para mascotas,False
+cargo accesorios para mascotas,Accesorios para mascotas,Compras,Mascotas,train,51c7731bd03f,cargo accesorios para mascotas,True
+accesorios para mascotas mensual,Accesorios para mascotas,Compras,Mascotas,train,51c7731bd03f,accesorios para mascotas mensual,True
+Compra de sueter,Compra de sueter,Compras,Ropa,train,5a777f461f16,compra de sueter,False
+comp de sueter,Compra de sueter,Compras,Ropa,train,5a777f461f16,comp de sueter,True
+cargo compra de sueter,Compra de sueter,Compras,Ropa,train,5a777f461f16,cargo compra de sueter,True
+compra de sueter mensual,Compra de sueter,Compras,Ropa,train,5a777f461f16,compra de sueter mensual,True
+Regalo,Regalo,Compras,Regalos,test,5f7e8aba11fe,regalo,False
+Compra de Tablet,Compra de Tablet,Compras,Electrónica,test,731ac2d6a4b8,compra de tablet,False
+Compra de camisa,Compra de camisa,Compras,Ropa,train,87d0bcb8d5f8,compra de camisa,False
+comp de camisa,Compra de camisa,Compras,Ropa,train,87d0bcb8d5f8,comp de camisa,True
+cargo compra de camisa,Compra de camisa,Compras,Ropa,train,87d0bcb8d5f8,cargo compra de camisa,True
+compra de camisa mensual,Compra de camisa,Compras,Ropa,train,87d0bcb8d5f8,compra de camisa mensual,True
+Compra de tenis,Compra de tenis,Compras,Calzado,train,8b8ae4da9032,compra de tenis,False
+comp de tenis,Compra de tenis,Compras,Calzado,train,8b8ae4da9032,comp de tenis,True
+cargo compra de tenis,Compra de tenis,Compras,Calzado,train,8b8ae4da9032,cargo compra de tenis,True
+compra de tenis mensual,Compra de tenis,Compras,Calzado,train,8b8ae4da9032,compra de tenis mensual,True
+Compra de audífonos,Compra de audífonos,Compras,Electrónica,train,c570e97c4229,compra de audifonos,False
+comp de audífonos,Compra de audífonos,Compras,Electrónica,train,c570e97c4229,comp de audifonos,True
+cargo compra de audífonos,Compra de audífonos,Compras,Electrónica,train,c570e97c4229,cargo compra de audifonos,True
+compra de audífonos mensual,Compra de audífonos,Compras,Electrónica,train,c570e97c4229,compra de audifonos mensual,True
+zapatos nuevos,zapatos nuevos,Compras,Calzado,train,d04504e308c4,zapatos nuevos,False
+cargo zapatos nuevos,zapatos nuevos,Compras,Calzado,train,d04504e308c4,cargo zapatos nuevos,True
+zapatos nuevos mensual,zapatos nuevos,Compras,Calzado,train,d04504e308c4,zapatos nuevos mensual,True
+Compra de regalo,Compra de regalo,Compras,Regalos,train,d70c762a5caf,compra de regalo,False
+comp de regalo,Compra de regalo,Compras,Regalos,train,d70c762a5caf,comp de regalo,True
+cargo compra de regalo,Compra de regalo,Compras,Regalos,train,d70c762a5caf,cargo compra de regalo,True
+compra de regalo mensual,Compra de regalo,Compras,Regalos,train,d70c762a5caf,compra de regalo mensual,True
+Compra de teléfono,Compra de teléfono,Compras,Electrónica,train,df24d7e9f583,compra de telefono,False
+comp de teléfono,Compra de teléfono,Compras,Electrónica,train,df24d7e9f583,comp de telefono,True
+cargo compra de teléfono,Compra de teléfono,Compras,Electrónica,train,df24d7e9f583,cargo compra de telefono,True
+compra de teléfono mensual,Compra de teléfono,Compras,Electrónica,train,df24d7e9f583,compra de telefono mensual,True
+Nuevo financiamiento,Nuevo financiamiento,Deudas,Nuevo crédito,train,1b69777bf2a4,nuevo financiamiento,False
+cargo nuevo financiamiento,Nuevo financiamiento,Deudas,Nuevo crédito,train,1b69777bf2a4,cargo nuevo financiamiento,True
+nuevo financiamiento mensual,Nuevo financiamiento,Deudas,Nuevo crédito,train,1b69777bf2a4,nuevo financiamiento mensual,True
+pago mensual de tarjeta,pago mensual de tarjeta,Deudas,Pago de tarjeta,train,3f6a48a872e9,pago mensual de tarjeta,False
+pg mens de tdc,pago mensual de tarjeta,Deudas,Pago de tarjeta,train,3f6a48a872e9,pg mens de tdc,True
+cargo pago mensual de tarjeta,pago mensual de tarjeta,Deudas,Pago de tarjeta,train,3f6a48a872e9,cargo pago mensual de tarjeta,True
+pago mensual de tarjeta mensual,pago mensual de tarjeta,Deudas,Pago de tarjeta,train,3f6a48a872e9,pago mensual de tarjeta mensual,True
+Pago de tarjeta,Pago de tarjeta,Deudas,Pago de tarjeta,train,426bd1fdf515,pago de tarjeta,False
+pg de tdc,Pago de tarjeta,Deudas,Pago de tarjeta,train,426bd1fdf515,pg de tdc,True
+cargo pago de tarjeta,Pago de tarjeta,Deudas,Pago de tarjeta,train,426bd1fdf515,cargo pago de tarjeta,True
+pago de tarjeta mensual,Pago de tarjeta,Deudas,Pago de tarjeta,train,426bd1fdf515,pago de tarjeta mensual,True
+abono de deuda,abono de deuda,Deudas,Pago de préstamo,validation,5a418a7718d8,abono de deuda,False
+Abono a tarjeta,Abono a tarjeta,Deudas,Pago de tarjeta,train,5bb69475f32a,abono a tarjeta,False
+cargo abono a tarjeta,Abono a tarjeta,Deudas,Pago de tarjeta,train,5bb69475f32a,cargo abono a tarjeta,True
+abono a tarjeta mensual,Abono a tarjeta,Deudas,Pago de tarjeta,train,5bb69475f32a,abono a tarjeta mensual,True
+Disposición de crédito,Disposición de crédito,Deudas,Nuevo crédito,test,71e3de0ff541,disposicion de credito,False
+mensualidad del préstamo,mensualidad del préstamo,Deudas,Pago de préstamo,train,9dfba16572ba,mensualidad del prestamo,False
+mens del prest,mensualidad del préstamo,Deudas,Pago de préstamo,train,9dfba16572ba,mens del prest,True
+cargo mensualidad del préstamo,mensualidad del préstamo,Deudas,Pago de préstamo,train,9dfba16572ba,cargo mensualidad del prestamo,True
+mensualidad del préstamo mensual,mensualidad del préstamo,Deudas,Pago de préstamo,train,9dfba16572ba,mensualidad del prestamo mensual,True
+pago de impuestos,pago de impuestos,Deudas,Impuestos,train,bd0b79399878,pago de impuestos,False
+pg de impuestos,pago de impuestos,Deudas,Impuestos,train,bd0b79399878,pg de impuestos,True
+cargo pago de impuestos,pago de impuestos,Deudas,Impuestos,train,bd0b79399878,cargo pago de impuestos,True
+pago de impuestos mensual,pago de impuestos,Deudas,Impuestos,train,bd0b79399878,pago de impuestos mensual,True
+pago de crédito,pago de crédito,Deudas,Pago de préstamo,train,c1ab346a0b36,pago de credito,False
+pg de cred,pago de crédito,Deudas,Pago de préstamo,train,c1ab346a0b36,pg de cred,True
+cargo pago de crédito,pago de crédito,Deudas,Pago de préstamo,train,c1ab346a0b36,cargo pago de credito,True
+pago de crédito mensual,pago de crédito,Deudas,Pago de préstamo,train,c1ab346a0b36,pago de credito mensual,True
+abono a crédito coche,abono a crédito coche,Deudas,Pago de préstamo,test,f5a4934a3c20,abono a credito coche,False
+colegiatura universidad,colegiatura universidad,Educación,Universidad,train,16882272754b,colegiatura universidad,False
+colegiatura uni,colegiatura universidad,Educación,Universidad,train,16882272754b,colegiatura uni,True
+cargo colegiatura universidad,colegiatura universidad,Educación,Universidad,train,16882272754b,cargo colegiatura universidad,True
+colegiatura universidad mensual,colegiatura universidad,Educación,Universidad,train,16882272754b,colegiatura universidad mensual,True
+material para clase,material para clase,Educación,Material escolar,train,54615761c37a,material para clase,False
+cargo material para clase,material para clase,Educación,Material escolar,train,54615761c37a,cargo material para clase,True
+material para clase mensual,material para clase,Educación,Material escolar,train,54615761c37a,material para clase mensual,True
+Material escolar,Material escolar,Educación,Material escolar,train,71579727ade3,material escolar,False
+cargo material escolar,Material escolar,Educación,Material escolar,train,71579727ade3,cargo material escolar,True
+material escolar mensual,Material escolar,Educación,Material escolar,train,71579727ade3,material escolar mensual,True
+curso online,curso online,Educación,Cursos,train,756fcb60e046,curso online,False
+cargo curso online,curso online,Educación,Cursos,train,756fcb60e046,cargo curso online,True
+curso online mensual,curso online,Educación,Cursos,train,756fcb60e046,curso online mensual,True
+Curso en línea,Curso en línea,Educación,Cursos,train,88e04d09dd38,curso en linea,False
+cargo curso en línea,Curso en línea,Educación,Cursos,train,88e04d09dd38,cargo curso en linea,True
+curso en línea mensual,Curso en línea,Educación,Cursos,train,88e04d09dd38,curso en linea mensual,True
+Universidad,Universidad,Educación,Universidad,train,b5e0384e8762,universidad,False
+uni,Universidad,Educación,Universidad,train,b5e0384e8762,uni,True
+cargo universidad,Universidad,Educación,Universidad,train,b5e0384e8762,cargo universidad,True
+universidad mensual,Universidad,Educación,Universidad,train,b5e0384e8762,universidad mensual,True
+Curso,Curso,Educación,Cursos,validation,c62869ade448,curso,False
+Colegiatura,Colegiatura,Educación,Universidad,train,f127c9a1bc4d,colegiatura,False
+cargo colegiatura,Colegiatura,Educación,Universidad,train,f127c9a1bc4d,cargo colegiatura,True
+colegiatura mensual,Colegiatura,Educación,Universidad,train,f127c9a1bc4d,colegiatura mensual,True
+museo fin de semana,museo fin de semana,Entretenimiento,Museos,train,2c4942d27422,museo fin de semana,False
+cargo museo fin de semana,museo fin de semana,Entretenimiento,Museos,train,2c4942d27422,cargo museo fin de semana,True
+museo fin de semana mensual,museo fin de semana,Entretenimiento,Museos,train,2c4942d27422,museo fin de semana mensual,True
+Servicio de streaming,Servicio de streaming,Entretenimiento,Suscripciones,train,448e80bde166,servicio de streaming,False
+serv de streaming,Servicio de streaming,Entretenimiento,Suscripciones,train,448e80bde166,serv de streaming,True
+cargo servicio de streaming,Servicio de streaming,Entretenimiento,Suscripciones,train,448e80bde166,cargo servicio de streaming,True
+servicio de streaming mensual,Servicio de streaming,Entretenimiento,Suscripciones,train,448e80bde166,servicio de streaming mensual,True
+entrada al cine,entrada al cine,Entretenimiento,Cine,train,456cb7dad6d4,entrada al cine,False
+cargo entrada al cine,entrada al cine,Entretenimiento,Cine,train,456cb7dad6d4,cargo entrada al cine,True
+entrada al cine mensual,entrada al cine,Entretenimiento,Cine,train,456cb7dad6d4,entrada al cine mensual,True
+Actividad deportiva,Actividad deportiva,Entretenimiento,Deportes,test,5656bb34baeb,actividad deportiva,False
+boletos de concierto,boletos de concierto,Entretenimiento,Conciertos,test,694aff358e20,boletos de concierto,False
+Concierto,Concierto,Entretenimiento,Conciertos,train,86191f74decd,concierto,False
+cargo concierto,Concierto,Entretenimiento,Conciertos,train,86191f74decd,cargo concierto,True
+concierto mensual,Concierto,Entretenimiento,Conciertos,train,86191f74decd,concierto mensual,True
+inscripción gym,inscripción gym,Entretenimiento,Deportes,validation,870741fc2947,inscripcion gym,False
+Cine,Cine,Entretenimiento,Cine,train,acacf2d4765c,cine,False
+cargo cine,Cine,Entretenimiento,Cine,train,acacf2d4765c,cargo cine,True
+cine mensual,Cine,Entretenimiento,Cine,train,acacf2d4765c,cine mensual,True
+compra de videojuego,compra de videojuego,Entretenimiento,Videojuegos,test,d83b59cf4def,compra de videojuego,False
+Actividad recreativa,Actividad recreativa,Entretenimiento,Extras,train,ddb818573ae7,actividad recreativa,False
+cargo actividad recreativa,Actividad recreativa,Entretenimiento,Extras,train,ddb818573ae7,cargo actividad recreativa,True
+actividad recreativa mensual,Actividad recreativa,Entretenimiento,Extras,train,ddb818573ae7,actividad recreativa mensual,True
+Suscripción,Suscripción,Entretenimiento,Suscripciones,validation,ded72e07cebb,suscripcion,False
+netflix mensual,netflix mensual,Entretenimiento,Suscripciones,train,e01a3a53c038,netflix mensual,False
+netflix mens,netflix mensual,Entretenimiento,Suscripciones,train,e01a3a53c038,netflix mens,True
+cargo netflix mensual,netflix mensual,Entretenimiento,Suscripciones,train,e01a3a53c038,cargo netflix mensual,True
+netflix mensual mensual,netflix mensual,Entretenimiento,Suscripciones,train,e01a3a53c038,netflix mensual mensual,True
+Entretenimiento,Entretenimiento,Entretenimiento,Extras,train,e59d41097413,entretenimiento,False
+cargo entretenimiento,Entretenimiento,Entretenimiento,Extras,train,e59d41097413,cargo entretenimiento,True
+entretenimiento mensual,Entretenimiento,Entretenimiento,Extras,train,e59d41097413,entretenimiento mensual,True
+Inversión,Inversión,Finanzas,Inversiones,train,0491351a0e43,inversion,False
+inv,Inversión,Finanzas,Inversiones,train,0491351a0e43,inv,True
+cargo inversión,Inversión,Finanzas,Inversiones,train,0491351a0e43,cargo inversion,True
+Aportación a inversión,Aportación a inversión,Finanzas,Inversiones,train,256dab0d2859,aportacion a inversion,False
+aportación a inv,Aportación a inversión,Finanzas,Inversiones,train,256dab0d2859,aportacion a inv,True
+cargo aportación a inversión,Aportación a inversión,Finanzas,Inversiones,train,256dab0d2859,cargo aportacion a inversion,True
+aportación a inversión mensual,Aportación a inversión,Finanzas,Inversiones,train,256dab0d2859,aportacion a inversion mensual,True
+inversión en cetes,inversión en cetes,Finanzas,Inversiones,test,70ef0c7a4bf6,inversion en cetes,False
+fondo de emergencia,fondo de emergencia,Finanzas,Ahorro,train,a15a7760bd9f,fondo de emergencia,False
+cargo fondo de emergencia,fondo de emergencia,Finanzas,Ahorro,train,a15a7760bd9f,cargo fondo de emergencia,True
+fondo de emergencia mensual,fondo de emergencia,Finanzas,Ahorro,train,a15a7760bd9f,fondo de emergencia mensual,True
+ahorro quincenal,ahorro quincenal,Finanzas,Ahorro,train,effbcabd5736,ahorro quincenal,False
+cargo ahorro quincenal,ahorro quincenal,Finanzas,Ahorro,train,effbcabd5736,cargo ahorro quincenal,True
+ahorro quincenal mensual,ahorro quincenal,Finanzas,Ahorro,train,effbcabd5736,ahorro quincenal mensual,True
+Ahorro,Ahorro,Finanzas,Ahorro,train,f07198a554b1,ahorro,False
+cargo ahorro,Ahorro,Finanzas,Ahorro,train,f07198a554b1,cargo ahorro,True
+ahorro mensual,Ahorro,Finanzas,Ahorro,train,f07198a554b1,ahorro mensual,True
+compra de fondo de inversión,compra de fondo de inversión,Finanzas,Inversiones,validation,f2b75cd99d3f,compra de fondo de inversion,False
+Frituras,Frituras,Otros,Frituras,train,15b02f832fbe,frituras,False
+cargo frituras,Frituras,Otros,Frituras,train,15b02f832fbe,cargo frituras,True
+frituras mensual,Frituras,Otros,Frituras,train,15b02f832fbe,frituras mensual,True
+Donación,Donación,Otros,Donaciones,train,1e746161db90,donacion,False
+cargo donación,Donación,Otros,Donaciones,train,1e746161db90,cargo donacion,True
+donación mensual,Donación,Otros,Donaciones,train,1e746161db90,donacion mensual,True
+pago varios,pago varios,Otros,Otros,train,67a821ebbb13,pago varios,False
+pg varios,pago varios,Otros,Otros,train,67a821ebbb13,pg varios,True
+cargo pago varios,pago varios,Otros,Otros,train,67a821ebbb13,cargo pago varios,True
+pago varios mensual,pago varios,Otros,Otros,train,67a821ebbb13,pago varios mensual,True
+Gasto general,Gasto general,Otros,Otros,train,b43c5666a750,gasto general,False
+cargo gasto general,Gasto general,Otros,Otros,train,b43c5666a750,cargo gasto general,True
+gasto general mensual,Gasto general,Otros,Otros,train,b43c5666a750,gasto general mensual,True
+Estacionamiento,Estacionamiento,Otros,Estacionamiento,train,b50e4327d509,estacionamiento,False
+estac,Estacionamiento,Otros,Estacionamiento,train,b50e4327d509,estac,True
+cargo estacionamiento,Estacionamiento,Otros,Estacionamiento,train,b50e4327d509,cargo estacionamiento,True
+estacionamiento mensual,Estacionamiento,Otros,Estacionamiento,train,b50e4327d509,estacionamiento mensual,True
+Tintorería,Tintorería,Otros,Tintorería,train,bca82f4aa39a,tintoreria,False
+cargo tintorería,Tintorería,Otros,Tintorería,train,bca82f4aa39a,cargo tintoreria,True
+tintorería mensual,Tintorería,Otros,Tintorería,train,bca82f4aa39a,tintoreria mensual,True
+Lavandería,Lavandería,Otros,Lavandería,train,c04be1f1b44e,lavanderia,False
+cargo lavandería,Lavandería,Otros,Lavandería,train,c04be1f1b44e,cargo lavanderia,True
+lavandería mensual,Lavandería,Otros,Lavandería,train,c04be1f1b44e,lavanderia mensual,True
+estacionamiento de plaza,estacionamiento de plaza,Otros,Estacionamiento,validation,c8a7461c2147,estacionamiento de plaza,False
+Diezmo,Diezmo,Otros,Donaciones,train,d579a9343b4e,diezmo,False
+cargo diezmo,Diezmo,Otros,Donaciones,train,d579a9343b4e,cargo diezmo,True
+diezmo mensual,Diezmo,Otros,Donaciones,train,d579a9343b4e,diezmo mensual,True
+Caridad,Caridad,Otros,Donaciones,train,d70b66898f29,caridad,False
+cargo caridad,Caridad,Otros,Donaciones,train,d70b66898f29,cargo caridad,True
+caridad mensual,Caridad,Otros,Donaciones,train,d70b66898f29,caridad mensual,True
+servicio de lavandería,servicio de lavandería,Otros,Lavandería,train,f0c61e6ad15e,servicio de lavanderia,False
+serv de lavandería,servicio de lavandería,Otros,Lavandería,train,f0c61e6ad15e,serv de lavanderia,True
+cargo servicio de lavandería,servicio de lavandería,Otros,Lavandería,train,f0c61e6ad15e,cargo servicio de lavanderia,True
+servicio de lavandería mensual,servicio de lavandería,Otros,Lavandería,train,f0c61e6ad15e,servicio de lavanderia mensual,True
+Otro gasto,Otro gasto,Otros,Otros,train,f7e4bbb34bea,otro gasto,False
+cargo otro gasto,Otro gasto,Otros,Otros,train,f7e4bbb34bea,cargo otro gasto,True
+otro gasto mensual,Otro gasto,Otros,Otros,train,f7e4bbb34bea,otro gasto mensual,True
+farmacia medicamentos,farmacia medicamentos,Salud,Medicinas,train,00a57ec94696,farmacia medicamentos,False
+cargo farmacia medicamentos,farmacia medicamentos,Salud,Medicinas,train,00a57ec94696,cargo farmacia medicamentos,True
+farmacia medicamentos mensual,farmacia medicamentos,Salud,Medicinas,train,00a57ec94696,farmacia medicamentos mensual,True
+sesión de terapia,sesión de terapia,Salud,Terapeuta,train,02b9a306b6c5,sesion de terapia,False
+cargo sesión de terapia,sesión de terapia,Salud,Terapeuta,train,02b9a306b6c5,cargo sesion de terapia,True
+sesión de terapia mensual,sesión de terapia,Salud,Terapeuta,train,02b9a306b6c5,sesion de terapia mensual,True
+Lentes,Lentes,Salud,Óptica,train,39aec07ecfd4,lentes,False
+cargo lentes,Lentes,Salud,Óptica,train,39aec07ecfd4,cargo lentes,True
+lentes mensual,Lentes,Salud,Óptica,train,39aec07ecfd4,lentes mensual,True
+Medicamentos,Medicamentos,Salud,Medicinas,train,47e633db4cd5,medicamentos,False
+cargo medicamentos,Medicamentos,Salud,Medicinas,train,47e633db4cd5,cargo medicamentos,True
+medicamentos mensual,Medicamentos,Salud,Medicinas,train,47e633db4cd5,medicamentos mensual,True
+Laboratorio,Laboratorio,Salud,Laboratorios,train,5340b36a6f04,laboratorio,False
+cargo laboratorio,Laboratorio,Salud,Laboratorios,train,5340b36a6f04,cargo laboratorio,True
+laboratorio mensual,Laboratorio,Salud,Laboratorios,train,5340b36a6f04,laboratorio mensual,True
+Estudios médicos,Estudios médicos,Salud,Laboratorios,train,7603e75ff87b,estudios medicos,False
+cargo estudios médicos,Estudios médicos,Salud,Laboratorios,train,7603e75ff87b,cargo estudios medicos,True
+estudios médicos mensual,Estudios médicos,Salud,Laboratorios,train,7603e75ff87b,estudios medicos mensual,True
+limpieza dental,limpieza dental,Salud,Dentista,validation,861ded761d8d,limpieza dental,False
+Consulta con terapeuta,Consulta con terapeuta,Salud,Terapeuta,train,8fef4bba3c6d,consulta con terapeuta,False
+cargo consulta con terapeuta,Consulta con terapeuta,Salud,Terapeuta,train,8fef4bba3c6d,cargo consulta con terapeuta,True
+consulta con terapeuta mensual,Consulta con terapeuta,Salud,Terapeuta,train,8fef4bba3c6d,consulta con terapeuta mensual,True
+Actividad física,Actividad física,Salud,Ejercicio,train,98df711b78f4,actividad fisica,False
+cargo actividad física,Actividad física,Salud,Ejercicio,train,98df711b78f4,cargo actividad fisica,True
+actividad física mensual,Actividad física,Salud,Ejercicio,train,98df711b78f4,actividad fisica mensual,True
+Veterinario,Veterinario,Salud,Veterinario,test,adbf3c60a9b8,veterinario,False
+Consulta dental,Consulta dental,Salud,Dentista,train,b29386dd4b89,consulta dental,False
+cargo consulta dental,Consulta dental,Salud,Dentista,train,b29386dd4b89,cargo consulta dental,True
+consulta dental mensual,Consulta dental,Salud,Dentista,train,b29386dd4b89,consulta dental mensual,True
+Dentista,Dentista,Salud,Dentista,validation,b592017cd0fd,dentista,False
+Consulta con nutriólogo,Consulta con nutriólogo,Salud,Nutriólogo,train,cc395c1298e7,consulta con nutriologo,False
+cargo consulta con nutriólogo,Consulta con nutriólogo,Salud,Nutriólogo,train,cc395c1298e7,cargo consulta con nutriologo,True
+consulta con nutriólogo mensual,Consulta con nutriólogo,Salud,Nutriólogo,train,cc395c1298e7,consulta con nutriologo mensual,True
+Hospital,Hospital,Salud,Hospital,train,d3169380b064,hospital,False
+cargo hospital,Hospital,Salud,Hospital,train,d3169380b064,cargo hospital,True
+hospital mensual,Hospital,Salud,Hospital,train,d3169380b064,hospital mensual,True
+Consulta veterinaria,Consulta veterinaria,Salud,Veterinario,test,e500c37e8f7d,consulta veterinaria,False
+consulta médica,consulta médica,Salud,Hospital,test,fa954ecfce1d,consulta medica,False
+Pago de internet,Pago de internet,Servicios,Internet,train,212a299d6b80,pago de internet,False
+pg de internet,Pago de internet,Servicios,Internet,train,212a299d6b80,pg de internet,True
+cargo pago de internet,Pago de internet,Servicios,Internet,train,212a299d6b80,cargo pago de internet,True
+pago de internet mensual,Pago de internet,Servicios,Internet,train,212a299d6b80,pago de internet mensual,True
+recibo cfe,recibo cfe,Servicios,Electricidad,train,333096522470,recibo cfe,False
+cargo recibo cfe,recibo cfe,Servicios,Electricidad,train,333096522470,cargo recibo cfe,True
+recibo cfe mensual,recibo cfe,Servicios,Electricidad,train,333096522470,recibo cfe mensual,True
+Pago de gas,Pago de gas,Servicios,Gas,train,33eac11627fc,pago de gas,False
+pg de gas,Pago de gas,Servicios,Gas,train,33eac11627fc,pg de gas,True
+cargo pago de gas,Pago de gas,Servicios,Gas,train,33eac11627fc,cargo pago de gas,True
+pago de gas mensual,Pago de gas,Servicios,Gas,train,33eac11627fc,pago de gas mensual,True
+internet de casa,internet de casa,Servicios,Internet,test,352215768194,internet de casa,False
+plan de celular,plan de celular,Servicios,Teléfono,test,527a64f1ac50,plan de celular,False
+Recibo de electricidad,Recibo de electricidad,Servicios,Electricidad,train,586d9a83f35a,recibo de electricidad,False
+cargo recibo de electricidad,Recibo de electricidad,Servicios,Electricidad,train,586d9a83f35a,cargo recibo de electricidad,True
+recibo de electricidad mensual,Recibo de electricidad,Servicios,Electricidad,train,586d9a83f35a,recibo de electricidad mensual,True
+Recibo de agua,Recibo de agua,Servicios,Agua,train,5dcca651ed05,recibo de agua,False
+cargo recibo de agua,Recibo de agua,Servicios,Agua,train,5dcca651ed05,cargo recibo de agua,True
+recibo de agua mensual,Recibo de agua,Servicios,Agua,train,5dcca651ed05,recibo de agua mensual,True
+Pago de luz,Pago de luz,Servicios,Electricidad,train,7d0cb5a909ea,pago de luz,False
+pg de luz,Pago de luz,Servicios,Electricidad,train,7d0cb5a909ea,pg de luz,True
+cargo pago de luz,Pago de luz,Servicios,Electricidad,train,7d0cb5a909ea,cargo pago de luz,True
+pago de luz mensual,Pago de luz,Servicios,Electricidad,train,7d0cb5a909ea,pago de luz mensual,True
+relleno tanque de gas,relleno tanque de gas,Servicios,Gas,train,c21de712e5cb,relleno tanque de gas,False
+cargo relleno tanque de gas,relleno tanque de gas,Servicios,Gas,train,c21de712e5cb,cargo relleno tanque de gas,True
+relleno tanque de gas mensual,relleno tanque de gas,Servicios,Gas,train,c21de712e5cb,relleno tanque de gas mensual,True
+Gasolina,Gasolina,Transporte,Combustible,validation,16c8ddf70d3c,gasolina,False
+Verificación vehicular,Verificación vehicular,Transporte,Verificación vehicular,train,1ebbb7408964,verificacion vehicular,False
+cargo verificación vehicular,Verificación vehicular,Transporte,Verificación vehicular,train,1ebbb7408964,cargo verificacion vehicular,True
+verificación vehicular mensual,Verificación vehicular,Transporte,Verificación vehicular,train,1ebbb7408964,verificacion vehicular mensual,True
+Avión,Avión,Transporte,Avión,test,5956762a6969,avion,False
+Viaje en Uber,Viaje en Uber,Transporte,Uber,train,6785c402330d,viaje en uber,False
+cargo viaje en uber,Viaje en Uber,Transporte,Uber,train,6785c402330d,cargo viaje en uber,True
+viaje en uber mensual,Viaje en Uber,Transporte,Uber,train,6785c402330d,viaje en uber mensual,True
+Uber,Uber,Transporte,Uber,validation,6b7c1f74da8e,uber,False
+Taxi,Taxi,Transporte,Taxi,train,7314220d2581,taxi,False
+cargo taxi,Taxi,Transporte,Taxi,train,7314220d2581,cargo taxi,True
+taxi mensual,Taxi,Transporte,Taxi,train,7314220d2581,taxi mensual,True
+Servicio de taxi,Servicio de taxi,Transporte,Taxi,train,7ba2068ad427,servicio de taxi,False
+serv de taxi,Servicio de taxi,Transporte,Taxi,train,7ba2068ad427,serv de taxi,True
+cargo servicio de taxi,Servicio de taxi,Transporte,Taxi,train,7ba2068ad427,cargo servicio de taxi,True
+servicio de taxi mensual,Servicio de taxi,Transporte,Taxi,train,7ba2068ad427,servicio de taxi mensual,True
+Autobús,Autobús,Transporte,Autobús,validation,83feb4da3960,autobus,False
+boleto de avión,boleto de avión,Transporte,Avión,validation,962101678b12,boleto de avion,False
+Transporte público,Transporte público,Transporte,Autobús,test,a207c69630f6,transporte publico,False
+Servicio vehicular,Servicio vehicular,Transporte,Servicio vehicular,test,ae243ef2840b,servicio vehicular,False
+Tenencia vehicular,Tenencia vehicular,Transporte,Tenencia vehicular,validation,cb8724468d03,tenencia vehicular,False
+taxi al trabajo,taxi al trabajo,Transporte,Taxi,test,ceedfdf57fe7,taxi al trabajo,False
+Mantenimiento de vivienda,Mantenimiento de vivienda,Vivienda,Mantenimiento,train,079de09a8aec,mantenimiento de vivienda,False
+mant de vivienda,Mantenimiento de vivienda,Vivienda,Mantenimiento,train,079de09a8aec,mant de vivienda,True
+cargo mantenimiento de vivienda,Mantenimiento de vivienda,Vivienda,Mantenimiento,train,079de09a8aec,cargo mantenimiento de vivienda,True
+mantenimiento de vivienda mensual,Mantenimiento de vivienda,Vivienda,Mantenimiento,train,079de09a8aec,mantenimiento de vivienda mensual,True
+Electrodomésticos,Electrodomésticos,Vivienda,Electrodomésticos,train,0942b7ae9a8f,electrodomesticos,False
+cargo electrodomésticos,Electrodomésticos,Vivienda,Electrodomésticos,train,0942b7ae9a8f,cargo electrodomesticos,True
+electrodomésticos mensual,Electrodomésticos,Vivienda,Electrodomésticos,train,0942b7ae9a8f,electrodomesticos mensual,True
+electrodoméstico para casa,electrodoméstico para casa,Vivienda,Electrodomésticos,train,16e43ffaaf5b,electrodomestico para casa,False
+cargo electrodoméstico para casa,electrodoméstico para casa,Vivienda,Electrodomésticos,train,16e43ffaaf5b,cargo electrodomestico para casa,True
+electrodoméstico para casa mensual,electrodoméstico para casa,Vivienda,Electrodomésticos,train,16e43ffaaf5b,electrodomestico para casa mensual,True
+Impuesto predial,Impuesto predial,Vivienda,Predial,train,2a03409c54d0,impuesto predial,False
+cargo impuesto predial,Impuesto predial,Vivienda,Predial,train,2a03409c54d0,cargo impuesto predial,True
+impuesto predial mensual,Impuesto predial,Vivienda,Predial,train,2a03409c54d0,impuesto predial mensual,True
+renta del departamento,renta del departamento,Vivienda,Renta,test,38f1c61c28cb,renta del departamento,False
+Renta mensual,Renta mensual,Vivienda,Renta,train,7253d65a36b7,renta mensual,False
+renta mens,Renta mensual,Vivienda,Renta,train,7253d65a36b7,renta mens,True
+cargo renta mensual,Renta mensual,Vivienda,Renta,train,7253d65a36b7,cargo renta mensual,True
+renta mensual mensual,Renta mensual,Vivienda,Renta,train,7253d65a36b7,renta mensual mensual,True
+Pago de renta,Pago de renta,Vivienda,Renta,train,884520a8543f,pago de renta,False
+pg de renta,Pago de renta,Vivienda,Renta,train,884520a8543f,pg de renta,True
+cargo pago de renta,Pago de renta,Vivienda,Renta,train,884520a8543f,cargo pago de renta,True
+pago de renta mensual,Pago de renta,Vivienda,Renta,train,884520a8543f,pago de renta mensual,True
+Apoyo para vivienda,Apoyo para vivienda,Vivienda,Mantenimiento,test,9493d912bb4b,apoyo para vivienda,False
+Muebles,Muebles,Vivienda,Muebles,validation,c6803d1c43bc,muebles,False
+Pago de hipoteca,Pago de hipoteca,Vivienda,Hipoteca,train,ebca6a37b918,pago de hipoteca,False
+pg de hipoteca,Pago de hipoteca,Vivienda,Hipoteca,train,ebca6a37b918,pg de hipoteca,True
+cargo pago de hipoteca,Pago de hipoteca,Vivienda,Hipoteca,train,ebca6a37b918,cargo pago de hipoteca,True
+pago de hipoteca mensual,Pago de hipoteca,Vivienda,Hipoteca,train,ebca6a37b918,pago de hipoteca mensual,True
+Hamburguesa,Hamburguesa,Alimentación,Comida rápida,train,2cad5a2e0142,hamburguesa,False
+cargo hamburguesa,Hamburguesa,Alimentación,Comida rápida,train,2cad5a2e0142,cargo hamburguesa,True
+hamburguesa mensual,Hamburguesa,Alimentación,Comida rápida,train,2cad5a2e0142,hamburguesa mensual,True
+abarrotes de la esquina,abarrotes de la esquina,Alimentación,Tiendas,train,474729656867,abarrotes de la esquina,False
+cargo abarrotes de la esquina,abarrotes de la esquina,Alimentación,Tiendas,train,474729656867,cargo abarrotes de la esquina,True
+abarrotes de la esquina mensual,abarrotes de la esquina,Alimentación,Tiendas,train,474729656867,abarrotes de la esquina mensual,True
+cena en restaurante,cena en restaurante,Alimentación,Restaurante,validation,e7d5521a26eb,cena en restaurante,False
+accesorios para mascota,accesorios para mascota,Compras,Mascotas,train,54fc25fb82dd,accesorios para mascota,False
+cargo accesorios para mascota,accesorios para mascota,Compras,Mascotas,train,54fc25fb82dd,cargo accesorios para mascota,True
+accesorios para mascota mensual,accesorios para mascota,Compras,Mascotas,train,54fc25fb82dd,accesorios para mascota mensual,True
+Compra de short,Compra de short,Compras,Ropa,train,6bbe0d06a724,compra de short,False
+comp de short,Compra de short,Compras,Ropa,train,6bbe0d06a724,comp de short,True
+cargo compra de short,Compra de short,Compras,Ropa,train,6bbe0d06a724,cargo compra de short,True
+compra de short mensual,Compra de short,Compras,Ropa,train,6bbe0d06a724,compra de short mensual,True
+audífonos nuevos,audífonos nuevos,Compras,Electrónica,validation,7626e38f8e62,audifonos nuevos,False
+pago de tarjeta de crédito,pago de tarjeta de crédito,Deudas,Pago de tarjeta,train,22100bccbc87,pago de tarjeta de credito,False
+pg de tdc de cred,pago de tarjeta de crédito,Deudas,Pago de tarjeta,train,22100bccbc87,pg de tdc de cred,True
+cargo pago de tarjeta de crédito,pago de tarjeta de crédito,Deudas,Pago de tarjeta,train,22100bccbc87,cargo pago de tarjeta de credito,True
+pago de tarjeta de crédito mensual,pago de tarjeta de crédito,Deudas,Pago de tarjeta,train,22100bccbc87,pago de tarjeta de credito mensual,True
+Pago de préstamo,Pago de préstamo,Deudas,Pago de préstamo,validation,8c42cbc32e2d,pago de prestamo,False
+financiamiento del mes,financiamiento del mes,Deudas,Nuevo crédito,train,ec4f4765d636,financiamiento del mes,False
+cargo financiamiento del mes,financiamiento del mes,Deudas,Nuevo crédito,train,ec4f4765d636,cargo financiamiento del mes,True
+financiamiento del mes mensual,financiamiento del mes,Deudas,Nuevo crédito,train,ec4f4765d636,financiamiento del mes mensual,True
+capacitación de trabajo,capacitación de trabajo,Educación,Cursos,train,0d3ad6d27a34,capacitacion de trabajo,False
+cargo capacitación de trabajo,capacitación de trabajo,Educación,Cursos,train,0d3ad6d27a34,cargo capacitacion de trabajo,True
+capacitación de trabajo mensual,capacitación de trabajo,Educación,Cursos,train,0d3ad6d27a34,capacitacion de trabajo mensual,True
+papelería para escuela,papelería para escuela,Educación,Papelería,train,2b90193f5105,papeleria para escuela,False
+cargo papelería para escuela,papelería para escuela,Educación,Papelería,train,2b90193f5105,cargo papeleria para escuela,True
+papelería para escuela mensual,papelería para escuela,Educación,Papelería,train,2b90193f5105,papeleria para escuela mensual,True
+Entrada de cine,Entrada de cine,Entretenimiento,Cine,train,1b0704d08b13,entrada de cine,False
+cargo entrada de cine,Entrada de cine,Entretenimiento,Cine,train,1b0704d08b13,cargo entrada de cine,True
+entrada de cine mensual,Entrada de cine,Entretenimiento,Cine,train,1b0704d08b13,entrada de cine mensual,True
+Videojuegos,Videojuegos,Entretenimiento,Videojuegos,train,1fb359c08650,videojuegos,False
+cargo videojuegos,Videojuegos,Entretenimiento,Videojuegos,train,1fb359c08650,cargo videojuegos,True
+videojuegos mensual,Videojuegos,Entretenimiento,Videojuegos,train,1fb359c08650,videojuegos mensual,True
+Museo,Museo,Entretenimiento,Museos,validation,4858aa19f635,museo,False
+Transferencia a inversión,Transferencia a inversión,Finanzas,Inversiones,validation,b6fd7e04c1c4,transferencia a inversion,False
+Botana,Botana,Otros,Frituras,train,44c4cc19339f,botana,False
+cargo botana,Botana,Otros,Frituras,train,44c4cc19339f,cargo botana,True
+botana mensual,Botana,Otros,Frituras,train,44c4cc19339f,botana mensual,True
+ropa en tintorería,ropa en tintorería,Otros,Tintorería,test,c4bac401f7be,ropa en tintoreria,False
+lentes en óptica,lentes en óptica,Salud,Óptica,train,7ea29fea337f,lentes en optica,False
+cargo lentes en óptica,lentes en óptica,Salud,Óptica,train,7ea29fea337f,cargo lentes en optica,True
+lentes en óptica mensual,lentes en óptica,Salud,Óptica,train,7ea29fea337f,lentes en optica mensual,True
+Gimnasio,Gimnasio,Salud,Ejercicio,validation,e8be27b4e12d,gimnasio,False
+Terapia,Terapia,Salud,Terapeuta,train,eb69dedd7863,terapia,False
+cargo terapia,Terapia,Salud,Terapeuta,train,eb69dedd7863,cargo terapia,True
+terapia mensual,Terapia,Salud,Terapeuta,train,eb69dedd7863,terapia mensual,True
+recibo del agua,recibo del agua,Servicios,Agua,train,880f7a640dda,recibo del agua,False
+cargo recibo del agua,recibo del agua,Servicios,Agua,train,880f7a640dda,cargo recibo del agua,True
+recibo del agua mensual,recibo del agua,Servicios,Agua,train,880f7a640dda,recibo del agua mensual,True
+Pago de teléfono,Pago de teléfono,Servicios,Teléfono,train,cef3d212065c,pago de telefono,False
+pg de teléfono,Pago de teléfono,Servicios,Teléfono,train,cef3d212065c,pg de telefono,True
+cargo pago de teléfono,Pago de teléfono,Servicios,Teléfono,train,cef3d212065c,cargo pago de telefono,True
+pago de teléfono mensual,Pago de teléfono,Servicios,Teléfono,train,cef3d212065c,pago de telefono mensual,True
+gasolina del auto,gasolina del auto,Transporte,Combustible,train,2de18bbb3f70,gasolina del auto,False
+cargo gasolina del auto,gasolina del auto,Transporte,Combustible,train,2de18bbb3f70,cargo gasolina del auto,True
+gasolina del auto mensual,gasolina del auto,Transporte,Combustible,train,2de18bbb3f70,gasolina del auto mensual,True
+mantenimiento del coche,mantenimiento del coche,Transporte,Servicio vehicular,train,d01c4a113b9d,mantenimiento del coche,False
+mant del coche,mantenimiento del coche,Transporte,Servicio vehicular,train,d01c4a113b9d,mant del coche,True
+cargo mantenimiento del coche,mantenimiento del coche,Transporte,Servicio vehicular,train,d01c4a113b9d,cargo mantenimiento del coche,True
+mantenimiento del coche mensual,mantenimiento del coche,Transporte,Servicio vehicular,train,d01c4a113b9d,mantenimiento del coche mensual,True
+uber a la oficina,uber a la oficina,Transporte,Uber,train,de07a900e330,uber a la oficina,False
+cargo uber a la oficina,uber a la oficina,Transporte,Uber,train,de07a900e330,cargo uber a la oficina,True
+uber a la oficina mensual,uber a la oficina,Transporte,Uber,train,de07a900e330,uber a la oficina mensual,True
+reparación de la casa,reparación de la casa,Vivienda,Mantenimiento,train,5512ecbdfbc8,reparacion de la casa,False
+cargo reparación de la casa,reparación de la casa,Vivienda,Mantenimiento,train,5512ecbdfbc8,cargo reparacion de la casa,True
+reparación de la casa mensual,reparación de la casa,Vivienda,Mantenimiento,train,5512ecbdfbc8,reparacion de la casa mensual,True
+pago predial anual,pago predial anual,Vivienda,Predial,validation,a00678dcb40b,pago predial anual,False
+pago de colegiatura,pago de colegiatura,Educación,Universidad,test,fe923ea151ec,pago de colegiatura,False
+mensualidad universidad,mensualidad universidad,Educación,Universidad,train,553e71f109a7,mensualidad universidad,False
+mens uni,mensualidad universidad,Educación,Universidad,train,553e71f109a7,mens uni,True
+cargo mensualidad universidad,mensualidad universidad,Educación,Universidad,train,553e71f109a7,cargo mensualidad universidad,True
+mensualidad universidad mensual,mensualidad universidad,Educación,Universidad,train,553e71f109a7,mensualidad universidad mensual,True
+inscripción universitaria,inscripción universitaria,Educación,Universidad,train,20ef41a51c2d,inscripcion universitaria,False
+cargo inscripción universitaria,inscripción universitaria,Educación,Universidad,train,20ef41a51c2d,cargo inscripcion universitaria,True
+inscripción universitaria mensual,inscripción universitaria,Educación,Universidad,train,20ef41a51c2d,inscripcion universitaria mensual,True
+pago de semestre,pago de semestre,Educación,Universidad,train,5b3205c2c3df,pago de semestre,False
+pg de semestre,pago de semestre,Educación,Universidad,train,5b3205c2c3df,pg de semestre,True
+cargo pago de semestre,pago de semestre,Educación,Universidad,train,5b3205c2c3df,cargo pago de semestre,True
+pago de semestre mensual,pago de semestre,Educación,Universidad,train,5b3205c2c3df,pago de semestre mensual,True
+cuota escolar,cuota escolar,Educación,Universidad,train,ae44ff6dabe9,cuota escolar,False
+cargo cuota escolar,cuota escolar,Educación,Universidad,train,ae44ff6dabe9,cargo cuota escolar,True
+cuota escolar mensual,cuota escolar,Educación,Universidad,train,ae44ff6dabe9,cuota escolar mensual,True
+curso en udemy,curso en udemy,Educación,Cursos,test,27e550c238c3,curso en udemy,False
+curso en coursera,curso en coursera,Educación,Cursos,train,0ed7b6f3073c,curso en coursera,False
+cargo curso en coursera,curso en coursera,Educación,Cursos,train,0ed7b6f3073c,cargo curso en coursera,True
+curso en coursera mensual,curso en coursera,Educación,Cursos,train,0ed7b6f3073c,curso en coursera mensual,True
+diplomado en línea,diplomado en línea,Educación,Cursos,train,378d4aa0783f,diplomado en linea,False
+cargo diplomado en línea,diplomado en línea,Educación,Cursos,train,378d4aa0783f,cargo diplomado en linea,True
+diplomado en línea mensual,diplomado en línea,Educación,Cursos,train,378d4aa0783f,diplomado en linea mensual,True
+capacitación profesional,capacitación profesional,Educación,Cursos,train,99e8b25f7e50,capacitacion profesional,False
+cargo capacitación profesional,capacitación profesional,Educación,Cursos,train,99e8b25f7e50,cargo capacitacion profesional,True
+capacitación profesional mensual,capacitación profesional,Educación,Cursos,train,99e8b25f7e50,capacitacion profesional mensual,True
+clase de inglés,clase de inglés,Educación,Cursos,validation,9b3805440281,clase de ingles,False
+taller de programación,taller de programación,Educación,Cursos,train,6aabb9385113,taller de programacion,False
+cargo taller de programación,taller de programación,Educación,Cursos,train,6aabb9385113,cargo taller de programacion,True
+taller de programación mensual,taller de programación,Educación,Cursos,train,6aabb9385113,taller de programacion mensual,True
+compra en papelería,compra en papelería,Educación,Papelería,test,1c769a266842,compra en papeleria,False
+útiles escolares,útiles escolares,Educación,Papelería,validation,125f1d8b3265,utiles escolares,False
+cuadernos y plumas,cuadernos y plumas,Educación,Papelería,train,38640d1d992e,cuadernos y plumas,False
+cargo cuadernos y plumas,cuadernos y plumas,Educación,Papelería,train,38640d1d992e,cargo cuadernos y plumas,True
+cuadernos y plumas mensual,cuadernos y plumas,Educación,Papelería,train,38640d1d992e,cuadernos y plumas mensual,True
+libros escolares,libros escolares,Educación,Material escolar,validation,9b3b3b8264eb,libros escolares,False
+material para clases,material para clases,Educación,Material escolar,train,7399867a1fec,material para clases,False
+cargo material para clases,material para clases,Educación,Material escolar,train,7399867a1fec,cargo material para clases,True
+material para clases mensual,material para clases,Educación,Material escolar,train,7399867a1fec,material para clases mensual,True
+compra de libros de texto,compra de libros de texto,Educación,Material escolar,train,42d0f3d15daa,compra de libros de texto,False
+comp de libros de texto,compra de libros de texto,Educación,Material escolar,train,42d0f3d15daa,comp de libros de texto,True
+cargo compra de libros de texto,compra de libros de texto,Educación,Material escolar,train,42d0f3d15daa,cargo compra de libros de texto,True
+compra de libros de texto mensual,compra de libros de texto,Educación,Material escolar,train,42d0f3d15daa,compra de libros de texto mensual,True
+uniforme escolar,uniforme escolar,Educación,Material escolar,train,6b48cba807fa,uniforme escolar,False
+cargo uniforme escolar,uniforme escolar,Educación,Material escolar,train,6b48cba807fa,cargo uniforme escolar,True
+uniforme escolar mensual,uniforme escolar,Educación,Material escolar,train,6b48cba807fa,uniforme escolar mensual,True
+pago recibo de luz,pago recibo de luz,Servicios,Electricidad,train,c34faf9cae4b,pago recibo de luz,False
+pg recibo de luz,pago recibo de luz,Servicios,Electricidad,train,c34faf9cae4b,pg recibo de luz,True
+cargo pago recibo de luz,pago recibo de luz,Servicios,Electricidad,train,c34faf9cae4b,cargo pago recibo de luz,True
+pago recibo de luz mensual,pago recibo de luz,Servicios,Electricidad,train,c34faf9cae4b,pago recibo de luz mensual,True
+servicio de electricidad,servicio de electricidad,Servicios,Electricidad,train,89d1f023a7c8,servicio de electricidad,False
+serv de electricidad,servicio de electricidad,Servicios,Electricidad,train,89d1f023a7c8,serv de electricidad,True
+cargo servicio de electricidad,servicio de electricidad,Servicios,Electricidad,train,89d1f023a7c8,cargo servicio de electricidad,True
+servicio de electricidad mensual,servicio de electricidad,Servicios,Electricidad,train,89d1f023a7c8,servicio de electricidad mensual,True
+cargo de energía eléctrica,cargo de energía eléctrica,Servicios,Electricidad,validation,2aee5730b8b2,cargo de energia electrica,False
+mensualidad de internet,mensualidad de internet,Servicios,Internet,validation,7282a9dfdb69,mensualidad de internet,False
+servicio wifi casa,servicio wifi casa,Servicios,Internet,train,85e8b927e45a,servicio wifi casa,False
+serv wifi casa,servicio wifi casa,Servicios,Internet,train,85e8b927e45a,serv wifi casa,True
+cargo servicio wifi casa,servicio wifi casa,Servicios,Internet,train,85e8b927e45a,cargo servicio wifi casa,True
+servicio wifi casa mensual,servicio wifi casa,Servicios,Internet,train,85e8b927e45a,servicio wifi casa mensual,True
+recibo de fibra óptica,recibo de fibra óptica,Servicios,Internet,train,5bdcc21d5a55,recibo de fibra optica,False
+cargo recibo de fibra óptica,recibo de fibra óptica,Servicios,Internet,train,5bdcc21d5a55,cargo recibo de fibra optica,True
+recibo de fibra óptica mensual,recibo de fibra óptica,Servicios,Internet,train,5bdcc21d5a55,recibo de fibra optica mensual,True
+pago del celular,pago del celular,Servicios,Teléfono,train,ebe220a26430,pago del celular,False
+pg del celular,pago del celular,Servicios,Teléfono,train,ebe220a26430,pg del celular,True
+cargo pago del celular,pago del celular,Servicios,Teléfono,train,ebe220a26430,cargo pago del celular,True
+pago del celular mensual,pago del celular,Servicios,Teléfono,train,ebe220a26430,pago del celular mensual,True
+plan de teléfono,plan de teléfono,Servicios,Teléfono,train,5aab0415e0ff,plan de telefono,False
+cargo plan de teléfono,plan de teléfono,Servicios,Teléfono,train,5aab0415e0ff,cargo plan de telefono,True
+plan de teléfono mensual,plan de teléfono,Servicios,Teléfono,train,5aab0415e0ff,plan de telefono mensual,True
+recarga telefónica,recarga telefónica,Servicios,Teléfono,train,5f4da703055d,recarga telefonica,False
+cargo recarga telefónica,recarga telefónica,Servicios,Teléfono,train,5f4da703055d,cargo recarga telefonica,True
+recarga telefónica mensual,recarga telefónica,Servicios,Teléfono,train,5f4da703055d,recarga telefonica mensual,True
+mensualidad telcel,mensualidad telcel,Servicios,Teléfono,validation,8020c7bb3e26,mensualidad telcel,False
+pago recibo del agua,pago recibo del agua,Servicios,Agua,train,face75ed5c2d,pago recibo del agua,False
+pg recibo del agua,pago recibo del agua,Servicios,Agua,train,face75ed5c2d,pg recibo del agua,True
+cargo pago recibo del agua,pago recibo del agua,Servicios,Agua,train,face75ed5c2d,cargo pago recibo del agua,True
+pago recibo del agua mensual,pago recibo del agua,Servicios,Agua,train,face75ed5c2d,pago recibo del agua mensual,True
+servicio de agua potable,servicio de agua potable,Servicios,Agua,train,f1ff77db6459,servicio de agua potable,False
+serv de agua potable,servicio de agua potable,Servicios,Agua,train,f1ff77db6459,serv de agua potable,True
+cargo servicio de agua potable,servicio de agua potable,Servicios,Agua,train,f1ff77db6459,cargo servicio de agua potable,True
+servicio de agua potable mensual,servicio de agua potable,Servicios,Agua,train,f1ff77db6459,servicio de agua potable mensual,True
+pago de gas doméstico,pago de gas doméstico,Servicios,Gas,validation,0949e9514d77,pago de gas domestico,False
+recarga de tanque de gas,recarga de tanque de gas,Servicios,Gas,train,3977c2755eb5,recarga de tanque de gas,False
+cargo recarga de tanque de gas,recarga de tanque de gas,Servicios,Gas,train,3977c2755eb5,cargo recarga de tanque de gas,True
+recarga de tanque de gas mensual,recarga de tanque de gas,Servicios,Gas,train,3977c2755eb5,recarga de tanque de gas mensual,True
+pago de televisión por cable,pago de televisión por cable,Servicios,TV de paga,test,0fd90cb435ec,pago de television por cable,False
+mensualidad tv de paga,mensualidad tv de paga,Servicios,TV de paga,test,bc0439c47100,mensualidad tv de paga,False
+uber al trabajo,uber al trabajo,Transporte,Uber,train,1eabf3efd89c,uber al trabajo,False
+cargo uber al trabajo,uber al trabajo,Transporte,Uber,train,1eabf3efd89c,cargo uber al trabajo,True
+uber al trabajo mensual,uber al trabajo,Transporte,Uber,train,1eabf3efd89c,uber al trabajo mensual,True
+uber al aeropuerto,uber al aeropuerto,Transporte,Uber,test,66ff6bf3a6f1,uber al aeropuerto,False
+viaje en taxi,viaje en taxi,Transporte,Taxi,validation,e72a97519522,viaje en taxi,False
+taxi a casa,taxi a casa,Transporte,Taxi,train,5bc14ed00490,taxi a casa,False
+cargo taxi a casa,taxi a casa,Transporte,Taxi,train,5bc14ed00490,cargo taxi a casa,True
+taxi a casa mensual,taxi a casa,Transporte,Taxi,train,5bc14ed00490,taxi a casa mensual,True
+carga de gasolina,carga de gasolina,Transporte,Combustible,train,278619c16017,carga de gasolina,False
+cargo carga de gasolina,carga de gasolina,Transporte,Combustible,train,278619c16017,cargo carga de gasolina,True
+carga de gasolina mensual,carga de gasolina,Transporte,Combustible,train,278619c16017,carga de gasolina mensual,True
+gasolina pemex,gasolina pemex,Transporte,Combustible,train,bdae471a0883,gasolina pemex,False
+cargo gasolina pemex,gasolina pemex,Transporte,Combustible,train,bdae471a0883,cargo gasolina pemex,True
+gasolina pemex mensual,gasolina pemex,Transporte,Combustible,train,bdae471a0883,gasolina pemex mensual,True
+llenado de tanque,llenado de tanque,Transporte,Combustible,train,e9673b4ba6b9,llenado de tanque,False
+cargo llenado de tanque,llenado de tanque,Transporte,Combustible,train,e9673b4ba6b9,cargo llenado de tanque,True
+llenado de tanque mensual,llenado de tanque,Transporte,Combustible,train,e9673b4ba6b9,llenado de tanque mensual,True
+combustible para auto,combustible para auto,Transporte,Combustible,train,eab1501e8268,combustible para auto,False
+cargo combustible para auto,combustible para auto,Transporte,Combustible,train,eab1501e8268,cargo combustible para auto,True
+combustible para auto mensual,combustible para auto,Transporte,Combustible,train,eab1501e8268,combustible para auto mensual,True
+pasaje de autobús,pasaje de autobús,Transporte,Autobús,train,2553ff0f7b94,pasaje de autobus,False
+cargo pasaje de autobús,pasaje de autobús,Transporte,Autobús,train,2553ff0f7b94,cargo pasaje de autobus,True
+pasaje de autobús mensual,pasaje de autobús,Transporte,Autobús,train,2553ff0f7b94,pasaje de autobus mensual,True
+camión urbano,camión urbano,Transporte,Autobús,train,48f6ffb23a66,camion urbano,False
+cargo camión urbano,camión urbano,Transporte,Autobús,train,48f6ffb23a66,cargo camion urbano,True
+camión urbano mensual,camión urbano,Transporte,Autobús,train,48f6ffb23a66,camion urbano mensual,True
+boleto de autobús,boleto de autobús,Transporte,Autobús,train,4a330ed83110,boleto de autobus,False
+cargo boleto de autobús,boleto de autobús,Transporte,Autobús,train,4a330ed83110,cargo boleto de autobus,True
+boleto de autobús mensual,boleto de autobús,Transporte,Autobús,train,4a330ed83110,boleto de autobus mensual,True
+boleto de metro,boleto de metro,Transporte,Tren,train,a1424dd6641e,boleto de metro,False
+cargo boleto de metro,boleto de metro,Transporte,Tren,train,a1424dd6641e,cargo boleto de metro,True
+boleto de metro mensual,boleto de metro,Transporte,Tren,train,a1424dd6641e,boleto de metro mensual,True
+pasaje de tren,pasaje de tren,Transporte,Tren,test,f11e7dcc91e8,pasaje de tren,False
+vuelo nacional,vuelo nacional,Transporte,Avión,train,7912925fe1b6,vuelo nacional,False
+cargo vuelo nacional,vuelo nacional,Transporte,Avión,train,7912925fe1b6,cargo vuelo nacional,True
+vuelo nacional mensual,vuelo nacional,Transporte,Avión,train,7912925fe1b6,vuelo nacional mensual,True
+servicio del automóvil,servicio del automóvil,Transporte,Servicio vehicular,train,22218e0df5e9,servicio del automovil,False
+serv del automóvil,servicio del automóvil,Transporte,Servicio vehicular,train,22218e0df5e9,serv del automovil,True
+cargo servicio del automóvil,servicio del automóvil,Transporte,Servicio vehicular,train,22218e0df5e9,cargo servicio del automovil,True
+servicio del automóvil mensual,servicio del automóvil,Transporte,Servicio vehicular,train,22218e0df5e9,servicio del automovil mensual,True
+taller mecánico,taller mecánico,Transporte,Servicio vehicular,train,1bf90df6750f,taller mecanico,False
+cargo taller mecánico,taller mecánico,Transporte,Servicio vehicular,train,1bf90df6750f,cargo taller mecanico,True
+taller mecánico mensual,taller mecánico,Transporte,Servicio vehicular,train,1bf90df6750f,taller mecanico mensual,True
+verificación del auto,verificación del auto,Transporte,Verificación vehicular,train,01f8f13da782,verificacion del auto,False
+cargo verificación del auto,verificación del auto,Transporte,Verificación vehicular,train,01f8f13da782,cargo verificacion del auto,True
+verificación del auto mensual,verificación del auto,Transporte,Verificación vehicular,train,01f8f13da782,verificacion del auto mensual,True
+pago de tenencia,pago de tenencia,Transporte,Tenencia vehicular,train,b33ebe9daca0,pago de tenencia,False
+pg de tenencia,pago de tenencia,Transporte,Tenencia vehicular,train,b33ebe9daca0,pg de tenencia,True
+cargo pago de tenencia,pago de tenencia,Transporte,Tenencia vehicular,train,b33ebe9daca0,cargo pago de tenencia,True
+pago de tenencia mensual,pago de tenencia,Transporte,Tenencia vehicular,train,b33ebe9daca0,pago de tenencia mensual,True
+compra de despensa,compra de despensa,Alimentación,Supermercado,validation,913e80de18bb,compra de despensa,False
+supermercado semanal,supermercado semanal,Alimentación,Supermercado,validation,94f0fbd26393,supermercado semanal,False
+pedido de comida rápida,pedido de comida rápida,Alimentación,Comida rápida,validation,96f6a7bc6fbf,pedido de comida rapida,False
+compra de ropa,compra de ropa,Compras,Ropa,train,127b9d6046f7,compra de ropa,False
+comp de ropa,compra de ropa,Compras,Ropa,train,127b9d6046f7,comp de ropa,True
+cargo compra de ropa,compra de ropa,Compras,Ropa,train,127b9d6046f7,cargo compra de ropa,True
+compra de ropa mensual,compra de ropa,Compras,Ropa,train,127b9d6046f7,compra de ropa mensual,True
+pago de estacionamiento,pago de estacionamiento,Otros,Estacionamiento,test,1d7f035d3d8e,pago de estacionamiento,False
+donativo,donativo,Otros,Donaciones,test,49c487ae6ca8,donativo,False
+gasto varios,gasto varios,Otros,Otros,validation,09a7a4616b4d,gasto varios,False
