@@ -101,8 +101,185 @@ def crear_usuario(usuario: schemas.UsuarioCrear, db: Session = Depends(get_db)):
     db.refresh(nuevo)
     return nuevo
 
+# ---------------------------------------------------------
+# ============================
+# MOTOR DE ANÁLISIS FINANCIERO (reglas de negocio de Data Science)
+# ============================
+
+def points_spending(rate):
+    if rate <= 0.60:
+        return 25
+    elif rate <= 1.00:
+        return round(25 * (1 - ((rate - 0.60) / 0.40)), 2)
+    return 0
+
+def points_saving(compliance):
+    compliance = min(compliance, 1)
+    return round(compliance * 25, 2)
+
+def points_debt(debt_ratio):
+    if debt_ratio <= 0.25:
+        return 20
+    elif debt_ratio <= 2.00:
+        return round(20 * (1 - ((debt_ratio - 0.25) / 1.75)), 2)
+    return 0
+
+def points_balance(financing_rate):
+    if financing_rate <= 0:
+        return 20
+    elif financing_rate <= 0.20:
+        return round(20 * (1 - (financing_rate / 0.20)), 2)
+    return 0
+
+def points_control(variable_expense_rate):
+    if variable_expense_rate <= 0.35:
+        return 10
+    elif variable_expense_rate <= 0.65:
+        return round(10 * (1 - ((variable_expense_rate - 0.35) / 0.30)), 2)
+    return 0
+
+def assign_profile_ia(score):
+    if score >= 75:
+        return "Saludable"
+    if score >= 50:
+        return "En observación"
+    return "En riesgo"
+
+def assign_diagnosis(indicadores):
+    if indicadores["tasa_financiamiento"] > 0:
+        return "Déficit y financiamiento"
+    if indicadores["ratio_saldo_deuda_ingreso"] > 0.35 or indicadores["tasa_pago_deuda"] > 0.12:
+        return "Endeudamiento"
+    if indicadores["tasa_gasto"] > 0.90 or indicadores["tasa_gasto_variable"] > 0.60:
+        return "Gasto elevado"
+    if indicadores["cumplimiento_meta_ahorro"] < 0.50:
+        return "Ahorro insuficiente"
+    return "Equilibrado"
+
+RECOMENDACIONES_IA = {
+    "Déficit y financiamiento": "Reducir gastos variables y evitar nuevo financiamiento.",
+    "Endeudamiento": "Priorizar pagos de deuda y limitar nuevas compras a crédito.",
+    "Gasto elevado": "Revisar los gastos variables y la categoría principal del mes.",
+    "Ahorro insuficiente": "Programar un ahorro automático para acercarse a la meta declarada.",
+    "Equilibrado": "Mantener el control actual y continuar con el hábito de ahorro.",
+}
 
 
+#------------endpoint de funciones y calculo de analisis completo
+@app.get("/perfil-ia/{usuario_id}")
+def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
+    usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
+    transacciones = db.query(models.Transaccion).filter(
+        models.Transaccion.usuario_id == usuario_id,
+        models.Transaccion.fecha >= datetime(anio, mes, 1),
+        models.Transaccion.fecha < datetime(anio + (mes == 12), (mes % 12) + 1, 1)
+    ).all()
+
+    if not transacciones:
+        raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
+
+    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso")
+    ingresos = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
+
+    gastos_recurrentes = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria in CATEGORIAS_ESENCIALES)
+    gastos_variables = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria not in CATEGORIAS_ESENCIALES and t.categoria != "deudas")
+    pagos_deuda = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria == "deudas")
+    gastos = gastos_recurrentes + gastos_variables + pagos_deuda
+
+    # No capturados todavía en el sistema: se asumen en 0 (limitación conocida, documentada)
+    financiamiento = 0
+    inversiones = 0
+
+    ahorro = max(ingresos - gastos, 0)
+    saldo_deuda_estimado = (usuario.nivel_deuda_inicial / 100) * ingresos if ingresos > 0 else 0
+
+    tasa_gasto = gastos / ingresos if ingresos > 0 else 0
+    tasa_pago_deuda = pagos_deuda / ingresos if ingresos > 0 else 0
+    tasa_financiamiento = financiamiento / ingresos if ingresos > 0 else 0
+    tasa_gasto_variable = gastos_variables / ingresos if ingresos > 0 else 0
+    cumplimiento_meta_ahorro = min((ahorro / ingresos) / (usuario.meta_ahorro / 100), 1) if ingresos > 0 and usuario.meta_ahorro > 0 else 0
+    ratio_saldo_deuda_ingreso = saldo_deuda_estimado / ingresos if ingresos > 0 else 0
+
+    indicadores = {
+        "tasa_gasto": round(tasa_gasto, 4),
+        "tasa_pago_deuda": round(tasa_pago_deuda, 4),
+        "tasa_financiamiento": round(tasa_financiamiento, 4),
+        "tasa_gasto_variable": round(tasa_gasto_variable, 4),
+        "cumplimiento_meta_ahorro": round(cumplimiento_meta_ahorro, 4),
+        "ratio_saldo_deuda_ingreso": round(ratio_saldo_deuda_ingreso, 4),
+    }
+
+    puntos_gasto = points_spending(tasa_gasto)
+    puntos_ahorro = points_saving(cumplimiento_meta_ahorro)
+    puntos_deuda = points_debt(ratio_saldo_deuda_ingreso)
+    puntos_balance = points_balance(tasa_financiamiento)
+    puntos_control = points_control(tasa_gasto_variable)
+
+    score_base = round(puntos_gasto + puntos_ahorro + puntos_deuda + puntos_balance + puntos_control, 2)
+
+    bonus = 0
+    motivos_bonus = []
+    if cumplimiento_meta_ahorro >= 1:
+        bonus += 2
+        motivos_bonus.append("Meta de ahorro cumplida")
+    if tasa_financiamiento == 0:
+        bonus += 2
+        motivos_bonus.append("Sin nuevo financiamiento")
+    if tasa_gasto_variable < 0.30:
+        bonus += 1
+        motivos_bonus.append("Buen control del gasto variable")
+
+    score_financiero = min(score_base + bonus, 100)
+    bonus_aplicado = round(score_financiero - score_base, 2)
+
+    perfil = assign_profile_ia(score_financiero)
+    diagnostico = assign_diagnosis(indicadores)
+    recomendacion = RECOMENDACIONES_IA[diagnostico]
+
+    return {
+        "usuario_id": usuario_id,
+        "anio": anio,
+        "mes": mes,
+        "score_base": score_base,
+        "bonus_buenos_habitos": bonus,
+        "bonus_aplicado": bonus_aplicado,
+        "score_financiero": score_financiero,
+        "perfil_financiero": perfil,
+        "motivos_bonus": motivos_bonus,
+        "diagnostico_principal": diagnostico,
+        "recomendacion": recomendacion,
+        "indicadores": indicadores,
+        "analysis_version": "financial-analysis-v1-aproximado"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------
 CATEGORIAS_ESENCIALES = ["alimentacion", "transporte", "salud", "vivienda", "educacion", "servicios"]
 
 # endpoint para calcular perfil (reglas de negocio)

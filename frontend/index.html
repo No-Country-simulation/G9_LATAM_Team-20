@@ -427,9 +427,47 @@
                 </section>
             </div>
 
+            <!-- PESTAÑA 5: ANÁLISIS ECONOMIA (IA) -->
+            <div id="tab-economia-ia" class="tab-content">
+                <section class="card economia-ia-section" style="max-width: 600px; margin: 0 auto;">
+                    <div class="economia-ia-header">
+                        <div class="coach-avatar-small">🤖</div>
+                        <div>
+                            <h2 style="border: none; margin-bottom: 0;">Tu Análisis con EconomIA</h2>
+                            <p class="slide-text" style="margin-bottom: 0;">Mi diagnóstico financiero del mes</p>
+                        </div>
+                    </div>
+
+                    <div id="economiaIaEmptyState" class="empty-state" style="display: none;">
+                        <div class="empty-state-icon">🤖</div>
+                        <p class="empty-state-text">Aún no tengo suficiente información este mes. Registra tus movimientos y vuelvo contigo.</p>
+                    </div>
+
+                    <div id="economiaIaContent">
+                        <div id="scoreBadge" class="badge badge-loading">Cargando...</div>
+
+                        <div class="chart-container" style="max-width: 200px;">
+                            <canvas id="graficaScore"></canvas>
+                        </div>
+
+                        <div class="recommendation-box">
+                            <h4>Lo que noté:</h4>
+                            <p id="txtDiagnosticoIa">-</p>
+                        </div>
+
+                        <div class="recommendation-box" style="margin-top: 1rem;">
+                            <h4>Mi recomendación:</h4>
+                            <p id="txtRecomendacionIa">-</p>
+                        </div>
+
+                        <div id="motivosBonusContainer" style="margin-top: 1rem;"></div>
+                    </div>
+                </section>
+            </div>
+
         </main>
 
-        <!-- BARRA DE NAVEGACIÓN FLOTANTE (ESTILO PREMIUM BANCA MÓVIL) -->
+        <!-- BARRA DE NAVEGACIÓN FLOTANTE (ESTILO PREMIUM BANCA MÓVIL)  se actualiza para el perfil IA-->
         <nav class="floating-nav">
             <button class="nav-item active" onclick="cambiarTab('salud')">
                 <span class="nav-icon">📊</span>
@@ -447,8 +485,11 @@
                 <span class="nav-icon">👤</span>
                 <span class="nav-label">Perfil</span>
             </button>
+            <button class="nav-item" onclick="cambiarTab('economia-ia')">
+                <span class="nav-icon">🤖</span>
+                <span class="nav-label">EconomIA</span>
+            </button>
         </nav>
-    </div>
 
     <script src="app.js"></script>
 </body>

@@ -897,3 +897,16 @@ input, select {
 .toggle-password:hover {
     opacity: 1;
 }
+
+
+.economia-ia-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.coach-avatar-small {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+}
