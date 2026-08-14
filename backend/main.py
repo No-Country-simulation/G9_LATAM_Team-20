@@ -8,7 +8,7 @@ import models as models
 import schemas as schemas
 from seguridad import encriptar_password, verificar_password
 
-modelo_clasificador = joblib.load("modelos/category_classifier_v1.joblib")
+modelo_clasificador = joblib.load("modelos/category_classifier_final.joblib") # se actualiza modelo calsificador 
 
 Base.metadata.create_all(bind=engine)
 
