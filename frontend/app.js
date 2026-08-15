@@ -1,6 +1,22 @@
 const API_BASE_URL = "http://127.0.0.1:8000";
 let graficaCategorias = null;
 
+// --- graficas de score en ia ---
+let graficaIndicadores = null;
+let graficaScore = null;
+const economiaIaEmptyState = document.getElementById("economiaIaEmptyState");
+const economiaIaContent = document.getElementById("economiaIaContent");
+const scoreBadge = document.getElementById("scoreBadge");
+const txtDiagnosticoIa = document.getElementById("txtDiagnosticoIa");
+const txtRecomendacionIa = document.getElementById("txtRecomendacionIa");
+const motivosBonusContainer = document.getElementById("motivosBonusContainer");
+const valScoreBase = document.getElementById("valScoreBase");
+const valBonus = document.getElementById("valBonus");
+const valScoreFinal = document.getElementById("valScoreFinal");
+const indicadoresGrid = document.getElementById("indicadoresGrid");
+
+
+
 // --- ELEMENTOS DE LAS PANTALLAS ---
 const welcomeScreen = document.getElementById("welcomeScreen");
 const appDashboard = document.getElementById("appDashboard");
@@ -448,6 +464,7 @@ async function actualizarDashboard(id) {
             resGastos.innerText = `$${data.gastos_totales.toFixed(2)}`;
             dibujarResumenCategorias(data.gastos_por_categoria, data.gastos_totales);
             dibujarGraficaCategorias(data.gastos_por_categoria);
+            cargarAnalisisIa(id, anio, mes);
            
         } else {
             resIngresos.innerText = "$0.00";
@@ -460,7 +477,7 @@ async function actualizarDashboard(id) {
 }
 
 
- // se agrega codigo para las graficas
+// se agrega codigo para las graficas
             function dibujarGraficaCategorias(gastosPorCategoria) {
             const etiquetas = Object.keys(gastosPorCategoria);
             const valores = Object.values(gastosPorCategoria);
@@ -500,6 +517,11 @@ async function actualizarDashboard(id) {
 
             // fin codigo agregado
 
+
+
+
+
+            
 // Pintar barras de progreso por categoría de gasto (NUEVO)
 function dibujarResumenCategorias(gastosPorCategoria, gastosTotales) {
     resumenCategoriasContainer.innerHTML = "";
@@ -546,6 +568,152 @@ function dibujarResumenCategorias(gastosPorCategoria, gastosTotales) {
         resumenCategoriasContainer.appendChild(row);
     });
 }
+
+// funcion para cargar y dibujar el analisis
+async function cargarAnalisisIa(id, anio, mes) {
+    try {
+        const respuesta = await fetch(`${API_BASE_URL}/perfil-ia/${id}?anio=${anio}&mes=${mes}`);
+
+        if (!respuesta.ok) {
+            economiaIaEmptyState.style.display = "block";
+            economiaIaContent.style.display = "none";
+            return;
+        }
+
+        const datos = await respuesta.json();
+
+        economiaIaEmptyState.style.display = "none";
+        economiaIaContent.style.display = "block";
+
+        scoreBadge.innerText = `${datos.perfil_financiero} — ${datos.score_financiero}/100`;
+        scoreBadge.className = "badge";
+        if (datos.perfil_financiero === "Saludable") scoreBadge.classList.add("badge-healthy");
+        else if (datos.perfil_financiero === "En observación") scoreBadge.classList.add("badge-warning");
+        else scoreBadge.classList.add("badge-danger");
+
+        txtDiagnosticoIa.innerText = `Detecté que tu situación principal este mes es: ${datos.diagnostico_principal}.`;
+        txtRecomendacionIa.innerText = datos.recomendacion;
+
+        motivosBonusContainer.innerHTML = "";
+        if (datos.motivos_bonus.length > 0) {
+            const titulo = document.createElement("p");
+            titulo.innerText = "Cosas que hiciste bien este mes:";
+            titulo.style.fontWeight = "600";
+            titulo.style.marginBottom = "0.5rem";
+            motivosBonusContainer.appendChild(titulo);
+
+            datos.motivos_bonus.forEach(motivo => {
+                const item = document.createElement("p");
+                item.innerText = `✅ ${motivo}`;
+                item.style.fontSize = "0.9rem";
+                item.style.color = "var(--status-healthy)";
+                motivosBonusContainer.appendChild(item);
+            });
+        }
+        valScoreBase.innerText = datos.score_base;
+        valBonus.innerText = `+${datos.bonus_aplicado}`;
+        valScoreFinal.innerText = datos.score_financiero;
+
+        const nombresIndicadores = {
+            tasa_gasto: "Tasa de gasto",
+            tasa_pago_deuda: "Pago de deuda",
+            tasa_financiamiento: "Financiamiento",
+            tasa_gasto_variable: "Gasto variable",
+            cumplimiento_meta_ahorro: "Cumplimiento de meta",
+            ratio_saldo_deuda_ingreso: "Deuda vs. ingreso",
+        };
+
+        indicadoresGrid.innerHTML = "";
+        Object.entries(datos.indicadores).forEach(([clave, valor]) => {
+            const item = document.createElement("div");
+            item.className = "ia-indicador-item";
+            item.innerHTML = `
+                <span class="ia-indicador-nombre">${nombresIndicadores[clave] || clave}</span>
+                <span class="ia-indicador-valor">${(valor * 100).toFixed(1)}%</span>
+            `;
+            indicadoresGrid.appendChild(item);
+        });
+
+        dibujarGraficaScore(datos.score_financiero);
+        dibujarGraficaIndicadores(datos.indicadores);
+
+    } catch (e) {
+        economiaIaEmptyState.style.display = "block";
+        economiaIaContent.style.display = "none";
+    }
+}
+
+function dibujarGraficaScore(score) {
+    if (graficaScore) {
+        graficaScore.destroy();
+    }
+
+    const contexto = document.getElementById("graficaScore").getContext("2d");
+    const color = score >= 75 ? "#10b981" : score >= 50 ? "#fbbf24" : "#f43f5e";
+
+    graficaScore = new Chart(contexto, {
+        type: "doughnut",
+        data: {
+            datasets: [{
+                data: [score, 100 - score],
+                backgroundColor: [color, "rgba(255,255,255,0.05)"],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            cutout: "75%",
+            plugins: { legend: { display: false }, tooltip: { enabled: false } }
+        }
+    });
+}
+
+
+
+function dibujarGraficaIndicadores(indicadores) {
+    if (graficaIndicadores) {
+        graficaIndicadores.destroy();
+    }
+
+    const nombresIndicadores = {
+        tasa_gasto: "Tasa de gasto",
+        tasa_pago_deuda: "Pago de deuda",
+        tasa_financiamiento: "Financiamiento",
+        tasa_gasto_variable: "Gasto variable",
+        cumplimiento_meta_ahorro: "Cumpl. meta",
+        ratio_saldo_deuda_ingreso: "Deuda/ingreso",
+    };
+
+    const etiquetas = Object.keys(indicadores).map(k => nombresIndicadores[k] || k);
+    const valores = Object.values(indicadores).map(v => Math.round(v * 100));
+
+    const contexto = document.getElementById("graficaIndicadores").getContext("2d");
+    graficaIndicadores = new Chart(contexto, {
+        type: "bar",
+        data: {
+            labels: etiquetas,
+            datasets: [{
+                data: valores,
+                backgroundColor: "#38bdf8",
+                borderRadius: 6
+            }]
+        },
+        options: {
+            indexAxis: "y",
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.x}%` } }
+            },
+            scales: {
+                x: { ticks: { color: "#9ca3af", callback: (v) => `${v}%` }, grid: { color: "rgba(255,255,255,0.05)" } },
+                y: { ticks: { color: "#f3f4f6", font: { size: 11 } }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+
+
+// fin de nueva funcion para cargar y dubujar el analisis
 
 function dibujarTabla(lista) {
     txTableBody.innerHTML = "";

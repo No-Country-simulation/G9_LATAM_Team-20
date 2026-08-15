@@ -258,10 +258,10 @@
 
             <!-- PESTAÑA 2: MOVIMIENTOS Y TRANSACCIONES -->
             <div id="tab-transacciones" class="tab-content">
-                <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                <div class="transacciones-layout">
                     
                     <!-- Registrar movimiento -->
-                    <section class="card transaction-form-section" style="max-width: 600px; margin: 0 auto; width: 100%;">
+                    <section class="card transaction-form-section"">
                         <h2>💸 Registrar Movimiento</h2>
                         <form id="transactionForm" class="vertical-form">
                             <input type="hidden" id="txEditId" value="">
@@ -316,7 +316,7 @@
                     </section>
 
                     <!-- Tabla de Historial -->
-                    <section class="card history-section" style="max-width: 900px; margin: 0 auto; width: 100%;">
+                    <section class="card history-section">
                         <h2>📜 Historial del Periodo</h2>
                         <div class="table-container">
                             <table class="tx-table">
@@ -427,45 +427,122 @@
                 </section>
             </div>
 
-            <!-- PESTAÑA 5: ANÁLISIS ECONOMIA (IA) -->
+           <!-- PESTAÑA 5: ANÁLISIS ECONOMIA (IA) -->
             <div id="tab-economia-ia" class="tab-content">
-                <section class="card economia-ia-section" style="max-width: 600px; margin: 0 auto;">
-                    <div class="economia-ia-header">
-                        <div class="coach-avatar-small">🤖</div>
-                        <div>
-                            <h2 style="border: none; margin-bottom: 0;">Tu Análisis con EconomIA</h2>
-                            <p class="slide-text" style="margin-bottom: 0;">Mi diagnóstico financiero del mes</p>
-                        </div>
-                    </div>
+                <div class="economia-ia-layout">
 
-                    <div id="economiaIaEmptyState" class="empty-state" style="display: none;">
-                        <div class="empty-state-icon">🤖</div>
-                        <p class="empty-state-text">Aún no tengo suficiente información este mes. Registra tus movimientos y vuelvo contigo.</p>
-                    </div>
-
-                    <div id="economiaIaContent">
-                        <div id="scoreBadge" class="badge badge-loading">Cargando...</div>
-
-                        <div class="chart-container" style="max-width: 200px;">
-                            <canvas id="graficaScore"></canvas>
+                    <!-- Columna principal -->
+                    <section class="card economia-ia-section">
+                        <div class="economia-ia-header">
+                            <div class="coach-avatar-small">🤖</div>
+                            <div>
+                                <h2 style="border: none; margin-bottom: 0;">Tu Análisis con EconomIA</h2>
+                                <p class="slide-text" style="margin-bottom: 0;">Mi diagnóstico financiero del mes</p>
+                            </div>
                         </div>
 
-                        <div class="recommendation-box">
-                            <h4>Lo que noté:</h4>
-                            <p id="txtDiagnosticoIa">-</p>
+                        <div id="economiaIaEmptyState" class="empty-state" style="display: none;">
+                            <div class="empty-state-icon">🤖</div>
+                            <p class="empty-state-text">Aún no tengo suficiente información este mes. Registra tus movimientos y vuelvo contigo.</p>
                         </div>
 
-                        <div class="recommendation-box" style="margin-top: 1rem;">
-                            <h4>Mi recomendación:</h4>
-                            <p id="txtRecomendacionIa">-</p>
+                        <div id="economiaIaContent">
+                            <div id="scoreBadge" class="badge badge-loading">Cargando...</div>
+
+                            <div class="chart-container" style="max-width: 200px;">
+                                <canvas id="graficaScore"></canvas>
+                            </div>
+
+                            <div class="recommendation-box">
+                                <h4>Lo que noté:</h4>
+                                <p id="txtDiagnosticoIa">-</p>
+                            </div>
+
+                            <div class="recommendation-box" style="margin-top: 1rem;">
+                                <h4>Mi recomendación:</h4>
+                                <p id="txtRecomendacionIa">-</p>
+                            </div>
+
+                            <div id="motivosBonusContainer" style="margin-top: 1rem;"></div>
+
+                            <div class="score-breakdown">
+                                <div class="score-breakdown-item">
+                                    <span class="score-breakdown-label">Score base</span>
+                                    <span class="score-breakdown-value" id="valScoreBase">-</span>
+                                </div>
+                                <span class="score-breakdown-plus">+</span>
+                                <div class="score-breakdown-item">
+                                    <span class="score-breakdown-label">Bonus</span>
+                                    <span class="score-breakdown-value bonus-value" id="valBonus">-</span>
+                                </div>
+                                <span class="score-breakdown-plus">=</span>
+                                <div class="score-breakdown-item">
+                                    <span class="score-breakdown-label">Score final</span>
+                                    <span class="score-breakdown-value final-value" id="valScoreFinal">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Columna lateral: detalles y explicación -->
+                    <section class="card economia-ia-side">
+                        <h2>📊 Detalles del cálculo</h2>
+
+                        <div class="chart-container" style="max-width: 100%; height: 220px;">
+                            <canvas id="graficaIndicadores"></canvas>
                         </div>
 
-                        <div id="motivosBonusContainer" style="margin-top: 1rem;"></div>
-                    </div>
-                </section>
+                        <div class="ia-indicadores-grid" id="indicadoresGrid"></div>
+
+                        <hr class="divider">
+
+                        <h3 style="margin-bottom: 0.75rem;">¿Cómo calculo tu score?</h3>
+                        <div class="ia-explicacion">
+                            <p class="ia-explicacion-intro">Tu score va de 0 a 100 y se arma con 5 partes:</p>
+
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos">25 pts</span>
+                                <span class="ia-explicacion-texto">Nivel de gasto — cuánto gastas respecto a lo que ganas</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos">25 pts</span>
+                                <span class="ia-explicacion-texto">Cumplimiento de tu meta de ahorro personal</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos">20 pts</span>
+                                <span class="ia-explicacion-texto">Nivel de deuda respecto a tu ingreso</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos">20 pts</span>
+                                <span class="ia-explicacion-texto">Qué tanto necesitaste financiamiento externo</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos">10 pts</span>
+                                <span class="ia-explicacion-texto">Control de tus gastos variables (no esenciales)</span>
+                            </div>
+
+                            <p class="ia-explicacion-intro" style="margin-top: 1rem;">Además, puedes ganar hasta 5 puntos extra de bonus:</p>
+
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos bonus">+2</span>
+                                <span class="ia-explicacion-texto">Cumplir o superar tu meta de ahorro</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos bonus">+2</span>
+                                <span class="ia-explicacion-texto">No necesitar financiamiento nuevo</span>
+                            </div>
+                            <div class="ia-explicacion-item">
+                                <span class="ia-explicacion-puntos bonus">+1</span>
+                                <span class="ia-explicacion-texto">Mantener tu gasto variable por debajo del 30%</span>
+                            </div>
+
+                            <p class="ia-explicacion-nota">75+ es Saludable · 50-74 En observación · menos de 50, En riesgo</p>
+                        </div>
+                    </section>
+
+                </div>
             </div>
 
-        </main>
 
         <!-- BARRA DE NAVEGACIÓN FLOTANTE (ESTILO PREMIUM BANCA MÓVIL)  se actualiza para el perfil IA-->
         <nav class="floating-nav">
