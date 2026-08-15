@@ -1,0 +1,187 @@
+﻿descripcion_original,descripcion_normalizada,categoria,subcategoria,origen,grupo_descripcion,split
+abarrotes de la esquina,abarrotes de la esquina,Alimentación,Tiendas,catalogo_controlado,474729656867,validation
+Alimento para mascotas,alimento para mascotas,Alimentación,Alimento para mascotas,transactions,7ef08f3229a2,train
+Almuerzo fuera de casa,almuerzo fuera de casa,Alimentación,Restaurante,transactions,8ea97f3926e1,train
+cena en restaurante,cena en restaurante,Alimentación,Restaurante,catalogo_controlado,e7d5521a26eb,validation
+comida corrida,comida corrida,Alimentación,Restaurante,catalogo_controlado,b1f6bbfcc6ce,train
+Comida en restaurante,comida en restaurante,Alimentación,Restaurante,transactions,6491a53df90d,train
+Comida para gato,comida para gato,Alimentación,Alimento para mascotas,transactions,cac83f657d9d,train
+Comida para llevar,comida para llevar,Alimentación,Comida rápida,transactions,3cd314b7d0e6,test
+Comida para perro,comida para perro,Alimentación,Alimento para mascotas,transactions,18fed308d19c,test
+Comida rápida,comida rapida,Alimentación,Comida rápida,transactions,9f29ca7ff6a1,train
+Compra de alimentos,compra de alimentos,Alimentación,Supermercado,transactions,548820314234,train
+Compra de víveres,compra de viveres,Alimentación,Supermercado,transactions,36ba5b0bb443,train
+Compra en tienda,compra en tienda,Alimentación,Tiendas,transactions,e3b123ef33f5,train
+croquetas mascota,croquetas mascota,Alimentación,Alimento para mascotas,catalogo_controlado,3c36031eb3e9,train
+Despensa,despensa,Alimentación,Supermercado,transactions,1b32fa867fbb,train
+despensa quincenal,despensa quincenal,Alimentación,Supermercado,catalogo_controlado,cc529a2dbff3,train
+Hamburguesa,hamburguesa,Alimentación,Comida rápida,transactions,2cad5a2e0142,validation
+Pizza,pizza,Alimentación,Comida rápida,transactions,fb6d4de9e81e,train
+Restaurante,restaurante,Alimentación,Restaurante,transactions,901ba6df6f62,train
+super semanal,super semanal,Alimentación,Supermercado,catalogo_controlado,9228ae3fb24d,train
+Supermercado,supermercado,Alimentación,Supermercado,transactions,89da14787efb,train
+Tienda de abarrotes,tienda de abarrotes,Alimentación,Tiendas,transactions,bdcd4c77690c,test
+Accesorios,accesorios,Compras,Accesorios,transactions,79df5bbe4543,test
+accesorios para mascota,accesorios para mascota,Compras,Mascotas,catalogo_controlado,54fc25fb82dd,validation
+Accesorios para mascotas,accesorios para mascotas,Compras,Mascotas,transactions,51c7731bd03f,train
+accesorios personales,accesorios personales,Compras,Accesorios,catalogo_controlado,432f9136abdb,train
+audífonos nuevos,audifonos nuevos,Compras,Electrónica,catalogo_controlado,7626e38f8e62,validation
+Compra de audífonos,compra de audifonos,Compras,Electrónica,transactions,c570e97c4229,train
+Compra de camisa,compra de camisa,Compras,Ropa,transactions,87d0bcb8d5f8,train
+Compra de Laptop,compra de laptop,Compras,Electrónica,transactions,22f170405e7f,train
+Compra de pantalón,compra de pantalon,Compras,Ropa,transactions,44309f9a0f40,test
+Compra de regalo,compra de regalo,Compras,Regalos,transactions,d70c762a5caf,train
+Compra de short,compra de short,Compras,Ropa,transactions,6bbe0d06a724,validation
+Compra de sueter,compra de sueter,Compras,Ropa,transactions,5a777f461f16,train
+Compra de Tablet,compra de tablet,Compras,Electrónica,transactions,731ac2d6a4b8,train
+Compra de teléfono,compra de telefono,Compras,Electrónica,transactions,df24d7e9f583,train
+Compra de tenis,compra de tenis,Compras,Calzado,transactions,8b8ae4da9032,train
+Compra de zapatos,compra de zapatos,Compras,Calzado,transactions,16c04c349e3f,train
+Electrónica,electronica,Compras,Electrónica,transactions,315785b6f441,train
+Regalo,regalo,Compras,Regalos,transactions,5f7e8aba11fe,train
+regalo de cumpleaños,regalo de cumpleanos,Compras,Regalos,catalogo_controlado,3f90d5167618,train
+ropa en tienda,ropa en tienda,Compras,Ropa,catalogo_controlado,ef15f6501962,test
+zapatos nuevos,zapatos nuevos,Compras,Calzado,catalogo_controlado,d04504e308c4,train
+abono a crédito coche,abono a credito coche,Deudas,Pago de préstamo,catalogo_controlado,f5a4934a3c20,train
+Abono a préstamo,abono a prestamo,Deudas,Pago de préstamo,transactions,84fba572b4db,test
+Abono a tarjeta,abono a tarjeta,Deudas,Pago de tarjeta,transactions,5bb69475f32a,train
+abono a tdc,abono a tdc,Deudas,Pago de tarjeta,catalogo_controlado,f231459988eb,train
+abono de deuda,abono de deuda,Deudas,Pago de préstamo,catalogo_controlado,5a418a7718d8,train
+Disposición de crédito,disposicion de credito,Deudas,Nuevo crédito,transactions,71e3de0ff541,train
+financiamiento del mes,financiamiento del mes,Deudas,Nuevo crédito,catalogo_controlado,ec4f4765d636,validation
+mensualidad del préstamo,mensualidad del prestamo,Deudas,Pago de préstamo,catalogo_controlado,9dfba16572ba,train
+nuevo crédito,nuevo credito,Deudas,Nuevo crédito,catalogo_controlado,ab555f6c9506,test
+Nuevo financiamiento,nuevo financiamiento,Deudas,Nuevo crédito,transactions,1b69777bf2a4,train
+pago de crédito,pago de credito,Deudas,Pago de préstamo,catalogo_controlado,c1ab346a0b36,train
+pago de impuestos,pago de impuestos,Deudas,Impuestos,catalogo_controlado,bd0b79399878,train
+Pago de préstamo,pago de prestamo,Deudas,Pago de préstamo,transactions,8c42cbc32e2d,validation
+pago de préstamo personal,pago de prestamo personal,Deudas,Pago de préstamo,catalogo_controlado,a7101f16851b,test
+Pago de tarjeta,pago de tarjeta,Deudas,Pago de tarjeta,transactions,426bd1fdf515,train
+pago de tarjeta de crédito,pago de tarjeta de credito,Deudas,Pago de tarjeta,catalogo_controlado,22100bccbc87,validation
+pago mensual de tarjeta,pago mensual de tarjeta,Deudas,Pago de tarjeta,catalogo_controlado,3f6a48a872e9,train
+capacitación de trabajo,capacitacion de trabajo,Educación,Cursos,catalogo_controlado,0d3ad6d27a34,validation
+Colegiatura,colegiatura,Educación,Universidad,transactions,f127c9a1bc4d,train
+colegiatura universidad,colegiatura universidad,Educación,Universidad,catalogo_controlado,16882272754b,train
+Curso,curso,Educación,Cursos,transactions,c62869ade448,train
+Curso en línea,curso en linea,Educación,Cursos,transactions,88e04d09dd38,train
+curso online,curso online,Educación,Cursos,catalogo_controlado,756fcb60e046,train
+libros de estudio,libros de estudio,Educación,Material escolar,catalogo_controlado,1c5cf03667b7,test
+Material escolar,material escolar,Educación,Material escolar,transactions,71579727ade3,train
+material para clase,material para clase,Educación,Material escolar,catalogo_controlado,54615761c37a,train
+Papelería,papeleria,Educación,Papelería,transactions,25d6432362f6,test
+papelería para escuela,papeleria para escuela,Educación,Papelería,catalogo_controlado,2b90193f5105,validation
+Universidad,universidad,Educación,Universidad,transactions,b5e0384e8762,train
+Actividad deportiva,actividad deportiva,Entretenimiento,Deportes,transactions,5656bb34baeb,train
+Actividad recreativa,actividad recreativa,Entretenimiento,Extras,transactions,ddb818573ae7,train
+boletos de concierto,boletos de concierto,Entretenimiento,Conciertos,catalogo_controlado,694aff358e20,train
+Cine,cine,Entretenimiento,Cine,transactions,acacf2d4765c,train
+compra de videojuego,compra de videojuego,Entretenimiento,Videojuegos,catalogo_controlado,d83b59cf4def,train
+Concierto,concierto,Entretenimiento,Conciertos,transactions,86191f74decd,train
+Entrada a concierto,entrada a concierto,Entretenimiento,Conciertos,transactions,180ef9163838,test
+Entrada a museo,entrada a museo,Entretenimiento,Museos,transactions,840607457ca1,test
+entrada al cine,entrada al cine,Entretenimiento,Cine,catalogo_controlado,456cb7dad6d4,train
+Entrada de cine,entrada de cine,Entretenimiento,Cine,transactions,1b0704d08b13,validation
+Entretenimiento,entretenimiento,Entretenimiento,Extras,transactions,e59d41097413,train
+Evento deportivo,evento deportivo,Entretenimiento,Deportes,transactions,848b964cabe6,test
+inscripción gym,inscripcion gym,Entretenimiento,Deportes,catalogo_controlado,870741fc2947,train
+Museo,museo,Entretenimiento,Museos,transactions,4858aa19f635,validation
+museo fin de semana,museo fin de semana,Entretenimiento,Museos,catalogo_controlado,2c4942d27422,train
+netflix mensual,netflix mensual,Entretenimiento,Suscripciones,catalogo_controlado,e01a3a53c038,train
+Servicio de streaming,servicio de streaming,Entretenimiento,Suscripciones,transactions,448e80bde166,train
+Suscripción,suscripcion,Entretenimiento,Suscripciones,transactions,ded72e07cebb,train
+Videojuegos,videojuegos,Entretenimiento,Videojuegos,transactions,1fb359c08650,validation
+Ahorro,ahorro,Finanzas,Ahorro,transactions,f07198a554b1,train
+ahorro quincenal,ahorro quincenal,Finanzas,Ahorro,catalogo_controlado,effbcabd5736,train
+Aportación a inversión,aportacion a inversion,Finanzas,Inversiones,transactions,256dab0d2859,train
+compra de fondo de inversión,compra de fondo de inversion,Finanzas,Inversiones,catalogo_controlado,f2b75cd99d3f,train
+Depósito a fondo de ahorro,deposito a fondo de ahorro,Finanzas,Ahorro,transactions,af35ec67818d,test
+fondo de emergencia,fondo de emergencia,Finanzas,Ahorro,catalogo_controlado,a15a7760bd9f,train
+Inversión,inversion,Finanzas,Inversiones,transactions,0491351a0e43,train
+inversión en cetes,inversion en cetes,Finanzas,Inversiones,catalogo_controlado,70ef0c7a4bf6,train
+inversión mensual,inversion mensual,Finanzas,Inversiones,catalogo_controlado,4a88230b076c,validation
+transferencia a ahorro,transferencia a ahorro,Finanzas,Ahorro,catalogo_controlado,ee1e79ebbae3,test
+Transferencia a inversión,transferencia a inversion,Finanzas,Inversiones,transactions,b6fd7e04c1c4,validation
+Botana,botana,Otros,Frituras,transactions,44c4cc19339f,validation
+Caridad,caridad,Otros,Donaciones,transactions,d70b66898f29,train
+Diezmo,diezmo,Otros,Donaciones,transactions,d579a9343b4e,train
+Donación,donacion,Otros,Donaciones,transactions,1e746161db90,train
+donativo mensual,donativo mensual,Otros,Donaciones,catalogo_controlado,328cf1490bab,test
+Estacionamiento,estacionamiento,Otros,Estacionamiento,transactions,b50e4327d509,train
+estacionamiento de plaza,estacionamiento de plaza,Otros,Estacionamiento,catalogo_controlado,c8a7461c2147,train
+Frituras,frituras,Otros,Frituras,transactions,15b02f832fbe,train
+Gasto general,gasto general,Otros,Otros,transactions,b43c5666a750,train
+gasto sin clasificar,gasto sin clasificar,Otros,Otros,catalogo_controlado,e22aa22c534b,test
+Lavandería,lavanderia,Otros,Lavandería,transactions,c04be1f1b44e,train
+Otro gasto,otro gasto,Otros,Otros,transactions,f7e4bbb34bea,train
+pago varios,pago varios,Otros,Otros,catalogo_controlado,67a821ebbb13,train
+ropa en tintorería,ropa en tintoreria,Otros,Tintorería,catalogo_controlado,c4bac401f7be,validation
+servicio de lavandería,servicio de lavanderia,Otros,Lavandería,catalogo_controlado,f0c61e6ad15e,train
+Tintorería,tintoreria,Otros,Tintorería,transactions,bca82f4aa39a,train
+Actividad física,actividad fisica,Salud,Ejercicio,transactions,98df711b78f4,train
+Consulta con nutriólogo,consulta con nutriologo,Salud,Nutriólogo,transactions,cc395c1298e7,train
+Consulta con terapeuta,consulta con terapeuta,Salud,Terapeuta,transactions,8fef4bba3c6d,train
+Consulta dental,consulta dental,Salud,Dentista,transactions,b29386dd4b89,train
+consulta médica,consulta medica,Salud,Hospital,catalogo_controlado,fa954ecfce1d,train
+Consulta veterinaria,consulta veterinaria,Salud,Veterinario,transactions,e500c37e8f7d,train
+Dentista,dentista,Salud,Dentista,transactions,b592017cd0fd,train
+Estudios médicos,estudios medicos,Salud,Laboratorios,transactions,7603e75ff87b,train
+farmacia medicamentos,farmacia medicamentos,Salud,Medicinas,catalogo_controlado,00a57ec94696,train
+Gimnasio,gimnasio,Salud,Ejercicio,transactions,e8be27b4e12d,validation
+Hospital,hospital,Salud,Hospital,transactions,d3169380b064,train
+Laboratorio,laboratorio,Salud,Laboratorios,transactions,5340b36a6f04,train
+laboratorio clínico,laboratorio clinico,Salud,Laboratorios,catalogo_controlado,09ff9890cd91,test
+Lentes,lentes,Salud,Óptica,transactions,39aec07ecfd4,train
+lentes en óptica,lentes en optica,Salud,Óptica,catalogo_controlado,7ea29fea337f,validation
+limpieza dental,limpieza dental,Salud,Dentista,catalogo_controlado,861ded761d8d,train
+Medicamentos,medicamentos,Salud,Medicinas,transactions,47e633db4cd5,train
+Medicinas,medicinas,Salud,Medicinas,transactions,69c349704e03,test
+Óptica,optica,Salud,Óptica,transactions,3abc9f5a4a70,test
+sesión de terapia,sesion de terapia,Salud,Terapeuta,catalogo_controlado,02b9a306b6c5,train
+Terapia,terapia,Salud,Terapeuta,transactions,eb69dedd7863,validation
+Veterinario,veterinario,Salud,Veterinario,transactions,adbf3c60a9b8,train
+internet de casa,internet de casa,Servicios,Internet,catalogo_controlado,352215768194,train
+Pago de gas,pago de gas,Servicios,Gas,transactions,33eac11627fc,train
+Pago de internet,pago de internet,Servicios,Internet,transactions,212a299d6b80,train
+Pago de luz,pago de luz,Servicios,Electricidad,transactions,7d0cb5a909ea,train
+Pago de teléfono,pago de telefono,Servicios,Teléfono,transactions,cef3d212065c,validation
+plan de celular,plan de celular,Servicios,Teléfono,catalogo_controlado,527a64f1ac50,train
+recibo cfe,recibo cfe,Servicios,Electricidad,catalogo_controlado,333096522470,train
+Recibo de agua,recibo de agua,Servicios,Agua,transactions,5dcca651ed05,train
+Recibo de electricidad,recibo de electricidad,Servicios,Electricidad,transactions,586d9a83f35a,train
+recibo del agua,recibo del agua,Servicios,Agua,catalogo_controlado,880f7a640dda,validation
+relleno tanque de gas,relleno tanque de gas,Servicios,Gas,catalogo_controlado,c21de712e5cb,train
+servicio de televisión,servicio de television,Servicios,TV de paga,catalogo_controlado,410d3807ecfd,test
+Televisión de paga,television de paga,Servicios,TV de paga,transactions,07d73862dcc6,test
+Autobús,autobus,Transporte,Autobús,transactions,83feb4da3960,train
+Avión,avion,Transporte,Avión,transactions,5956762a6969,train
+boleto de avión,boleto de avion,Transporte,Avión,catalogo_controlado,962101678b12,train
+Combustible,combustible,Transporte,Combustible,transactions,12c106cc092d,test
+Gasolina,gasolina,Transporte,Combustible,transactions,16c8ddf70d3c,train
+gasolina del auto,gasolina del auto,Transporte,Combustible,catalogo_controlado,2de18bbb3f70,validation
+mantenimiento del coche,mantenimiento del coche,Transporte,Servicio vehicular,catalogo_controlado,d01c4a113b9d,validation
+pasaje de camión,pasaje de camion,Transporte,Autobús,catalogo_controlado,c3deaa4d112d,test
+Servicio de taxi,servicio de taxi,Transporte,Taxi,transactions,7ba2068ad427,train
+Servicio vehicular,servicio vehicular,Transporte,Servicio vehicular,transactions,ae243ef2840b,train
+Taxi,taxi,Transporte,Taxi,transactions,7314220d2581,train
+taxi al trabajo,taxi al trabajo,Transporte,Taxi,catalogo_controlado,ceedfdf57fe7,train
+Tenencia vehicular,tenencia vehicular,Transporte,Tenencia vehicular,transactions,cb8724468d03,train
+Transporte público,transporte publico,Transporte,Autobús,transactions,a207c69630f6,train
+Tren,tren,Transporte,Tren,transactions,4d72c12d6aa1,test
+Uber,uber,Transporte,Uber,transactions,6b7c1f74da8e,train
+uber a la oficina,uber a la oficina,Transporte,Uber,catalogo_controlado,de07a900e330,validation
+Verificación vehicular,verificacion vehicular,Transporte,Verificación vehicular,transactions,1ebbb7408964,train
+Viaje en Uber,viaje en uber,Transporte,Uber,transactions,6785c402330d,train
+Apoyo para vivienda,apoyo para vivienda,Vivienda,Mantenimiento,transactions,9493d912bb4b,train
+electrodoméstico para casa,electrodomestico para casa,Vivienda,Electrodomésticos,catalogo_controlado,16e43ffaaf5b,train
+Electrodomésticos,electrodomesticos,Vivienda,Electrodomésticos,transactions,0942b7ae9a8f,train
+Impuesto predial,impuesto predial,Vivienda,Predial,transactions,2a03409c54d0,train
+Mantenimiento de vivienda,mantenimiento de vivienda,Vivienda,Mantenimiento,transactions,079de09a8aec,train
+Muebles,muebles,Vivienda,Muebles,transactions,c6803d1c43bc,train
+muebles para el hogar,muebles para el hogar,Vivienda,Muebles,catalogo_controlado,9acabced744a,test
+Pago de hipoteca,pago de hipoteca,Vivienda,Hipoteca,transactions,ebca6a37b918,train
+Pago de renta,pago de renta,Vivienda,Renta,transactions,884520a8543f,train
+pago hipotecario,pago hipotecario,Vivienda,Hipoteca,catalogo_controlado,2da9a422e1a0,test
+pago predial anual,pago predial anual,Vivienda,Predial,catalogo_controlado,a00678dcb40b,validation
+renta del departamento,renta del departamento,Vivienda,Renta,catalogo_controlado,38f1c61c28cb,train
+Renta mensual,renta mensual,Vivienda,Renta,transactions,7253d65a36b7,train
+reparación de la casa,reparacion de la casa,Vivienda,Mantenimiento,catalogo_controlado,5512ecbdfbc8,validation

@@ -1,0 +1,37 @@
+﻿descripcion_modelo,descripcion_original,categoria_real,subcategoria,grupo_descripcion,categoria_predicha,confianza,es_correcta
+Comida para perro,Comida para perro,Alimentación,Alimento para mascotas,18fed308d19c,Alimentación,0.9299888857149108,True
+Compra de pantalón,Compra de pantalón,Compras,Ropa,44309f9a0f40,Compras,0.9424370381484889,True
+pago de préstamo personal,pago de préstamo personal,Deudas,Pago de préstamo,a7101f16851b,Deudas,0.7708347996754858,True
+libros de estudio,libros de estudio,Educación,Material escolar,1c5cf03667b7,Educación,0.5969727509645701,True
+Despensa,Despensa,Alimentación,Supermercado,1b32fa867fbb,Transporte,0.15048460315000625,False
+Almuerzo fuera de casa,Almuerzo fuera de casa,Alimentación,Restaurante,8ea97f3926e1,Vivienda,0.32188122186292173,False
+despensa quincenal,despensa quincenal,Alimentación,Supermercado,cc529a2dbff3,Finanzas,0.35186576543605064,False
+Regalo,Regalo,Compras,Regalos,5f7e8aba11fe,Compras,0.5495563090805176,True
+Compra de Tablet,Compra de Tablet,Compras,Electrónica,731ac2d6a4b8,Compras,0.9177238459249729,True
+Disposición de crédito,Disposición de crédito,Deudas,Nuevo crédito,71e3de0ff541,Deudas,0.7385019152901392,True
+abono a crédito coche,abono a crédito coche,Deudas,Pago de préstamo,f5a4934a3c20,Deudas,0.7788017941920374,True
+Actividad deportiva,Actividad deportiva,Entretenimiento,Deportes,5656bb34baeb,Entretenimiento,0.5801246689786485,True
+boletos de concierto,boletos de concierto,Entretenimiento,Conciertos,694aff358e20,Entretenimiento,0.7481554572683765,True
+compra de videojuego,compra de videojuego,Entretenimiento,Videojuegos,d83b59cf4def,Compras,0.8186847389204739,False
+inversión en cetes,inversión en cetes,Finanzas,Inversiones,70ef0c7a4bf6,Finanzas,0.8015922509193378,True
+Veterinario,Veterinario,Salud,Veterinario,adbf3c60a9b8,Otros,0.16339710882247926,False
+Consulta veterinaria,Consulta veterinaria,Salud,Veterinario,e500c37e8f7d,Salud,0.7847836078295185,True
+consulta médica,consulta médica,Salud,Hospital,fa954ecfce1d,Salud,0.9633116831322274,True
+internet de casa,internet de casa,Servicios,Internet,352215768194,Servicios,0.7177862297467086,True
+plan de celular,plan de celular,Servicios,Teléfono,527a64f1ac50,Servicios,0.7895604854025507,True
+Avión,Avión,Transporte,Avión,5956762a6969,Transporte,0.17667053147557574,True
+Transporte público,Transporte público,Transporte,Autobús,a207c69630f6,Transporte,0.15900407727339883,True
+Servicio vehicular,Servicio vehicular,Transporte,Servicio vehicular,ae243ef2840b,Transporte,0.5162852596102159,True
+taxi al trabajo,taxi al trabajo,Transporte,Taxi,ceedfdf57fe7,Transporte,0.8859025898502884,True
+renta del departamento,renta del departamento,Vivienda,Renta,38f1c61c28cb,Vivienda,0.7436245483847116,True
+Apoyo para vivienda,Apoyo para vivienda,Vivienda,Mantenimiento,9493d912bb4b,Vivienda,0.7297846197865813,True
+ropa en tintorería,ropa en tintorería,Otros,Tintorería,c4bac401f7be,Otros,0.6704013995152597,True
+pago de colegiatura,pago de colegiatura,Educación,Universidad,fe923ea151ec,Educación,0.6966173295891495,True
+curso en udemy,curso en udemy,Educación,Cursos,27e550c238c3,Educación,0.8791898099150082,True
+compra en papelería,compra en papelería,Educación,Papelería,1c769a266842,Educación,0.7036975657442647,True
+pago de televisión por cable,pago de televisión por cable,Servicios,TV de paga,0fd90cb435ec,Servicios,0.9068105221630881,True
+mensualidad tv de paga,mensualidad tv de paga,Servicios,TV de paga,bc0439c47100,Servicios,0.277672495548564,True
+uber al aeropuerto,uber al aeropuerto,Transporte,Uber,66ff6bf3a6f1,Transporte,0.7488658910234378,True
+pasaje de tren,pasaje de tren,Transporte,Tren,f11e7dcc91e8,Transporte,0.9140830765636516,True
+pago de estacionamiento,pago de estacionamiento,Otros,Estacionamiento,1d7f035d3d8e,Otros,0.6450017429065421,True
+donativo,donativo,Otros,Donaciones,49c487ae6ca8,Otros,0.22403540686937698,True
