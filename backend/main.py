@@ -181,17 +181,17 @@ def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Dep
     if not transacciones:
         raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
 
-    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso")
+    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria != "financiamiento")
     ingresos = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
 
+    categorias_no_gasto = CATEGORIAS_ESENCIALES + ["deudas", "inversion"]
     gastos_recurrentes = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria in CATEGORIAS_ESENCIALES)
-    gastos_variables = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria not in CATEGORIAS_ESENCIALES and t.categoria != "deudas")
+    gastos_variables = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria not in categorias_no_gasto)
     pagos_deuda = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria == "deudas")
     gastos = gastos_recurrentes + gastos_variables + pagos_deuda
 
-    # No capturados todavía en el sistema: se asumen en 0 (limitación conocida, documentada)
-    financiamiento = 0
-    inversiones = 0
+    financiamiento = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria == "financiamiento")
+    inversiones = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria == "inversion")
 
     ahorro = max(ingresos - gastos, 0)
     saldo_deuda_estimado = (usuario.nivel_deuda_inicial / 100) * ingresos if ingresos > 0 else 0
@@ -238,6 +238,9 @@ def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Dep
     perfil = assign_profile_ia(score_financiero)
     diagnostico = assign_diagnosis(indicadores)
     recomendacion = RECOMENDACIONES_IA[diagnostico]
+    nota_deuda = None
+    if usuario.nivel_deuda_inicial == 0 and pagos_deuda > 0:
+        nota_deuda = "Registraste tu deuda inicial en 0%, pero tuviste pagos de categoría 'deudas' este mes. El diagnóstico refleja tu actividad real, no solo lo declarado al registrarte."
 
     return {
         "usuario_id": usuario_id,
@@ -252,30 +255,10 @@ def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Dep
         "diagnostico_principal": diagnostico,
         "recomendacion": recomendacion,
         "indicadores": indicadores,
+        "inversiones": round(inversiones, 2),
+        "nota_deuda": nota_deuda,
         "analysis_version": "financial-analysis-v1-aproximado"
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

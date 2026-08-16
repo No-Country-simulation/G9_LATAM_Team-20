@@ -554,6 +554,8 @@ function dibujarResumenCategorias(gastosPorCategoria, gastosTotales) {
         else if (cat === "entretenimiento") emoji = "🎮";
         else if (cat === "compras") emoji = "🛍️";
         else if (cat === "finanzas") emoji = "💰";
+        else if (cat === "financiamiento") emoji = "🏦";
+        else if (cat === "inversion") emoji = "📈";
         else if (cat === "otros") emoji = "🏷️";
 
         row.innerHTML = `
@@ -592,6 +594,21 @@ async function cargarAnalisisIa(id, anio, mes) {
         else scoreBadge.classList.add("badge-danger");
 
         txtDiagnosticoIa.innerText = `Detecté que tu situación principal este mes es: ${datos.diagnostico_principal}.`;
+        
+        const notaDeudaExistente = document.getElementById("notaDeudaIa");
+        if (notaDeudaExistente) notaDeudaExistente.remove();
+
+        if (datos.nota_deuda) {
+            const nota = document.createElement("p");
+            nota.id = "notaDeudaIa";
+            nota.innerText = `ℹ️ ${datos.nota_deuda}`;
+            nota.style.fontSize = "0.8rem";
+            nota.style.color = "var(--text-secondary)";
+            nota.style.marginTop = "0.5rem";
+            nota.style.fontStyle = "italic";
+            txtDiagnosticoIa.parentElement.appendChild(nota);
+        }
+
         txtRecomendacionIa.innerText = datos.recomendacion;
 
         motivosBonusContainer.innerHTML = "";
