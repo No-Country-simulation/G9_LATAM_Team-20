@@ -190,10 +190,11 @@ RECOMENDACIONES_IA = {
 # ============================
 # FUNCIONES COMPARTIDAS (usadas por /perfil y /perfil-ia, para que siempre coincidan)
 # ============================
-
 def calcular_indicadores(usuario, transacciones):
-    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria != "financiamiento")
-    ingresos = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
+    ingreso_declarado = usuario.ingreso_base + usuario.ingreso_variable
+    ingresos_extra = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria not in ["financiamiento", "finanzas"])
+    ingresos = ingreso_declarado + ingresos_extra
+
 
     categorias_no_gasto = CATEGORIAS_ESENCIALES + ["deudas", "inversion"]
     gastos_recurrentes = sum(t.monto for t in transacciones if t.tipo == "gasto" and t.categoria in CATEGORIAS_ESENCIALES)
@@ -428,8 +429,9 @@ def borrar_transaccion(transaccion_id: int, db: Session = Depends(get_db)):
     return {"mensaje": f"Transaccion {transaccion_id} eliminada correctamente"}  # mismo patron solo que ahora lo borra en vez de modificarlo
 
 # sobre escribir datos de usuarios 
-@app.put("/usuarios/{usuario_id}", response_model= schemas.UsuarioRespuesta)
-def actualizar_usuarios(usuario_id: int, datos: schemas.UsuarioCrear, db: Session = Depends(get_db)):
+@app.put("/usuarios/{usuario_id}", response_model=schemas.UsuarioRespuesta)
+def actualizar_usuarios(usuario_id: int, datos: schemas.UsuarioActualizar, db: Session = Depends(get_db)):
+
     usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
 
     if not usuario:
@@ -462,7 +464,7 @@ def borrar_usuario(usuario_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"mensaje": f"Usuario {usuario_id} eliminado correctamente"}  
 
-
+# resumen mensual
 @app.get("/resumen-mensual/{usuario_id}")
 def resumen_mensual(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
     usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
@@ -478,27 +480,24 @@ def resumen_mensual(usuario_id: int, anio: int, mes: int, db: Session = Depends(
     if not transacciones:
         raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
 
-    ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso")
-    ingresos_totales = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
+    ind = calcular_indicadores(usuario, transacciones)
 
     gastos_por_categoria = {}
     for t in transacciones:
         if t.tipo == "gasto":
             gastos_por_categoria[t.categoria] = gastos_por_categoria.get(t.categoria, 0) + t.monto
 
-    gastos_totales = sum(gastos_por_categoria.values())
     categoria_mayor_gasto = max(gastos_por_categoria, key=gastos_por_categoria.get) if gastos_por_categoria else None
 
     return {
         "usuario_id": usuario_id,
         "anio": anio,
         "mes": mes,
-        "ingresos_totales": ingresos_totales,
-        "gastos_totales": gastos_totales,
+        "ingresos_totales": round(ind["ingresos"], 2),
+        "gastos_totales": round(ind["gastos"], 2),
         "gastos_por_categoria": gastos_por_categoria,
         "categoria_mayor_gasto": categoria_mayor_gasto
     }
-
 
 # endpoin para editar perfil en el frontend 
 @app.get("/usuarios/{usuario_id}", response_model=schemas.UsuarioRespuesta)

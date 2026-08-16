@@ -61,3 +61,17 @@ class ClasificacionResponse(BaseModel):
     requiere_revision: bool
     alternativas: list[AlternativaCategoria]
     modelo_version: str
+
+
+# correccion de formulario bug no edita datos del usuario por formato no compatible 
+
+class UsuarioActualizar(BaseModel):
+    nombre: str
+    edad: int
+    sexo: str
+    ocupacion: str
+    ciudad: str
+    ingreso_base: float
+    ingreso_variable: float
+    meta_ahorro: float
+    nivel_deuda_inicial: float
