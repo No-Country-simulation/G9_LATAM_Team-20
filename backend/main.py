@@ -8,7 +8,26 @@ import models as models
 import schemas as schemas
 from seguridad import encriptar_password, verificar_password
 
-modelo_clasificador = joblib.load("modelos/category_classifier_final.joblib") # se actualiza modelo calsificador 
+# ---------------------- OCI modelo --------------------------
+import os
+import requests
+
+URL_MODELO_OCI = "https://objectstorage.us-ashburn-1.oraclecloud.com/p/7D0AQlf2etigVv93mahCaSnPKBzYZC-IQDdArgVEpeNvidHk6YTcWnetgfhBFFrX/n/idbxdancxgzf/b/economia-modelos/o/category_classifier_final.joblib"
+RUTA_LOCAL_MODELO = "modelos/category_classifier_final.joblib"
+
+def descargar_modelo_si_no_existe():
+    if not os.path.exists(RUTA_LOCAL_MODELO):
+        os.makedirs("modelos", exist_ok=True)
+        respuesta = requests.get(URL_MODELO_OCI)
+        respuesta.raise_for_status()
+        with open(RUTA_LOCAL_MODELO, "wb") as archivo:
+            archivo.write(respuesta.content)
+
+descargar_modelo_si_no_existe()
+modelo_clasificador = joblib.load(RUTA_LOCAL_MODELO)
+
+
+# --------------------- OCI--------------------------------
 
 Base.metadata.create_all(bind=engine)
 
@@ -33,6 +52,9 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+CATEGORIAS_ESENCIALES = ["alimentacion", "transporte", "salud", "vivienda", "educacion", "servicios"]
 
 
 @app.post("/clasificar-gasto", response_model=schemas.ClasificacionResponse)
@@ -165,22 +187,11 @@ RECOMENDACIONES_IA = {
 }
 
 
-#------------endpoint de funciones y calculo de analisis completo
-@app.get("/perfil-ia/{usuario_id}")
-def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
-    usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
-    if not usuario:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+# ============================
+# FUNCIONES COMPARTIDAS (usadas por /perfil y /perfil-ia, para que siempre coincidan)
+# ============================
 
-    transacciones = db.query(models.Transaccion).filter(
-        models.Transaccion.usuario_id == usuario_id,
-        models.Transaccion.fecha >= datetime(anio, mes, 1),
-        models.Transaccion.fecha < datetime(anio + (mes == 12), (mes % 12) + 1, 1)
-    ).all()
-
-    if not transacciones:
-        raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
-
+def calcular_indicadores(usuario, transacciones):
     ingresos_transacciones = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria != "financiamiento")
     ingresos = ingresos_transacciones if ingresos_transacciones > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
 
@@ -203,7 +214,15 @@ def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Dep
     cumplimiento_meta_ahorro = min((ahorro / ingresos) / (usuario.meta_ahorro / 100), 1) if ingresos > 0 and usuario.meta_ahorro > 0 else 0
     ratio_saldo_deuda_ingreso = saldo_deuda_estimado / ingresos if ingresos > 0 else 0
 
-    indicadores = {
+    return {
+        "ingresos": ingresos,
+        "gastos": gastos,
+        "gastos_recurrentes": gastos_recurrentes,
+        "gastos_variables": gastos_variables,
+        "pagos_deuda": pagos_deuda,
+        "financiamiento": financiamiento,
+        "inversiones": inversiones,
+        "ahorro": ahorro,
         "tasa_gasto": round(tasa_gasto, 4),
         "tasa_pago_deuda": round(tasa_pago_deuda, 4),
         "tasa_financiamiento": round(tasa_financiamiento, 4),
@@ -212,59 +231,95 @@ def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Dep
         "ratio_saldo_deuda_ingreso": round(ratio_saldo_deuda_ingreso, 4),
     }
 
-    puntos_gasto = points_spending(tasa_gasto)
-    puntos_ahorro = points_saving(cumplimiento_meta_ahorro)
-    puntos_deuda = points_debt(ratio_saldo_deuda_ingreso)
-    puntos_balance = points_balance(tasa_financiamiento)
-    puntos_control = points_control(tasa_gasto_variable)
+
+def calcular_score_financiero(indicadores):
+    puntos_gasto = points_spending(indicadores["tasa_gasto"])
+    puntos_ahorro = points_saving(indicadores["cumplimiento_meta_ahorro"])
+    puntos_deuda = points_debt(indicadores["ratio_saldo_deuda_ingreso"])
+    puntos_balance = points_balance(indicadores["tasa_financiamiento"])
+    puntos_control = points_control(indicadores["tasa_gasto_variable"])
 
     score_base = round(puntos_gasto + puntos_ahorro + puntos_deuda + puntos_balance + puntos_control, 2)
 
     bonus = 0
     motivos_bonus = []
-    if cumplimiento_meta_ahorro >= 1:
+    if indicadores["cumplimiento_meta_ahorro"] >= 1:
         bonus += 2
         motivos_bonus.append("Meta de ahorro cumplida")
-    if tasa_financiamiento == 0:
+    if indicadores["tasa_financiamiento"] == 0:
         bonus += 2
         motivos_bonus.append("Sin nuevo financiamiento")
-    if tasa_gasto_variable < 0.30:
+    if indicadores["tasa_gasto_variable"] < 0.30:
         bonus += 1
         motivos_bonus.append("Buen control del gasto variable")
 
     score_financiero = min(score_base + bonus, 100)
     bonus_aplicado = round(score_financiero - score_base, 2)
-
     perfil = assign_profile_ia(score_financiero)
-    diagnostico = assign_diagnosis(indicadores)
+
+    return {
+        "score_base": score_base,
+        "bonus": bonus,
+        "bonus_aplicado": bonus_aplicado,
+        "score_financiero": score_financiero,
+        "perfil": perfil,
+        "motivos_bonus": motivos_bonus,
+    }
+
+
+#------------endpoint de funciones y calculo de analisis completo
+@app.get("/perfil-ia/{usuario_id}")
+def perfil_financiero_ia(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
+    usuario = db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
+    transacciones = db.query(models.Transaccion).filter(
+        models.Transaccion.usuario_id == usuario_id,
+        models.Transaccion.fecha >= datetime(anio, mes, 1),
+        models.Transaccion.fecha < datetime(anio + (mes == 12), (mes % 12) + 1, 1)
+    ).all()
+
+    if not transacciones:
+        raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
+
+    ind = calcular_indicadores(usuario, transacciones)
+    resultado_score = calcular_score_financiero(ind)
+
+    diagnostico = assign_diagnosis(ind)
     recomendacion = RECOMENDACIONES_IA[diagnostico]
+
     nota_deuda = None
-    if usuario.nivel_deuda_inicial == 0 and pagos_deuda > 0:
+    if usuario.nivel_deuda_inicial == 0 and ind["pagos_deuda"] > 0:
         nota_deuda = "Registraste tu deuda inicial en 0%, pero tuviste pagos de categoría 'deudas' este mes. El diagnóstico refleja tu actividad real, no solo lo declarado al registrarte."
 
     return {
         "usuario_id": usuario_id,
         "anio": anio,
         "mes": mes,
-        "score_base": score_base,
-        "bonus_buenos_habitos": bonus,
-        "bonus_aplicado": bonus_aplicado,
-        "score_financiero": score_financiero,
-        "perfil_financiero": perfil,
-        "motivos_bonus": motivos_bonus,
+        "score_base": resultado_score["score_base"],
+        "bonus_buenos_habitos": resultado_score["bonus"],
+        "bonus_aplicado": resultado_score["bonus_aplicado"],
+        "score_financiero": resultado_score["score_financiero"],
+        "perfil_financiero": resultado_score["perfil"],
+        "motivos_bonus": resultado_score["motivos_bonus"],
         "diagnostico_principal": diagnostico,
         "recomendacion": recomendacion,
-        "indicadores": indicadores,
-        "inversiones": round(inversiones, 2),
+        "indicadores": {
+            "tasa_gasto": ind["tasa_gasto"],
+            "tasa_pago_deuda": ind["tasa_pago_deuda"],
+            "tasa_financiamiento": ind["tasa_financiamiento"],
+            "tasa_gasto_variable": ind["tasa_gasto_variable"],
+            "cumplimiento_meta_ahorro": ind["cumplimiento_meta_ahorro"],
+            "ratio_saldo_deuda_ingreso": ind["ratio_saldo_deuda_ingreso"],
+        },
+        "inversiones": round(ind["inversiones"], 2),
         "nota_deuda": nota_deuda,
         "analysis_version": "financial-analysis-v1-aproximado"
     }
 
 
-
 #------------------------------------------------------------
-CATEGORIAS_ESENCIALES = ["alimentacion", "transporte", "salud", "vivienda", "educacion", "servicios"]
-
 # endpoint para calcular perfil (reglas de negocio)
 @app.get("/perfil/{usuario_id}")
 def calcular_perfil(usuario_id: int, anio: int, mes: int, db: Session = Depends(get_db)):
@@ -281,10 +336,9 @@ def calcular_perfil(usuario_id: int, anio: int, mes: int, db: Session = Depends(
     if not transacciones:
         raise HTTPException(status_code=404, detail="No hay transacciones para ese usuario en ese mes")
 
-    ingresos = sum(t.monto for t in transacciones if t.tipo == "ingreso")
-    gastos = sum(t.monto for t in transacciones if t.tipo == "gasto")
+    ind = calcular_indicadores(usuario, transacciones)
+    resultado_score = calcular_score_financiero(ind)
 
-    # Categoría de mayor gasto, excluyendo "deudas" (pagar deuda no debe sugerirse como algo a reducir)
     gastos_por_categoria = {}
     for t in transacciones:
         if t.tipo == "gasto" and t.categoria != "deudas":
@@ -295,55 +349,45 @@ def calcular_perfil(usuario_id: int, anio: int, mes: int, db: Session = Depends(
         categoria_mayor_gasto is not None and categoria_mayor_gasto not in CATEGORIAS_ESENCIALES
     )
 
-    # Primero resolvemos el ingreso_total (con respaldo del perfil si no hay transacciones de ingreso)
-    ingreso_total = ingresos if ingresos > 0 else (usuario.ingreso_base + usuario.ingreso_variable)
+    perfil = resultado_score["perfil"].lower()
+    deuda_alta = usuario.nivel_deuda_inicial >= 30 or ind["ratio_saldo_deuda_ingreso"] > 0.35 or ind["tasa_pago_deuda"] > 0.12
+    cumple_meta = ind["cumplimiento_meta_ahorro"] >= 1
 
-    # Y con ese ingreso_total ya resuelto, calculamos el ahorro real
-    ahorro_real = ingreso_total - gastos
-
-    if ingreso_total == 0:
-        porcentaje_ahorro_real = 0
-    else:
-        porcentaje_ahorro_real = (ahorro_real / ingreso_total) * 100
-
-    if usuario.meta_ahorro == 0:
-        cumplimiento_meta = 0
-    else:
-        cumplimiento_meta = porcentaje_ahorro_real / usuario.meta_ahorro
-
-    deuda_alta = usuario.nivel_deuda_inicial >= 30
-
-    if cumplimiento_meta >= 1 and not deuda_alta:
-        perfil = "saludable"
+    if perfil == "saludable" and cumple_meta and not deuda_alta:
         recomendacion = "Estás cumpliendo tu meta de ahorro y tu nivel de deuda es manejable. Si quieres ir más lejos, podrías subir tu meta de ahorro gradualmente, por ejemplo 2-3% más el próximo mes."
 
-    elif cumplimiento_meta >= 1 and deuda_alta:
-        perfil = "en observación"
+    elif perfil == "saludable" and not cumple_meta:
+        porcentaje_meta = round(ind["cumplimiento_meta_ahorro"] * 100, 0)
+        recomendacion = f"En general tu situación es saludable, aunque este mes solo alcanzaste el {porcentaje_meta:.0f}% de tu meta de ahorro. Aun así, tus otros indicadores (deuda y gasto) están bien controlados."
+
+    elif perfil == "saludable" and deuda_alta:
+        recomendacion = "En general tu situación es saludable, pero este mes tuviste pagos de deuda importantes. Vale la pena vigilar que no se vuelva recurrente."
+
+    elif perfil == "en observación" and deuda_alta:
         if categoria_es_no_esencial:
             recomendacion = f"Estás ahorrando bien este mes, pero tu deuda es alta y tu mayor gasto fue en '{categoria_mayor_gasto}'. Considera reducir ese gasto y destinar la diferencia a pagar tu deuda más rápido."
         else:
             recomendacion = "Estás ahorrando bien este mes, pero tu nivel de deuda es alto. Considera destinar parte de tu ahorro a pagarla más rápido."
 
-    elif cumplimiento_meta < 1 and deuda_alta:
-        perfil = "en riesgo"
+    elif perfil == "en riesgo":
         if categoria_es_no_esencial:
             recomendacion = f"Este mes tu ahorro está por debajo de tu meta y tu deuda es alta. Tu mayor gasto fue en '{categoria_mayor_gasto}', una categoría no esencial: reducirlo es la forma más rápida de mejorar tu situación."
         else:
             recomendacion = "Este mes tu ahorro está por debajo de tu meta y tu deuda es alta. Es momento de revisar tus gastos esenciales y priorizar el pago de deuda."
 
     else:
-        perfil = "en observación"
         recomendacion = "Este mes tu ahorro está por debajo de tu meta, aunque tu deuda es manejable. Revisa tus gastos variables para acercarte a tu meta."
+
 
     return {
         "usuario_id": usuario_id,
         "anio": anio,
         "mes": mes,
-        "ingreso_total": ingreso_total,
-        "ahorro_real": ahorro_real,
-        "porcentaje_ahorro_real": round(porcentaje_ahorro_real, 2),
+        "ingreso_total": ind["ingresos"],
+        "ahorro_real": ind["ahorro"],
+        "porcentaje_ahorro_real": round(ind["ahorro"] / ind["ingresos"] * 100, 2) if ind["ingresos"] > 0 else 0,
         "meta_ahorro": usuario.meta_ahorro,
-        "cumplimiento_meta": round(cumplimiento_meta, 2),
+        "cumplimiento_meta": ind["cumplimiento_meta_ahorro"],
         "nivel_deuda": usuario.nivel_deuda_inicial,
         "categoria_mayor_gasto": categoria_mayor_gasto,
         "perfil": perfil,
@@ -470,10 +514,6 @@ def obtener_usuario(usuario_id: int, db: Session = Depends(get_db)):
 @app.get("/usuarios", response_model=list[schemas.UsuarioRespuesta])
 def obtener_usuarios(db: Session = Depends(get_db)):
     return db.query(models.Usuario).all()
-
-
-
-# Cargar el modelo UNA SOLA VEZ al iniciar el servidor (no en cada petición, sería muy lento)
 
 
 UMBRAL_REVISION = 0.60
