@@ -145,7 +145,11 @@ def points_saving(compliance):
     compliance = min(compliance, 1)
     return round(compliance * 25, 2)
 
-def points_debt(debt_ratio):
+def points_debt(debt_ratio, tasa_pago_deuda):
+    tiene_deuda = debt_ratio > 0
+    no_abono = tasa_pago_deuda == 0
+    if tiene_deuda and no_abono:
+        return 0
     if debt_ratio <= 0.25:
         return 20
     elif debt_ratio <= 2.00:
@@ -176,7 +180,7 @@ def assign_profile_ia(score):
 def assign_diagnosis(indicadores):
     if indicadores["tasa_financiamiento"] > 0:
         return "Déficit y financiamiento"
-    if indicadores["ratio_saldo_deuda_ingreso"] > 0.35 or indicadores["tasa_pago_deuda"] > 0.12:
+    if (indicadores["ratio_saldo_deuda_ingreso"] > 0.35 or indicadores["tasa_pago_deuda"] > 0.12 or (indicadores["ratio_saldo_deuda_ingreso"] > 0 and indicadores["tasa_pago_deuda"] == 0)):
         return "Endeudamiento"
     if indicadores["tasa_gasto"] > 0.90 or indicadores["tasa_gasto_variable"] > 0.60:
         return "Gasto elevado"
@@ -242,7 +246,7 @@ def calcular_indicadores(usuario, transacciones):
 def calcular_score_financiero(indicadores):
     puntos_gasto = points_spending(indicadores["tasa_gasto"])
     puntos_ahorro = points_saving(indicadores["cumplimiento_meta_ahorro"])
-    puntos_deuda = points_debt(indicadores["ratio_saldo_deuda_ingreso"])
+    puntos_deuda = points_debt(indicadores["ratio_saldo_deuda_ingreso"], indicadores["tasa_pago_deuda"])
     puntos_balance = points_balance(indicadores["tasa_financiamiento"])
     puntos_control = points_control(indicadores["tasa_gasto_variable"])
 
