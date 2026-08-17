@@ -1,6 +1,9 @@
 from datetime import datetime, timezone
 import joblib
 
+
+
+
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import engine, SessionLocal, Base
@@ -44,6 +47,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+from fastapi.staticfiles import StaticFiles
+app.mount("/app", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 
 def get_db():
