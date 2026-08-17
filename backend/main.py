@@ -198,7 +198,7 @@ RECOMENDACIONES_IA = {
 # ============================
 def calcular_indicadores(usuario, transacciones):
     ingreso_declarado = usuario.ingreso_base + usuario.ingreso_variable
-    ingresos_extra = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria not in ["financiamiento", "finanzas"])
+    ingresos_extra = sum(t.monto for t in transacciones if t.tipo == "ingreso" and t.categoria != "financiamiento")
     ingresos = ingreso_declarado + ingresos_extra
 
 
