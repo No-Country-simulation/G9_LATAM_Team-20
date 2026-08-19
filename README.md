@@ -28,6 +28,22 @@ Muchas personas registran sus ingresos y gastos, pero les resulta difícil trans
 
 ## 🛠 Tecnologías utilizadas
 
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/Scikit_Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
+  <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy">
+  <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle Cloud">
+  <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+</p>
+
 **Frontend**
 - HTML5, CSS3, JavaScript (sin frameworks)
 - Chart.js (visualización de datos)
@@ -49,7 +65,8 @@ Muchas personas registran sus ingresos y gastos, pero les resulta difícil trans
 - PostgreSQL en Oracle Cloud Infrastructure (en progreso)
 
 **Cloud y despliegue**
-- Oracle Cloud Infrastructure (OCI) — en progreso
+- Oracle Cloud Infrastructure (OCI) Object Storage: Almacenamiento seguro del modelo serializado (`.joblib`) en la nube de Oracle
+- Despliegue Backend: Aplicación web y API expuestas mediante servicios de nube modernos (Render), conectadas dinámicamente al  almacenamiento en la nube de Oracle.
 
 **DevOps**
 - Git, GitHub
@@ -107,6 +124,15 @@ Recomendación personalizada
             ↓
 Visualización en el Dashboard
 ```
+## ☁️ ¿Cómo funciona OCI Object Storage en EconomIA?
+
+Para garantizar que la aplicación sea ligera y modular, el modelo de Machine Learning entrenado no se almacena directamente dentro del repositorio de código ni en el servidor de despliegue. Su funcionalidad en el sistema es la siguiente:
+
+- **Almacenamiento en la Nube:** El archivo binario del modelo se aloja de forma segura en un bucket de Oracle Cloud Infrastructure (OCI) Object Storage.
+- **Carga Dinámica:** Al iniciar o recibir peticiones de clasificación, el backend en FastAPI se conecta a OCI para descargar o consultar el modelo en tiempo real.
+- **Escalabilidad:** Permite actualizar la versión del modelo de Machine Learning entrenado sin necesidad de redesplegar todo el código fuente de la aplicación web en Render.
+  
+  > Para la integración con OCI Object Storage, el backend consume el archivo `.joblib` directamente desde el Bucket de Oracle en tiempo     de ejecución, asegurando que el modelo esté centralizado en la infraestructura oficial  de Oracle Cloud.
 
 ## 🤖 Ciencia de Datos
 
@@ -152,10 +178,10 @@ Está en desarrollo un segundo modelo de análisis financiero, que calculará un
 - ✅ Cálculo del perfil financiero con reglas de negocio explicables
 - ✅ Integración del modelo de clasificación de gastos en el backend
 - ✅ Desarrollo del frontend con dashboard interactivo
-- ⬜ Modelo de análisis financiero (en desarrollo por el equipo de Data Science)
+- ✅ Modelo de análisis financiero (en desarrollo por el equipo de Data Science)
+- ✅ Almacenamiento y gestión del modelo de Machine Learning en OCI Object Storage
 - ✅ Autenticación de usuarios
-- ⬜ Migración de base de datos a PostgreSQL en OCI
-- ⬜ Despliegue en Oracle Cloud Infrastructure (OCI)
+- ✅ Despliegue en Render
 - ⬜ Presentación final del proyecto
 
 ## 👥 Equipo
@@ -164,7 +190,7 @@ Está en desarrollo un segundo modelo de análisis financiero, que calculará un
 
 Equipo multidisciplinario participante del Hackathon Oracle Next Education (ONE) y No Country.
 
-Desarrollo de Backend, Frontend, Ciencia de Datos, Machine Learning e Integración.
+Desarrollo de Backend, Frontend, Ciencia de Datos, Machine Learning e Integración Cloud.
 
 ## 📄 Licencia
 
