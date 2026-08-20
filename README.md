@@ -4,8 +4,14 @@ Proyecto desarrollado para el Hackathon Oracle Next Education (ONE) y No Country
 Equipo: G9 LATAM Team 20
 
 <p align="center">
-  <img src="assets/team 20 logo.jpg" alt="Logo del equipo" width="200">
+  <img src="assets/logo.png" alt="Logo del equipo" width="500">
 </p>
+
+## 🙏 Agradecimientos 
+
+Agradecemos a **Alura Latam**, **Oracle** y **No Country** por hacer posible este hackathon y brindarnos el espacio, las herramientas y el acompañamiento para aprender construyendo un proyecto real de verdad muchas gracias.
+
+Gracias también a cada integrante del equipo por su tiempo y aportación en las distintas áreas del proyecto — este resultado es fruto del trabajo conjunto Team 20.
 
 ## 📖 Descripción
 
@@ -61,12 +67,12 @@ Muchas personas registran sus ingresos y gastos, pero les resulta difícil trans
 - Joblib
 
 **Base de datos**
-- SQLite (desarrollo actual)
-- PostgreSQL en Oracle Cloud Infrastructure (en progreso)
+- SQLite 
+- PostgreSQL en Oracle Cloud Infrastructure 
 
 **Cloud y despliegue**
 - Oracle Cloud Infrastructure (OCI) Object Storage: Almacenamiento seguro del modelo serializado (`.joblib`) en la nube de Oracle
-- Despliegue Backend: Aplicación web y API expuestas mediante servicios de nube modernos (Render), conectadas dinámicamente al  almacenamiento en la nube de Oracle.
+- Despliegue Backend: Aplicación web y API expuestas mediante servicios de nube modernos (Render)
 
 **DevOps**
 - Git, GitHub
@@ -191,6 +197,216 @@ Está en desarrollo un segundo modelo de análisis financiero, que calculará un
 Equipo multidisciplinario participante del Hackathon Oracle Next Education (ONE) y No Country.
 
 Desarrollo de Backend, Frontend, Ciencia de Datos, Machine Learning e Integración Cloud.
+
+## 👥 Equipo
+
+**G9 LATAM Team 20**
+
+Equipo multidisciplinario participante del Hackathon Oracle Next Education (ONE) y No Country.
+
+ <table align="center">
+  <tr>
+    <td align="center" width="180">
+      <img src="assets/Alexis.jpg" width="130" height="130" style="border-radius: 30%; object-fit: cover;" alt="Foto de Nombre">
+      <br />
+      <b>Alexis Parra</b>
+      <br />
+      <small>Ing. Mecatrónica</small>
+      <br />
+      <sub><em><strong>Fronten - Backend</strong></em></sub>
+      <br />
+      <a href="https://www.linkedin.com/in/jose-luis-alexis-parra-díaz-a59029176/" target="_blank">LinkedIn</a>
+    </td>
+    <td align="center" width="180">
+      <img src="assets/Karen.jpg" width="130" height="130" style="border-radius: 30%; object-fit: cover;" alt="Foto de Nombre">
+      <br />
+      <b>Karen Itzel</b>
+      <br />
+     <small>Ing. En Sistemas</small>
+      <br />
+      <sub><em><strong>Backend - Integracion OCI</strong></em></sub>
+       <br />
+      <a href="https://www.linkedin.com/in/karen-itzel-jaime-castillo/" target="_blank">LinkedIn</a>
+    </td>
+    <td align="center" width="180">
+      <img src="assets/Guillermo.webp" width="130" height="130" style="border-radius: 30%; object-fit: cover;" alt="Foto de Nombre">
+      <br />
+      <b>Guillermo Salazar</b>
+      <br />
+     <small>Arq. Licenciado</small>
+      <br />
+      <sub><em><strong>Ciencia de Datos</strong></em></sub>
+       <br />
+      <a href="https://www.linkedin.com/in/guillermo-sa-ma/" target="_blank">LinkedIn</a>
+    </td>
+    <td align="center" width="180">
+      <img src="assets/Argenes.webp" width="130" height="130" style="border-radius: 30%; object-fit: cover;" alt="Foto de Nombre">
+      <br />
+      <b>Argenes Moreno</b>
+      <br />
+     <small>Ing. Industrial</small>
+      <br />
+      <sub><em><strong>Ciencia de Datos</strong></em></sub>
+       <br />
+      <a href="https://www.linkedin.com/in/oscar-argenes-moreno-navarrete/" target="_blank">LinkedIn</a>
+    </td>
+  </tr>
+  </tr>
+  
+</table>
+
+
+## 👥 Capturas
+
+**G9 LATAM Team 20 EconimIA**
+<h2 align="center">G9 LATAM Team 20 EconimIA</h2>
+
+<table align="center" width="100%">
+  <!-- FILA 1: Imagen Principal Arriba (Ocupa las 3 columnas) -->
+  <tr>
+    <td align="center" colspan="4">
+      <img src="assets/bienvenida.png" width="60%" style="border-radius: 8px;" alt="Vista Principal">
+      <br />
+      <b>Primera pantalla de bienvenida y acceso</b>
+      <br />
+      <sub>Se muestra el acceso mediante usuario y contraseña. En caso de no recordar el usuario, muestra la lista de usuarios registrados.</sub>
+      <br /><br />
+    </td>
+  </tr>
+
+  <!-- FILA 2: datos de inicio -->
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/panel de registro.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 1">
+      <br />
+      <b>Panel de registro</b>
+      <br />
+      <sub>Captura primeros datos de cuenta: usuario y contraseña.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/panel de registro 2.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 2">
+      <br />
+      <b>Mensaje de bienvenida</b>
+      <br />
+      <sub>Informacion amigable con el usuario</sub>
+    </td>
+  </tr>
+
+  <!-- fila3: datos de inicio -->
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/panel de registro 3.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 1">
+      <br />
+      <b>Definición Meta de Ahorro Usuario</b>
+      <br />
+      <sub>Captura el porcentaje que el usuario desea ahorrar</sub>
+      </td>
+      <td align="center" width="50%">
+      <img src="assets/panel de registro 4.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 2">
+      <br />
+      <b>Definicion de uso</b>
+      <br />
+      <sub>Se hace consciente al usuario para que será su esfuerzo de ahorro  en el uso de la app </sub>
+      </td>
+
+  </tr>
+   
+  <!-- se completan los datos -->
+  <tr>
+      <td align="center" colspan="4">
+      <img src="assets/perfil de usuario.png" width="60%" style="border-radius: 8px;" alt="Vista Principal">
+      <br />
+      <b>Panel para completar datos de usuario </b>
+      <br />
+      <sub>Se capturan los datos del perfil de usuario completos incluido su porcentaje de deuda de sus ingresos totales </sub>
+      <br /><br />
+    </td>
+  </tr>
+
+  <!-- confirmacion de perfil -->
+  <tr>
+      <td align="center" colspan="4">
+      <img src="assets/confirmacion de usuario.png" width="60%" style="border-radius: 8px;" alt="Vista Principal">
+      <br />
+      <b>Se informa al usuario el numero re registro que tiene su perfil </b>
+      <br />
+      <sub>Este sera su ID para entrar y registrarse a su cuenta</sub>
+      <br /><br />
+    </td>
+  </tr>
+
+
+<!-- FILA 4: dentro de la app -->
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/app 1.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 1">
+      <br />
+      <b>Panel de salud</b>
+      <br />
+      <sub>Un vistaso general a la salud del usuario el mes seleccionado</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/app 2.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 2">
+      <br />
+      <b>Panel de resumen</b>
+      <br />
+      <sub>Resumen de sus gastos mostrando montos y categorias</sub>
+    </td>
+  </tr>
+
+  <!-- FILA 4: dentro de la app -->
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/panel de registro 3.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 1">
+      <br />
+      <b>Panel para registrar movimientos</b>
+      <br />
+      <sub>Aquí el usuario realiza el registro de sus actividades económicas y el motor de IA selecciona automáticamente la categoría, dejando también la opción por si el usuario quiere asignarlo a otra para controlar sus gastos de manera más personalizada</sub>
+      </td>
+      <td align="center" width="50%">
+      <img src="assets/edicion de datos.png" width="90%" style="border-radius: 8px;" alt="Panel de registro 2">
+      <br />
+      <b>Edicion de datos</b>
+      <br />
+      <sub>El usuario siempre puede editar sus datos según varíen sus ingresos mensuales así como hacer correcciones en su nombre o ciudad cualquier dato relacionado a su perfil excepto el cambio de ID ese es único por usuario </sub>
+      </td>
+
+  </tr>
+
+
+   <!-- Economia -->
+  <tr>
+      <td align="center" colspan="4">
+      <img src="assets/app 4.png" width="60%" style="border-radius: 8px;" alt="Vista Principal">
+      <br />
+      <b>Panel de EcnomIA</b>
+      <br />
+      <sub>Dentro de este panel se muestra un análisis realizado con reglas de negocio personales según los datos del usuario mostrando un score para su cumplimiento y un sistema de recompensa en puntos dependiendo de que tan bien estén controlados sus gastos y sus metas personales de ahorro </sub>
+      <br /><br />
+    </td>
+  </tr>
+
+ <!-- Economia -->
+  <tr>
+      <td align="center" colspan="4">
+      <img src="assets/documentacion de api.png" width="100%" style="border-radius: 8px;" alt="Vista Principal">
+      <br />
+      <p>URL activa despues del dia demo </p>
+      <br />
+      <b>La API cuenta con documentación interactiva generada automáticamente por FastAPI, disponible psrs cualquiera</b>
+      <ul>
+       <li>endpoints (/usuarios, /perfil, /perfil-ia, /clasificar-gasto, etc.)</li>
+       <li>Qué datos espera cada uno (schemas de Pydantic)</li>
+       <li>Qué devuelve cada uno</li>
+       <li>Y pueden probarlos en vivo desde ahí mismo</li>
+      </ul>
+      <br />
+      <sub></sub>
+      <br /><br />
+    </td>
+  </tr>
+
+</table>
 
 ## 📄 Licencia
 
